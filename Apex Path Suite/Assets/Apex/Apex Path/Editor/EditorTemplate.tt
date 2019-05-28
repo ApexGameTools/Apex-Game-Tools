@@ -1,0 +1,163 @@
+﻿<#@ template debug="false" hostspecific="true" language="C#" #>
+<#@ assembly name="EnvDTE" #>
+<#@ assembly name="System.Core" #>
+<#@ assembly name="$(SolutionDir)\Library\UnityAssemblies\UnityEngine.dll" #>
+<#@ assembly name="$(SolutionDir)\obj\Debug\Assembly-CSharp.dll" #>
+<#@ import namespace="System.Linq" #>
+<#@ import namespace="System.Text" #>
+<#@ import namespace="System.Reflection" #>
+<#@ import namespace="System.Collections.Generic" #>
+<#@ import namespace="Apex" #>
+<#@ import namespace="Apex.Steering" #>
+<#@ import namespace="Apex.Units" #>
+<#@ import namespace="Apex.Steering.Components" #>
+<#@ import namespace="Apex.WorldGeometry" #>
+<#@ import namespace="Apex.PathFinding" #>
+<#@ import namespace="Apex.Debugging" #>
+<#@ import namespace="Apex.Steering" #>
+<#@ import namespace="Apex.Input" #>
+<#@ import namespace="Apex.Services" #>
+<#@ import namespace="Apex.Steering.HeightNavigation" #>
+<#@ import namespace="Microsoft.CSharp" #>
+<#@ output extension=".txt" #>
+
+<#
+    Type type = null;
+    type = typeof(DefaultHeightNavigator);
+
+    if(type == null)
+    {
+        return string.Empty;
+    }
+#>
+namespace Apex.Editor
+{
+    using UnityEditor;
+    using UnityEngine;
+
+    [CustomEditor(typeof(<#=type.Name #>), false), CanEditMultipleObjects]
+    public class <#=type.Name #>Editor : Editor
+    {
+<#
+    var props = type.GetFields(BindingFlags.Instance | BindingFlags.NonPublic | BindingFlags.Public);
+    foreach(var p in props)
+    {
+        if(p.IsPrivate && !Attribute.IsDefined(p, typeof(UnityEngine.SerializeField)))
+        {
+            continue;
+        }
+#>
+        private SerializedProperty _<#=p.Name.TrimStart('_') #>;
+<#
+    }
+#>
+
+        public override void OnInspectorGUI()
+        {
+            if (Application.isPlaying)
+            {
+                EditorGUILayout.HelpBox("These settings cannot be edited in play mode.", MessageType.Info);
+                return;
+            }
+
+            this.serializedObject.Update();
+            EditorGUILayout.Separator();
+<#
+    foreach(var p in props)
+    {
+        if(p.IsPrivate && !Attribute.IsDefined(p, typeof(UnityEngine.SerializeField)))
+        {
+            continue;
+        }
+#>
+            EditorGUILayout.PropertyField(_<#=p.Name.TrimStart('_') #>);
+<#
+    }
+#>
+            this.serializedObject.ApplyModifiedProperties();
+        }
+
+        private void OnEnable()
+        {
+<#
+    foreach(var p in props)
+    {
+        if(p.IsPrivate && !Attribute.IsDefined(p, typeof(UnityEngine.SerializeField)))
+        {
+            continue;
+        }
+#>
+            _<#=p.Name.TrimStart('_') #> = this.serializedObject.FindProperty("<#=p.Name #>");
+<#
+    }
+#>
+        }
+    }
+}
+<#
+    SaveOutput(type.Name + "Editor.cs"); 
+#>
+<#+
+    private static string SplitToWords(string s)
+    {
+        if (string.IsNullOrEmpty(s))
+        {
+            return s;
+        }
+
+        s = s.TrimStart('_');
+        var transformer = new StringBuilder();
+
+        transformer.Append(char.ToUpper(s[0]));
+        for (int i = 1; i < s.Length; i++)
+        {
+            if (char.IsUpper(s, i))
+            {
+                transformer.Append(" ");
+            }
+
+            transformer.Append(s[i]);
+        }
+
+        return transformer.ToString();
+    }
+
+    void SaveOutput(string outputFileName)
+    {
+        string templateDirectory = System.IO.Path.GetDirectoryName(Host.TemplateFile);
+        string outputFilePath = System.IO.Path.Combine(templateDirectory, outputFileName);
+        
+        if(System.IO.File.Exists(outputFilePath))
+        {
+            return;
+        }
+
+        System.IO.File.WriteAllText(outputFilePath, this.GenerationEnvironment.ToString());
+        this.GenerationEnvironment.Clear();
+
+        EnvDTE.Project dteProject = __getTemplateProject();
+
+        dteProject.ProjectItems.AddFromFile(outputFilePath);
+    }
+
+    EnvDTE.Project __getTemplateProject()
+    {
+        IServiceProvider hostServiceProvider = (IServiceProvider)Host;
+        if (hostServiceProvider == null)
+            throw new Exception("Host property returned unexpected value (null)");
+
+        EnvDTE.DTE dte = (EnvDTE.DTE)hostServiceProvider.GetService(typeof(EnvDTE.DTE));
+        if (dte == null)
+            throw new Exception("Unable to retrieve EnvDTE.DTE");
+
+        Array activeSolutionProjects = (Array)dte.ActiveSolutionProjects;
+        if (activeSolutionProjects == null)
+            throw new Exception("DTE.ActiveSolutionProjects returned null");
+
+        EnvDTE.Project dteProject = (EnvDTE.Project)activeSolutionProjects.GetValue(0);
+        if (dteProject == null)
+            throw new Exception("DTE.ActiveSolutionProjects[0] returned null");
+
+        return dteProject;
+    }
+#>

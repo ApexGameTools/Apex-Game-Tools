@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -319765701, guid: 732187d5054116b468af9049bfdf479c, type: 3}
+  m_Name: ApexSettings
+  m_EditorClassIdentifier: 
+  _allowAutomaticUpdateCheck: 0
+  _updateCheckIntervalHours: 12
+  _lastUpdateCheck: 
+  _updateCheckBaseUrl: http://apexgametoolsproductservice.azurewebsites.net
+  _knownPendingUpdates: []
+  _checkNews: 1
+  _lastNewsDate: 
+  _lastNewsCheck: 05/28/2019 13:42:58

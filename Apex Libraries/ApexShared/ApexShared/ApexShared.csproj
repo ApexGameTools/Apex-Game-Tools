@@ -1,0 +1,143 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">Unity4</Platform>
+    <ProjectGuid>{587BA07A-45B8-43E8-9185-0E3C567FD285}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Apex</RootNamespace>
+    <AssemblyName>ApexShared</AssemblyName>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile>Unity Subset v3.5</TargetFrameworkProfile>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>..\..\..\Precompiled\$(Platform)\Apex Shared\</OutputPath>
+    <DefineConstants>TRACE;DEBUG</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>..\..\..\Precompiled\$(Platform)\Apex Shared\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'ReleaseWithDocs' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>..\..\..\Precompiled\$(Platform)\Apex Shared\</OutputPath>
+    <DocumentationFile>..\..\..\Precompiled\$(Platform)\Apex Shared\$(AssemblyName).XML</DocumentationFile>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Platform)' == 'Unity4' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Platform)' == 'Unity5' ">
+    <DefineConstants>$(DefineConstants);UNITY_5</DefineConstants>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Platform)' == 'Unity2017' ">
+    <DefineConstants>$(DefineConstants);UNITY_2017</DefineConstants>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Platform)' == 'Unity2018' ">
+    <DefineConstants>$(DefineConstants);UNITY_2017</DefineConstants>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="UnityEngine">
+      <HintPath>..\..\..\References\Unity2018\UnityEngine.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="ApexQuickStartComponent.cs" />
+    <Compile Include="ApexRelevantAssemblyAttribute.cs" />
+    <Compile Include="ApexComponentAttribute.cs" />
+    <Compile Include="ApexComponentMaster.cs" />
+    <Compile Include="CompareOperator.cs" />
+    <Compile Include="DataStructures\BinaryHeap.cs" />
+    <Compile Include="DataStructures\BinaryHeapBase.cs" />
+    <Compile Include="DataStructures\DynamicArray.cs" />
+    <Compile Include="DataStructures\FunctionComparer.cs" />
+    <Compile Include="DataStructures\IDynamicArray.cs" />
+    <Compile Include="DataStructures\IIndexable.cs" />
+    <Compile Include="DataStructures\IIterable.cs" />
+    <Compile Include="DataStructures\IndexableSet.cs" />
+    <Compile Include="DataStructures\ISortable.cs" />
+    <Compile Include="DataStructures\Matrix.cs" />
+    <Compile Include="DataStructures\MatrixBounds.cs" />
+    <Compile Include="DataStructures\PolygonXZ.cs" />
+    <Compile Include="DataStructures\PriorityQueue.cs" />
+    <Compile Include="DataStructures\PriorityQueueFifo.cs" />
+    <Compile Include="DataStructures\PriorityQueueLifo.cs" />
+    <Compile Include="DataStructures\QueueOnce.cs" />
+    <Compile Include="DataStructures\QueueType.cs" />
+    <Compile Include="DataStructures\RectangleXZ.cs" />
+    <Compile Include="DataStructures\SimpleQueue.cs" />
+    <Compile Include="DataStructures\Vector3EqualityComparer.cs" />
+    <Compile Include="DataStructures\VectorXZ.cs" />
+    <Compile Include="Debugging\LoadBalancerPerformanceVisualizer.cs" />
+    <Compile Include="ExtendedMonoBehaviour.cs" />
+    <Compile Include="GlobalSuppressions.cs" />
+    <Compile Include="IGameObjectComponent.cs" />
+    <Compile Include="ISupportRuntimeStateChange.cs" />
+    <Compile Include="LoadBalancing\ILoadBalanced.cs" />
+    <Compile Include="LoadBalancing\ILoadBalancedHandle.cs" />
+    <Compile Include="LoadBalancing\ILoadBalancer.cs" />
+    <Compile Include="LoadBalancing\IMarshaller.cs" />
+    <Compile Include="LoadBalancing\LoadBalancedActionPool.cs" />
+    <Compile Include="LoadBalancing\LoadBalancedQueue.cs" />
+    <Compile Include="LoadBalancing\LoadBalancer.cs" />
+    <Compile Include="LoadBalancing\LoadBalancerComponent.cs" />
+    <Compile Include="LoadBalancing\LoadBalancerConfig.cs" />
+    <Compile Include="LoadBalancing\LongRunningAction.cs" />
+    <Compile Include="LoadBalancing\Marshaller.cs" />
+    <Compile Include="LoadBalancing\OneTimeAction.cs" />
+    <Compile Include="LoadBalancing\RepeatableAction.cs" />
+    <Compile Include="MaskMatch.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SharedExtensions.cs" />
+    <Compile Include="SingleInstanceComponent.cs" />
+    <Compile Include="SharedUnityExtensions.cs" />
+    <Compile Include="Utilities\ApexReflection.cs" />
+    <Compile Include="Utilities\ComponentHelper.cs" />
+    <Compile Include="Utilities\DebugTimer.cs" />
+    <Compile Include="Utilities\Empty.cs" />
+    <Compile Include="Utilities\Ensure.cs" />
+    <Compile Include="Utilities\LabelAttribute.cs" />
+    <Compile Include="Utilities\ListBufferPool.cs" />
+    <Compile Include="Utilities\MaxCheckAttribute.cs" />
+    <Compile Include="Utilities\MinCheckAttribute.cs" />
+    <Compile Include="Utilities\RangeXAttribute.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\..\..\ApexGameTools.licenseheader">
+      <Link>ApexGameTools.licenseheader</Link>
+    </None>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PostBuildEvent>
+    </PostBuildEvent>
+  </PropertyGroup>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

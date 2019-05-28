@@ -1,0 +1,8 @@
+Setting up the Examples project
+-----------------------------------------------
+
+1. Locate the ‘Apex Advanced Dynamic Obstacles Examples and Tutorials Project.zip’ file.
+
+2. Unzip the file in the same directory where you unzipped the main Apex Path Examples project.
+
+3. Open in Unity3D.

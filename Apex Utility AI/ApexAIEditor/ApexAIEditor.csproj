@@ -1,0 +1,319 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">Unity4</Platform>
+    <ProjectGuid>{57966081-67CF-47C3-AA5B-7C077BB40865}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Apex.AI.Editor</RootNamespace>
+    <AssemblyName>ApexAIEditor</AssemblyName>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile>Unity Full v3.5</TargetFrameworkProfile>
+    <DefineConstants Condition=" '$(ProductVariant)' != '' ">$(ProductVariant);</DefineConstants>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>..\..\..\Precompiled\$(Platform)\Apex AI\Editor\</OutputPath>
+    <DefineConstants>$(DefineConstants)TRACE;DEBUG;APEX_DLL</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>..\..\..\Precompiled\$(Platform)\Apex AI\Editor\</OutputPath>
+    <DefineConstants>$(DefineConstants)TRACE;APEX_DLL</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'ReleaseWithDocs' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>..\..\..\Precompiled\$(Platform)\Apex AI\Editor\</OutputPath>
+    <DefineConstants>$(DefineConstants)TRACE;APEX_DLL</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Platform)' == 'Unity4' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Platform)' == 'Unity5' ">
+    <DefineConstants>$(DefineConstants);UNITY_5</DefineConstants>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Platform)' == 'Unity2017' ">
+    <DefineConstants>$(DefineConstants);UNITY_2017</DefineConstants>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Platform)' == 'Unity2018' ">
+    <DefineConstants>$(DefineConstants);UNITY_2017</DefineConstants>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="UnityEditor">
+      <HintPath>..\..\References\$(Platform)\UnityEditor.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEngine">
+      <HintPath>..\..\References\$(Platform)\UnityEngine.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="ActionView.cs" />
+    <Compile Include="AICanvas.cs" />
+    <Compile Include="AIEditorExtensions.cs" />
+    <Compile Include="AIEditorMenus.cs" />
+    <Compile Include="AIEditorWindow.cs" />
+    <Compile Include="AIInspectorEditor.cs" />
+    <Compile Include="AIInspectorState.cs" />
+    <Compile Include="AIInvestigator.cs" />
+    <Compile Include="AIInvestigatorWindow.cs" />
+    <Compile Include="AILinkActionView.cs" />
+    <Compile Include="AILinkLayout.cs" />
+    <Compile Include="AILinkView.cs" />
+    <Compile Include="ContextGenerator.cs" />
+    <Compile Include="AINameMapGenerator.cs" />
+    <Compile Include="AIEntitySelectorWindow.cs" />
+    <Compile Include="AIStorageEditor.cs" />
+    <Compile Include="AIVersion.cs" />
+    <Compile Include="ContextGizmoVisualizerComponentEditor.cs" />
+    <Compile Include="AISelectorWindow.cs" />
+    <Compile Include="IRepairTask.cs" />
+    <Compile Include="ProductInfo.cs" />
+    <Compile Include="Reflection\AIReferenceField.cs" />
+    <Compile Include="Reflection\AnimationCurveField.cs" />
+    <Compile Include="Reflection\DependencyCheck.cs" />
+    <Compile Include="Reflection\DependencyChecker.cs" />
+    <Compile Include="Reflection\ArrayField.cs" />
+    <Compile Include="Reflection\DictionaryField.cs" />
+    <Compile Include="Reflection\IKeyedItem.cs" />
+    <Compile Include="Reflection\ListFieldBase.cs" />
+    <Compile Include="Reflection\DictionaryItem.cs" />
+    <Compile Include="Reflection\SimpleListItem.cs" />
+    <Compile Include="Resources\Skins.cs" />
+    <Compile Include="Resources\SkinMode.cs" />
+    <Compile Include="CompositeActionView.cs" />
+    <Compile Include="AIUI.cs" />
+    <Compile Include="BreakpointConditionWindow.cs" />
+    <Compile Include="ClipboardService.cs" />
+    <Compile Include="DisplayHelper.cs" />
+    <Compile Include="EditorStyling.cs" />
+    <Compile Include="AIGeneralSettings.cs" />
+    <Compile Include="IConnectorActionView.cs" />
+    <Compile Include="IView.cs" />
+    <Compile Include="MouseState.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="QualifierView.cs" />
+    <Compile Include="Reflection\AIBuildingBlocks.cs" />
+    <Compile Include="Reflection\BoolField.cs" />
+    <Compile Include="Reflection\BoundsField.cs" />
+    <Compile Include="Reflection\ByteField.cs" />
+    <Compile Include="Reflection\CharField.cs" />
+    <Compile Include="Reflection\ColorField.cs" />
+    <Compile Include="Reflection\CustomField.cs" />
+    <Compile Include="Reflection\DoubleField.cs" />
+    <Compile Include="Reflection\EditorFieldBase.cs" />
+    <Compile Include="Reflection\EditorFieldCategory.cs" />
+    <Compile Include="Reflection\EditorItem.cs" />
+    <Compile Include="Reflection\EnumMaskField.cs" />
+    <Compile Include="Reflection\EnumSelectField.cs" />
+    <Compile Include="Reflection\FloatField.cs" />
+    <Compile Include="Reflection\IEditorField.cs" />
+    <Compile Include="Reflection\IntField.cs" />
+    <Compile Include="Reflection\LayerMaskField.cs" />
+    <Compile Include="Reflection\ListField.cs" />
+    <Compile Include="Reflection\MemberData.cs" />
+    <Compile Include="Reflection\RectField.cs" />
+    <Compile Include="Reflection\ReflectMaster.cs" />
+    <Compile Include="Reflection\ShortField.cs" />
+    <Compile Include="Reflection\StringField.cs" />
+    <Compile Include="Reflection\TypesHandledAttribute.cs" />
+    <Compile Include="Reflection\UShortField.cs" />
+    <Compile Include="Reflection\Vector2Field.cs" />
+    <Compile Include="Reflection\Vector3Field.cs" />
+    <Compile Include="Reflection\Vector4Field.cs" />
+    <Compile Include="RepairUtility.cs" />
+    <Compile Include="Resources\PngResource.cs" />
+    <Compile Include="Resources\ResourceManager.cs" />
+    <Compile Include="RoundMode.cs" />
+    <Compile Include="ScaleSettings.cs" />
+    <Compile Include="SelectorActionView.cs" />
+    <Compile Include="SelectorLayout.cs" />
+    <Compile Include="SelectorView.cs" />
+    <Compile Include="RepairWindow.cs" />
+    <Compile Include="SettingsWindow.cs" />
+    <Compile Include="StoredAIs.cs" />
+    <Compile Include="TopLevelView.cs" />
+    <Compile Include="TypeInvestigator.cs" />
+    <Compile Include="TypeNameTokens.cs" />
+    <Compile Include="UIResources.cs" />
+    <Compile Include="UndoRedo\AddAILinkOperation.cs" />
+    <Compile Include="UndoRedo\AddQualifierOperation.cs" />
+    <Compile Include="UndoRedo\AddSelectorOperation.cs" />
+    <Compile Include="UndoRedo\AddTopLevelViewOperation.cs" />
+    <Compile Include="UndoRedo\AIUIOperation.cs" />
+    <Compile Include="UndoRedo\ChangeTypes.cs" />
+    <Compile Include="UndoRedo\ConnectCompositeOperation.cs" />
+    <Compile Include="UndoRedo\CustomEditorFieldOperation.cs" />
+    <Compile Include="UndoRedo\DisableOperation.cs" />
+    <Compile Include="UndoRedo\EditorFieldOperation.cs" />
+    <Compile Include="UndoRedo\IMergableOperation.cs" />
+    <Compile Include="UndoRedo\IUndoRedo.cs" />
+    <Compile Include="UndoRedo\IViewBoundOperation.cs" />
+    <Compile Include="UndoRedo\ArrayFieldAddOperation.cs" />
+    <Compile Include="UndoRedo\ListFieldAddOperation.cs" />
+    <Compile Include="UndoRedo\ArrayFieldRemoveOperation.cs" />
+    <Compile Include="UndoRedo\ListFieldRemoveOperation.cs" />
+    <Compile Include="UndoRedo\RemoveActionOperation.cs" />
+    <Compile Include="UndoRedo\RemoveAILinkOperation.cs" />
+    <Compile Include="UndoRedo\RemoveQualifierOperation.cs" />
+    <Compile Include="UndoRedo\RemoveSelectorOperation.cs" />
+    <Compile Include="UndoRedo\RemoveTopLevelViewOperation.cs" />
+    <Compile Include="UndoRedo\ReorderOperation.cs" />
+    <Compile Include="UndoRedo\ReplaceActionOperation.cs" />
+    <Compile Include="UndoRedo\ReplaceAILinkOperation.cs" />
+    <Compile Include="UndoRedo\ReplaceDefaultQualifierOperation.cs" />
+    <Compile Include="UndoRedo\ReplaceQualifierOperation.cs" />
+    <Compile Include="UndoRedo\ReplaceSelectorOperation.cs" />
+    <Compile Include="UndoRedo\SetActionOperation.cs" />
+    <Compile Include="UndoRedo\SetRootOperation.cs" />
+    <Compile Include="UndoRedo\UndoRedoLog.cs" />
+    <Compile Include="UndoRedo\UndoRedoManager.cs" />
+    <Compile Include="UndoRedo\ViewValueChangeOperation.cs" />
+    <Compile Include="UnityEventListener.cs" />
+    <Compile Include="UserSettings.cs" />
+    <Compile Include="UtilityAIComponentEditor.cs" />
+    <Compile Include="ViewLayout.cs" />
+    <Compile Include="VisualizedEntityLayout.cs" />
+    <Compile Include="GuiSerializer.cs" />
+    <Compile Include="XRange.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\Apex Libraries\ApexSerialization\ApexSerialization.csproj">
+      <Project>{7deb45dd-60b9-42a2-b33d-af565846baae}</Project>
+      <Name>ApexSerialization</Name>
+      <Private>False</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Apex Libraries\ApexShared\ApexSharedEditor\ApexSharedEditor.csproj">
+      <Project>{222fccee-9813-4d0d-b8f1-b3ee0d1b6014}</Project>
+      <Name>ApexSharedEditor</Name>
+      <Private>False</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Apex Libraries\ApexShared\ApexShared\ApexShared.csproj">
+      <Project>{587ba07a-45b8-43e8-9185-0e3c567fd285}</Project>
+      <Name>ApexShared</Name>
+      <Private>False</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\ApexAI\ApexAI.csproj">
+      <Project>{44333ece-cab2-40e4-bfeb-bf0d772b3431}</Project>
+      <Name>ApexAI</Name>
+      <Private>False</Private>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\UnityPro\EditorWindowIcon.png" />
+    <EmbeddedResource Include="Resources\UnityPro\grid.png" />
+    <EmbeddedResource Include="Resources\UnityPro\home.png" />
+    <EmbeddedResource Include="Resources\UnityPro\setroot.png" />
+    <EmbeddedResource Include="Resources\UnityPro\view.png" />
+    <EmbeddedResource Include="Resources\UnityFree\EditorWindowIcon.png" />
+    <EmbeddedResource Include="Resources\UnityFree\grid.png" />
+    <EmbeddedResource Include="Resources\UnityFree\home.png" />
+    <EmbeddedResource Include="Resources\UnityFree\setroot.png" />
+    <EmbeddedResource Include="Resources\UnityFree\view.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\..\..\ApexGameTools.licenseheader">
+      <Link>ApexGameTools.licenseheader</Link>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\UnityPro\zoom.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\UnityFree\zoom.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\alternating\actionBack.png" />
+    <EmbeddedResource Include="Resources\alternating\actionBackScored.png" />
+    <EmbeddedResource Include="Resources\alternating\actionBackScoredSelected.png" />
+    <EmbeddedResource Include="Resources\alternating\actionBackSelected.png" />
+    <EmbeddedResource Include="Resources\alternating\actionBackUnscored.png" />
+    <EmbeddedResource Include="Resources\alternating\actionBackUnscoredSelected.png" />
+    <EmbeddedResource Include="Resources\darkSeparator\actionBack.png" />
+    <EmbeddedResource Include="Resources\darkSeparator\actionBackScored.png" />
+    <EmbeddedResource Include="Resources\darkSeparator\actionBackScoredSelected.png" />
+    <EmbeddedResource Include="Resources\darkSeparator\actionBackSelected.png" />
+    <EmbeddedResource Include="Resources\darkSeparator\actionBackUnscored.png" />
+    <EmbeddedResource Include="Resources\darkSeparator\actionBackUnscoredSelected.png" />
+    <EmbeddedResource Include="Resources\noSkin\AALine.png" />
+    <EmbeddedResource Include="Resources\noSkin\breakpoint.png" />
+    <EmbeddedResource Include="Resources\noSkin\breakpointHit.png" />
+    <EmbeddedResource Include="Resources\noSkin\cancel.png" />
+    <EmbeddedResource Include="Resources\noSkin\connectorClosed.png" />
+    <EmbeddedResource Include="Resources\noSkin\connectorClosedScored.png" />
+    <EmbeddedResource Include="Resources\noSkin\connectorOpen.png" />
+    <EmbeddedResource Include="Resources\noSkin\dropDownClosed.png" />
+    <EmbeddedResource Include="Resources\noSkin\dropDownOpen.png" />
+    <EmbeddedResource Include="Resources\noSkin\indentArrow.png" />
+    <EmbeddedResource Include="Resources\noSkin\pinOff.png" />
+    <EmbeddedResource Include="Resources\noSkin\pinOn.png" />
+    <EmbeddedResource Include="Resources\noSkin\qualifierBack.png" />
+    <EmbeddedResource Include="Resources\noSkin\qualifierBackScored.png" />
+    <EmbeddedResource Include="Resources\noSkin\qualifierBackScoredSelected.png" />
+    <EmbeddedResource Include="Resources\noSkin\qualifierBackSelected.png" />
+    <EmbeddedResource Include="Resources\noSkin\qualifierBackUnscored.png" />
+    <EmbeddedResource Include="Resources\noSkin\qualifierBackUnscoredSelected.png" />
+    <EmbeddedResource Include="Resources\noSkin\reorder.png" />
+    <EmbeddedResource Include="Resources\noSkin\scorerBack.png" />
+    <EmbeddedResource Include="Resources\noSkin\selectorBack.png" />
+    <EmbeddedResource Include="Resources\noSkin\selectorBackSelected.png" />
+    <EmbeddedResource Include="Resources\noSkin\selectorRootBack.png" />
+    <EmbeddedResource Include="Resources\noSkin\selectorRootBackSelected.png" />
+    <EmbeddedResource Include="Resources\noSkin\VisualizeContainer.png" />
+    <EmbeddedResource Include="Resources\lightSeparator\actionBack.png" />
+    <EmbeddedResource Include="Resources\lightSeparator\actionBackScored.png" />
+    <EmbeddedResource Include="Resources\lightSeparator\actionBackScoredSelected.png" />
+    <EmbeddedResource Include="Resources\lightSeparator\actionBackSelected.png" />
+    <EmbeddedResource Include="Resources\lightSeparator\actionBackUnscored.png" />
+    <EmbeddedResource Include="Resources\lightSeparator\actionBackUnscoredSelected.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\noSkin\viewAI.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\UnityFree\insreorder.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\UnityPro\insreorder.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\default\actionBack.png" />
+    <EmbeddedResource Include="Resources\default\actionBackScored.png" />
+    <EmbeddedResource Include="Resources\default\actionBackScoredSelected.png" />
+    <EmbeddedResource Include="Resources\default\actionBackSelected.png" />
+    <EmbeddedResource Include="Resources\default\actionBackUnscored.png" />
+    <EmbeddedResource Include="Resources\default\actionBackUnscoredSelected.png" />
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PostBuildEvent>
+    </PostBuildEvent>
+  </PropertyGroup>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

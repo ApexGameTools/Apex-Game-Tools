@@ -1,0 +1,43 @@
+v 1.0.7
+	Bug fixes:
+	- Fixed a bug where units in a group would not arrive, due to calculations not ignoring the Y-axis.
+
+v 1.0.6
+	Bug Fixes:
+	- Fixed a bug where Unit avoidance checks for stationary units caused division by zero.
+
+	Improvements:
+	- Added extension method for IGroupings to ClearFormation.
+
+v 1.0.5
+	Improvements:
+	- Added a field on SteerForSeparation component to allow units to ignore other units based on attributes.
+
+﻿v 1.0.4
+	Bug Fixes:
+	- Fixed an issue with Quick Starts not showing properly.
+
+v 1.0.3
+	Changes:
+	- Update for Apex Path 2.4
+
+	Bug Fixes:
+	- All vector field types now use clearance. It is however recommended to only use the Funnel field as it has the best overall performance.
+	- A few fixes for situations where the model unit is destroyed prematurely. It is not really a supported scenario however.
+
+v 1.0.2
+	Changes:
+	- Update for Apex Path 2.3
+
+	Bug Fixes:
+	-Fixed a bug where the model unit would sometimes not arrive properly.
+
+v 1.0.1.1
+	Bug Fixes:
+	-Fixed bug when selecting nothing and issuing a move order.
+
+v 1.0.1
+	Bug Fixes:
+	-Fixed two bugs related to the latest release of Apex Path 2.1
+
+v. 1.0 Initial Release

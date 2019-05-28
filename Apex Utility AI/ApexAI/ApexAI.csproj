@@ -1,0 +1,212 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">Unity4</Platform>
+    <ProjectGuid>{44333ECE-CAB2-40E4-BFEB-BF0D772B3431}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Apex.AI</RootNamespace>
+    <AssemblyName>ApexAI</AssemblyName>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile>Unity Subset v3.5</TargetFrameworkProfile>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>..\..\..\Precompiled\$(Platform)\Apex AI\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>..\..\..\Precompiled\$(Platform)\Apex AI\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'ReleaseWithDocs' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>..\..\..\Precompiled\$(Platform)\Apex AI\</OutputPath>
+    <DocumentationFile>..\..\..\Precompiled\$(Platform)\Apex AI\$(AssemblyName).XML</DocumentationFile>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Platform)' == 'Unity4' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Platform)' == 'Unity5' ">
+    <DefineConstants>$(DefineConstants);UNITY_5</DefineConstants>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Platform)' == 'Unity2017' ">
+    <DefineConstants>$(DefineConstants);UNITY_2017</DefineConstants>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Platform)' == 'Unity2018' ">
+    <DefineConstants>$(DefineConstants);UNITY_2017</DefineConstants>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|Unity4'">
+    <DefineConstants>TRACE;DEBUG</DefineConstants>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="UnityEngine">
+      <HintPath>..\..\References\$(Platform)\UnityEngine.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AILoadBalancer.cs" />
+    <Compile Include="AIManager.cs" />
+    <Compile Include="Components\AIQuickStarts.cs" />
+    <Compile Include="Core\TerminableActionBaseOfT.cs" />
+    <Compile Include="Core\TerminableCompositeAction.cs" />
+    <Compile Include="Core\CompositeScoreAboveThresholdQualifier.cs" />
+    <Compile Include="Core\CompositeAllAboveThresholdQualifier.cs" />
+    <Compile Include="Core\ICompositeAction.cs" />
+    <Compile Include="Core\IConnectorAction.cs" />
+    <Compile Include="Components\IContextProvider.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Components\IUtilityAIClient.cs" />
+    <Compile Include="Components\LoadBalancedUtilityAIClient.cs" />
+    <Compile Include="Components\UtilityAIClient.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Components\UtilityAIClientQuickStart.cs" />
+    <Compile Include="Components\UtilityAIClientState.cs" />
+    <Compile Include="Components\UtilityAIComponent.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Components\UtilityAIConfig.cs" />
+    <Compile Include="Core\ActionBase.cs" />
+    <Compile Include="Core\ActionBaseOfT.cs" />
+    <Compile Include="Core\ActionWithOptions.cs" />
+    <Compile Include="Core\AICategoryAttribute.cs" />
+    <Compile Include="Core\AILinkAction.cs" />
+    <Compile Include="Core\BasicExtensions.cs" />
+    <Compile Include="Core\CompositeAction.cs" />
+    <Compile Include="Core\CompositeAllOrNothingQualifier.cs" />
+    <Compile Include="Core\CompositePriorityQualifier.cs" />
+    <Compile Include="Core\CompositeQualifier.cs" />
+    <Compile Include="Core\CompositeScoreQualifier.cs" />
+    <Compile Include="Core\OptionScorerBaseOfT.cs" />
+    <Compile Include="Core\OptionScorerBase.cs" />
+    <Compile Include="Core\ContextualScorerBase.cs" />
+    <Compile Include="Core\ContextualScorerBaseOfT.cs" />
+    <Compile Include="Core\DataStructures\CircularStack.cs" />
+    <Compile Include="Core\DataStructures\IQueue.cs" />
+    <Compile Include="Core\DataStructures\KeyedQueue.cs" />
+    <Compile Include="Core\DataStructures\SafeDynamicArray.cs" />
+    <Compile Include="Core\DataStructures\SortedArray.cs" />
+    <Compile Include="Core\DefaultQualifier.cs" />
+    <Compile Include="Core\FixedScoreQualifier.cs" />
+    <Compile Include="Core\FriendlyNameAttribute.cs" />
+    <Compile Include="Core\HiddenAttribute.cs" />
+    <Compile Include="Core\IAction.cs" />
+    <Compile Include="Core\IAIContext.cs" />
+    <Compile Include="Core\ICanBeDisabled.cs" />
+    <Compile Include="Core\ICanClone.cs" />
+    <Compile Include="Core\ICompositeScorer.cs" />
+    <Compile Include="Core\IContextualScorer.cs" />
+    <Compile Include="Core\IOptionScorer.cs" />
+    <Compile Include="Core\IDefaultQualifier.cs" />
+    <Compile Include="Core\IHaveFriendlyName.cs" />
+    <Compile Include="Core\IQualifier.cs" />
+    <Compile Include="Core\IRequireTermination.cs" />
+    <Compile Include="Core\ISelect.cs" />
+    <Compile Include="Core\IUtilityAI.cs" />
+    <Compile Include="Core\PrioritySelector.cs" />
+    <Compile Include="Core\QualifierBase.cs" />
+    <Compile Include="Core\QualifierBaseOfT.cs" />
+    <Compile Include="Core\NotReorderableAttribute.cs" />
+    <Compile Include="Core\ScoredOption.cs" />
+    <Compile Include="Core\ScoredOptionComparer.cs" />
+    <Compile Include="Core\ScoreSelector.cs" />
+    <Compile Include="Core\Selector.cs" />
+    <Compile Include="Core\SelectorAction.cs" />
+    <Compile Include="Core\Visualization\ActionRequiresTerminationVisualizer.cs" />
+    <Compile Include="Core\Visualization\ConnectorActionVisualizer.cs" />
+    <Compile Include="Core\Visualization\CustomGizmoVisualizerComponent.cs" />
+    <Compile Include="Core\Visualization\CustomGUIVisualizerComponent.cs" />
+    <Compile Include="Serialization\AIReferenceAttribute.cs" />
+    <Compile Include="Serialization\MemberEditorAttribute.cs" />
+    <Compile Include="Core\MemberDependencyAttribute.cs" />
+    <Compile Include="Core\MemberCategoryAttribute.cs" />
+    <Compile Include="Core\UtilityAI.cs" />
+    <Compile Include="Core\Visualization\ActionVisualizer.cs" />
+    <Compile Include="Core\Visualization\ActionWithOptionsVisualizerComponent.cs" />
+    <Compile Include="Core\Visualization\AILinkActionVisualizer.cs" />
+    <Compile Include="Core\Visualization\BreakpointCondition.cs" />
+    <Compile Include="Core\Visualization\CompositeActionVisualizer.cs" />
+    <Compile Include="Core\Visualization\CompositeQualifierVisualizer.cs" />
+    <Compile Include="Core\Visualization\ContextGizmoGUIVisualizerComponent.cs" />
+    <Compile Include="Core\Visualization\ContextGizmoGUIVisualizerComponentOfT.cs" />
+    <Compile Include="Core\Visualization\ContextVisualizerComponent.cs" />
+    <Compile Include="Core\Visualization\ContextGizmoVisualizerComponent.cs" />
+    <Compile Include="Core\Visualization\ContextGUIVisualizerComponentOfT.cs" />
+    <Compile Include="Core\Visualization\ContextGUIVisualizerComponent.cs" />
+    <Compile Include="Core\Visualization\ContextGizmoVisualizerComponentOfT.cs" />
+    <Compile Include="Core\Visualization\CustomGizmoGUIVisualizerComponent.cs" />
+    <Compile Include="Core\Visualization\CustomVisualizerComponent.cs" />
+    <Compile Include="Core\Visualization\DefaultQualifierVisualizer.cs" />
+    <Compile Include="Core\Visualization\ICompositeVisualizer.cs" />
+    <Compile Include="Core\Visualization\ICustomVisualizer.cs" />
+    <Compile Include="Core\Visualization\IQualifierVisualizer.cs" />
+    <Compile Include="Core\Visualization\IVisualizedObject.cs" />
+    <Compile Include="Core\Visualization\QualifierVisualizer.cs" />
+    <Compile Include="Core\Visualization\SceneVisualizationMode.cs" />
+    <Compile Include="Core\Visualization\ScorerVisualizer.cs" />
+    <Compile Include="Core\Visualization\SelectorActionVisualizer.cs" />
+    <Compile Include="Core\Visualization\SelectorVisualizer.cs" />
+    <Compile Include="Core\Visualization\UtilityAIVisualizer.cs" />
+    <Compile Include="Core\Visualization\VisualizationManager.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Serialization\AIStorage.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Core\UtilityCurveEditorBaseScorer.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="ChangeLog.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\Apex Libraries\ApexSerialization\ApexSerialization.csproj">
+      <Project>{7deb45dd-60b9-42a2-b33d-af565846baae}</Project>
+      <Name>ApexSerialization</Name>
+      <Private>False</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Apex Libraries\ApexShared\ApexShared\ApexShared.csproj">
+      <Project>{587ba07a-45b8-43e8-9185-0e3c567fd285}</Project>
+      <Name>ApexShared</Name>
+      <Private>False</Private>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\..\..\ApexGameTools.licenseheader">
+      <Link>ApexGameTools.licenseheader</Link>
+    </None>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PostBuildEvent>
+    </PostBuildEvent>
+  </PropertyGroup>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

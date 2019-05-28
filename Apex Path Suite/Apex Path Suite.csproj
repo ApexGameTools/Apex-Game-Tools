@@ -1,0 +1,690 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>10.0.20506</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{F05A7B52-7E0F-CEA2-505D-65C3745FC608}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AssemblyName>Assembly-CSharp</AssemblyName>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{E097FAD1-6243-4DAD-9C02-E9B9EFC3FFC1};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <TargetFrameworkIdentifier>.NETFramework</TargetFrameworkIdentifier>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <TargetFrameworkProfile>Unity Subset v3.5</TargetFrameworkProfile>
+    <CompilerResponseFile></CompilerResponseFile>
+    <UnityProjectGenerator>VSTU</UnityProjectGenerator>
+    <UnityProjectType>Game:1</UnityProjectType>
+    <UnityBuildTarget>StandaloneWindows64:19</UnityBuildTarget>
+    <UnityVersion>2017.3.1p1</UnityVersion>
+    <RootNamespace></RootNamespace>
+    <LangVersion>4</LangVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>Temp\UnityVS_bin\Debug\</OutputPath>
+    <IntermediateOutputPath>Temp\UnityVS_obj\Debug\</IntermediateOutputPath>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <DefineConstants>DEBUG;TRACE;UNITY_5_3_OR_NEWER;UNITY_5_4_OR_NEWER;UNITY_5_5_OR_NEWER;UNITY_5_6_OR_NEWER;UNITY_2017_1_OR_NEWER;UNITY_2017_2_OR_NEWER;UNITY_2017_3_OR_NEWER;UNITY_2017_3_1;UNITY_2017_3;UNITY_2017;PLATFORM_ARCH_64;UNITY_64;ENABLE_AUDIO;ENABLE_CACHING;ENABLE_CLOTH;ENABLE_DUCK_TYPING;ENABLE_GENERICS;ENABLE_PVR_GI;ENABLE_MICROPHONE;ENABLE_MULTIPLE_DISPLAYS;ENABLE_PHYSICS;ENABLE_SPRITERENDERER_FLIPPING;ENABLE_SPRITES;ENABLE_GRID;ENABLE_TILEMAP;ENABLE_TERRAIN;ENABLE_RAKNET;ENABLE_DIRECTOR;ENABLE_UNET;ENABLE_LZMA;ENABLE_UNITYEVENTS;ENABLE_WEBCAM;ENABLE_WWW;ENABLE_CLOUD_SERVICES_COLLAB;ENABLE_CLOUD_SERVICES_COLLAB_SOFTLOCKS;ENABLE_CLOUD_SERVICES_ADS;ENABLE_CLOUD_HUB;ENABLE_CLOUD_PROJECT_ID;ENABLE_CLOUD_SERVICES_USE_WEBREQUEST;ENABLE_CLOUD_SERVICES_UNET;ENABLE_CLOUD_SERVICES_BUILD;ENABLE_CLOUD_LICENSE;ENABLE_EDITOR_HUB;ENABLE_EDITOR_HUB_LICENSE;ENABLE_WEBSOCKET_CLIENT;ENABLE_DIRECTOR_AUDIO;ENABLE_DIRECTOR_TEXTURE;ENABLE_TIMELINE;ENABLE_EDITOR_METRICS;ENABLE_EDITOR_METRICS_CACHING;ENABLE_NATIVE_ARRAY;ENABLE_SPRITE_MASKING;INCLUDE_DYNAMIC_GI;INCLUDE_GI;ENABLE_MONO_BDWGC;PLATFORM_SUPPORTS_MONO;RENDER_SOFTWARE_CURSOR;INCLUDE_PUBNUB;ENABLE_PLAYMODE_TESTS_RUNNER;ENABLE_VIDEO;ENABLE_RMGUI;ENABLE_PACKMAN;ENABLE_CUSTOM_RENDER_TEXTURE;ENABLE_STYLE_SHEETS;ENABLE_LOCALIZATION;PLATFORM_STANDALONE_WIN;PLATFORM_STANDALONE;UNITY_STANDALONE_WIN;UNITY_STANDALONE;ENABLE_SUBSTANCE;ENABLE_RUNTIME_GI;ENABLE_MOVIES;ENABLE_NETWORK;ENABLE_CRUNCH_TEXTURE_COMPRESSION;ENABLE_UNITYWEBREQUEST;ENABLE_CLOUD_SERVICES;ENABLE_CLOUD_SERVICES_ANALYTICS;ENABLE_CLOUD_SERVICES_PURCHASING;ENABLE_CLOUD_SERVICES_CRASH_REPORTING;ENABLE_EVENT_QUEUE;ENABLE_CLUSTERINPUT;ENABLE_VR;ENABLE_AR;ENABLE_WEBSOCKET_HOST;ENABLE_MONO;NET_2_0_SUBSET;ENABLE_PROFILER;DEBUG;TRACE;UNITY_ASSERTIONS;UNITY_EDITOR;UNITY_EDITOR_64;UNITY_EDITOR_WIN;ENABLE_NATIVE_ARRAY_CHECKS;UNITY_TEAM_LICENSE;ENABLE_VSTU;UNITY_PRO_LICENSE</DefineConstants>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>Temp\UnityVS_bin\Release\</OutputPath>
+    <IntermediateOutputPath>Temp\UnityVS_obj\Release\</IntermediateOutputPath>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <DefineConstants>TRACE;UNITY_5_3_OR_NEWER;UNITY_5_4_OR_NEWER;UNITY_5_5_OR_NEWER;UNITY_5_6_OR_NEWER;UNITY_2017_1_OR_NEWER;UNITY_2017_2_OR_NEWER;UNITY_2017_3_OR_NEWER;UNITY_2017_3_1;UNITY_2017_3;UNITY_2017;PLATFORM_ARCH_64;UNITY_64;ENABLE_AUDIO;ENABLE_CACHING;ENABLE_CLOTH;ENABLE_DUCK_TYPING;ENABLE_GENERICS;ENABLE_PVR_GI;ENABLE_MICROPHONE;ENABLE_MULTIPLE_DISPLAYS;ENABLE_PHYSICS;ENABLE_SPRITERENDERER_FLIPPING;ENABLE_SPRITES;ENABLE_GRID;ENABLE_TILEMAP;ENABLE_TERRAIN;ENABLE_RAKNET;ENABLE_DIRECTOR;ENABLE_UNET;ENABLE_LZMA;ENABLE_UNITYEVENTS;ENABLE_WEBCAM;ENABLE_WWW;ENABLE_CLOUD_SERVICES_COLLAB;ENABLE_CLOUD_SERVICES_COLLAB_SOFTLOCKS;ENABLE_CLOUD_SERVICES_ADS;ENABLE_CLOUD_HUB;ENABLE_CLOUD_PROJECT_ID;ENABLE_CLOUD_SERVICES_USE_WEBREQUEST;ENABLE_CLOUD_SERVICES_UNET;ENABLE_CLOUD_SERVICES_BUILD;ENABLE_CLOUD_LICENSE;ENABLE_EDITOR_HUB;ENABLE_EDITOR_HUB_LICENSE;ENABLE_WEBSOCKET_CLIENT;ENABLE_DIRECTOR_AUDIO;ENABLE_DIRECTOR_TEXTURE;ENABLE_TIMELINE;ENABLE_EDITOR_METRICS;ENABLE_EDITOR_METRICS_CACHING;ENABLE_NATIVE_ARRAY;ENABLE_SPRITE_MASKING;INCLUDE_DYNAMIC_GI;INCLUDE_GI;ENABLE_MONO_BDWGC;PLATFORM_SUPPORTS_MONO;RENDER_SOFTWARE_CURSOR;INCLUDE_PUBNUB;ENABLE_PLAYMODE_TESTS_RUNNER;ENABLE_VIDEO;ENABLE_RMGUI;ENABLE_PACKMAN;ENABLE_CUSTOM_RENDER_TEXTURE;ENABLE_STYLE_SHEETS;ENABLE_LOCALIZATION;PLATFORM_STANDALONE_WIN;PLATFORM_STANDALONE;UNITY_STANDALONE_WIN;UNITY_STANDALONE;ENABLE_SUBSTANCE;ENABLE_RUNTIME_GI;ENABLE_MOVIES;ENABLE_NETWORK;ENABLE_CRUNCH_TEXTURE_COMPRESSION;ENABLE_UNITYWEBREQUEST;ENABLE_CLOUD_SERVICES;ENABLE_CLOUD_SERVICES_ANALYTICS;ENABLE_CLOUD_SERVICES_PURCHASING;ENABLE_CLOUD_SERVICES_CRASH_REPORTING;ENABLE_EVENT_QUEUE;ENABLE_CLUSTERINPUT;ENABLE_VR;ENABLE_AR;ENABLE_WEBSOCKET_HOST;ENABLE_MONO;NET_2_0_SUBSET;ENABLE_PROFILER;DEBUG;TRACE;UNITY_ASSERTIONS;UNITY_EDITOR;UNITY_EDITOR_64;UNITY_EDITOR_WIN;ENABLE_NATIVE_ARRAY_CHECKS;UNITY_TEAM_LICENSE;ENABLE_VSTU;UNITY_PRO_LICENSE</DefineConstants>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="mscorlib" />
+    <Reference Include="System" />
+    <Reference Include="System.XML" />
+    <Reference Include="System.Core" />
+    <Reference Include="Boo.Lang" />
+    <Reference Include="UnityScript.Lang" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="UnityEditor">
+      <HintPath>C:/Program Files/Unity2017_3/Editor/Data/Managed/UnityEditor.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine">
+      <HintPath>C:/Program Files/Unity2017_3/Editor/Data/Managed/UnityEngine/UnityEngine.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.CoreModule">
+      <HintPath>C:/Program Files/Unity2017_3/Editor/Data/Managed/UnityEngine/UnityEngine.CoreModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.AccessibilityModule">
+      <HintPath>C:/Program Files/Unity2017_3/Editor/Data/Managed/UnityEngine/UnityEngine.AccessibilityModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.ParticleSystemModule">
+      <HintPath>C:/Program Files/Unity2017_3/Editor/Data/Managed/UnityEngine/UnityEngine.ParticleSystemModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.PhysicsModule">
+      <HintPath>C:/Program Files/Unity2017_3/Editor/Data/Managed/UnityEngine/UnityEngine.PhysicsModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.VehiclesModule">
+      <HintPath>C:/Program Files/Unity2017_3/Editor/Data/Managed/UnityEngine/UnityEngine.VehiclesModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.ClothModule">
+      <HintPath>C:/Program Files/Unity2017_3/Editor/Data/Managed/UnityEngine/UnityEngine.ClothModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.AIModule">
+      <HintPath>C:/Program Files/Unity2017_3/Editor/Data/Managed/UnityEngine/UnityEngine.AIModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.AnimationModule">
+      <HintPath>C:/Program Files/Unity2017_3/Editor/Data/Managed/UnityEngine/UnityEngine.AnimationModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.TextRenderingModule">
+      <HintPath>C:/Program Files/Unity2017_3/Editor/Data/Managed/UnityEngine/UnityEngine.TextRenderingModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.UIModule">
+      <HintPath>C:/Program Files/Unity2017_3/Editor/Data/Managed/UnityEngine/UnityEngine.UIModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.TerrainPhysicsModule">
+      <HintPath>C:/Program Files/Unity2017_3/Editor/Data/Managed/UnityEngine/UnityEngine.TerrainPhysicsModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.IMGUIModule">
+      <HintPath>C:/Program Files/Unity2017_3/Editor/Data/Managed/UnityEngine/UnityEngine.IMGUIModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.ClusterInputModule">
+      <HintPath>C:/Program Files/Unity2017_3/Editor/Data/Managed/UnityEngine/UnityEngine.ClusterInputModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.ClusterRendererModule">
+      <HintPath>C:/Program Files/Unity2017_3/Editor/Data/Managed/UnityEngine/UnityEngine.ClusterRendererModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.UNETModule">
+      <HintPath>C:/Program Files/Unity2017_3/Editor/Data/Managed/UnityEngine/UnityEngine.UNETModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.DirectorModule">
+      <HintPath>C:/Program Files/Unity2017_3/Editor/Data/Managed/UnityEngine/UnityEngine.DirectorModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.UnityAnalyticsModule">
+      <HintPath>C:/Program Files/Unity2017_3/Editor/Data/Managed/UnityEngine/UnityEngine.UnityAnalyticsModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.PerformanceReportingModule">
+      <HintPath>C:/Program Files/Unity2017_3/Editor/Data/Managed/UnityEngine/UnityEngine.PerformanceReportingModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.UnityConnectModule">
+      <HintPath>C:/Program Files/Unity2017_3/Editor/Data/Managed/UnityEngine/UnityEngine.UnityConnectModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.WebModule">
+      <HintPath>C:/Program Files/Unity2017_3/Editor/Data/Managed/UnityEngine/UnityEngine.WebModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.ARModule">
+      <HintPath>C:/Program Files/Unity2017_3/Editor/Data/Managed/UnityEngine/UnityEngine.ARModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.VRModule">
+      <HintPath>C:/Program Files/Unity2017_3/Editor/Data/Managed/UnityEngine/UnityEngine.VRModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.UIElementsModule">
+      <HintPath>C:/Program Files/Unity2017_3/Editor/Data/Managed/UnityEngine/UnityEngine.UIElementsModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.StyleSheetsModule">
+      <HintPath>C:/Program Files/Unity2017_3/Editor/Data/Managed/UnityEngine/UnityEngine.StyleSheetsModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.AssetBundleModule">
+      <HintPath>C:/Program Files/Unity2017_3/Editor/Data/Managed/UnityEngine/UnityEngine.AssetBundleModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.AudioModule">
+      <HintPath>C:/Program Files/Unity2017_3/Editor/Data/Managed/UnityEngine/UnityEngine.AudioModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.CrashReportingModule">
+      <HintPath>C:/Program Files/Unity2017_3/Editor/Data/Managed/UnityEngine/UnityEngine.CrashReportingModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.GameCenterModule">
+      <HintPath>C:/Program Files/Unity2017_3/Editor/Data/Managed/UnityEngine/UnityEngine.GameCenterModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.GridModule">
+      <HintPath>C:/Program Files/Unity2017_3/Editor/Data/Managed/UnityEngine/UnityEngine.GridModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.ImageConversionModule">
+      <HintPath>C:/Program Files/Unity2017_3/Editor/Data/Managed/UnityEngine/UnityEngine.ImageConversionModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.InputModule">
+      <HintPath>C:/Program Files/Unity2017_3/Editor/Data/Managed/UnityEngine/UnityEngine.InputModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.JSONSerializeModule">
+      <HintPath>C:/Program Files/Unity2017_3/Editor/Data/Managed/UnityEngine/UnityEngine.JSONSerializeModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.ParticlesLegacyModule">
+      <HintPath>C:/Program Files/Unity2017_3/Editor/Data/Managed/UnityEngine/UnityEngine.ParticlesLegacyModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.Physics2DModule">
+      <HintPath>C:/Program Files/Unity2017_3/Editor/Data/Managed/UnityEngine/UnityEngine.Physics2DModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.ScreenCaptureModule">
+      <HintPath>C:/Program Files/Unity2017_3/Editor/Data/Managed/UnityEngine/UnityEngine.ScreenCaptureModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.SharedInternalsModule">
+      <HintPath>C:/Program Files/Unity2017_3/Editor/Data/Managed/UnityEngine/UnityEngine.SharedInternalsModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.SpriteMaskModule">
+      <HintPath>C:/Program Files/Unity2017_3/Editor/Data/Managed/UnityEngine/UnityEngine.SpriteMaskModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.SpriteShapeModule">
+      <HintPath>C:/Program Files/Unity2017_3/Editor/Data/Managed/UnityEngine/UnityEngine.SpriteShapeModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.TerrainModule">
+      <HintPath>C:/Program Files/Unity2017_3/Editor/Data/Managed/UnityEngine/UnityEngine.TerrainModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.TilemapModule">
+      <HintPath>C:/Program Files/Unity2017_3/Editor/Data/Managed/UnityEngine/UnityEngine.TilemapModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.UnityWebRequestModule">
+      <HintPath>C:/Program Files/Unity2017_3/Editor/Data/Managed/UnityEngine/UnityEngine.UnityWebRequestModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.UnityWebRequestAudioModule">
+      <HintPath>C:/Program Files/Unity2017_3/Editor/Data/Managed/UnityEngine/UnityEngine.UnityWebRequestAudioModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.UnityWebRequestTextureModule">
+      <HintPath>C:/Program Files/Unity2017_3/Editor/Data/Managed/UnityEngine/UnityEngine.UnityWebRequestTextureModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.UnityWebRequestWWWModule">
+      <HintPath>C:/Program Files/Unity2017_3/Editor/Data/Managed/UnityEngine/UnityEngine.UnityWebRequestWWWModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.VideoModule">
+      <HintPath>C:/Program Files/Unity2017_3/Editor/Data/Managed/UnityEngine/UnityEngine.VideoModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.WindModule">
+      <HintPath>C:/Program Files/Unity2017_3/Editor/Data/Managed/UnityEngine/UnityEngine.WindModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.UI">
+      <HintPath>C:/Program Files/Unity2017_3/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.Networking">
+      <HintPath>C:/Program Files/Unity2017_3/Editor/Data/UnityExtensions/Unity/Networking/UnityEngine.Networking.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.TestRunner">
+      <HintPath>C:/Program Files/Unity2017_3/Editor/Data/UnityExtensions/Unity/TestRunner/UnityEngine.TestRunner.dll</HintPath>
+    </Reference>
+    <Reference Include="nunit.framework">
+      <HintPath>C:/Program Files/Unity2017_3/Editor/Data/UnityExtensions/Unity/TestRunner/net35/unity-custom/nunit.framework.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.Timeline">
+      <HintPath>C:/Program Files/Unity2017_3/Editor/Data/UnityExtensions/Unity/Timeline/RuntimeEditor/UnityEngine.Timeline.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.UIAutomation">
+      <HintPath>C:/Program Files/Unity2017_3/Editor/Data/UnityExtensions/Unity/UIAutomation/UnityEngine.UIAutomation.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.GoogleAudioSpatializer">
+      <HintPath>C:/Program Files/Unity2017_3/Editor/Data/UnityExtensions/Unity/UnityGoogleAudioSpatializer/RuntimeEditor/UnityEngine.GoogleAudioSpatializer.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.HoloLens">
+      <HintPath>C:/Program Files/Unity2017_3/Editor/Data/UnityExtensions/Unity/UnityHoloLens/RuntimeEditor/UnityEngine.HoloLens.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.SpatialTracking">
+      <HintPath>C:/Program Files/Unity2017_3/Editor/Data/UnityExtensions/Unity/UnitySpatialTracking/RuntimeEditor/UnityEngine.SpatialTracking.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.Advertisements">
+      <HintPath>C:/Users/Thomas/AppData/LocalLow/Unity/cache/packages/packages.unity.com/com.unity.ads@2.0.3/UnityEngine.Advertisements.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.Analytics">
+      <HintPath>C:/Users/Thomas/AppData/LocalLow/Unity/cache/packages/packages.unity.com/com.unity.analytics@2.0.13/UnityEngine.Analytics.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.Purchasing">
+      <HintPath>C:/Users/Thomas/AppData/LocalLow/Unity/cache/packages/packages.unity.com/com.unity.purchasing@0.0.19/UnityEngine.Purchasing.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.StandardEvents">
+      <HintPath>C:/Users/Thomas/AppData/LocalLow/Unity/cache/packages/packages.unity.com/com.unity.standardevents@1.0.10/UnityEngine.StandardEvents.dll</HintPath>
+    </Reference>
+    <Reference Include="ApexShared">
+      <HintPath>Assets/Apex/Apex Binaries/ApexShared.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Assets\Apex Examples\Apex Cost\Scripts\CostStrategy\FixedCosts\CellCostManager.cs" />
+    <Compile Include="Assets\Apex Examples\Apex Cost\Scripts\CostStrategy\FixedCosts\CellCostType.cs" />
+    <Compile Include="Assets\Apex Examples\Apex Cost\Scripts\CostStrategy\FixedCosts\FixedCostsStrategy.cs" />
+    <Compile Include="Assets\Apex Examples\Apex Cost\Scripts\CostStrategy\FixedCosts\UnitDerivedExtension.cs" />
+    <Compile Include="Assets\Apex Examples\Apex Cost\Scripts\CostStrategy\FixedCosts\UnitPartialExtension.cs" />
+    <Compile Include="Assets\Apex Examples\Apex Path\Scripts\Extensibility\AttributeSensitiveTriggerExample.cs" />
+    <Compile Include="Assets\Apex Examples\Apex Path\Scripts\Extensibility\CarSpeedComponent.cs" />
+    <Compile Include="Assets\Apex Examples\Apex Path\Scripts\Extensibility\CharacterControllerMover.cs" />
+    <Compile Include="Assets\Apex Examples\Apex Path\Scripts\Extensibility\MessageAttributesChanged.cs" />
+    <Compile Include="Assets\Apex Examples\Apex Path\Scripts\Extensibility\MessagePoster.cs" />
+    <Compile Include="Assets\Apex Examples\Apex Path\Scripts\Extensibility\MessageSubscriber.cs" />
+    <Compile Include="Assets\Apex Examples\Apex Path\Scripts\Extensibility\MoveCostFactoryExample.cs" />
+    <Compile Include="Assets\Apex Examples\Apex Path\Scripts\Extensibility\PathSmootherExample.cs" />
+    <Compile Include="Assets\Apex Examples\Apex Path\Scripts\Extensibility\PathSmootherFactoryExample.cs" />
+    <Compile Include="Assets\Apex Examples\Apex Path\Scripts\Extensibility\PortalActionJumpComponent.cs" />
+    <Compile Include="Assets\Apex Examples\Apex Path\Scripts\Extensibility\PortalActionRandomComponent.cs" />
+    <Compile Include="Assets\Apex Examples\Apex Path\Scripts\Extensibility\SteerToAvoidSpecificOther.cs" />
+    <Compile Include="Assets\Apex Examples\Apex Path\Scripts\Input\InputButton.cs" />
+    <Compile Include="Assets\Apex Examples\Apex Path\Scripts\Input\InputReceiverPC.cs" />
+    <Compile Include="Assets\Apex Examples\Apex Path\Scripts\Misc\DestroyOnExit.cs" />
+    <Compile Include="Assets\Apex Examples\Apex Path\Scripts\Misc\DoorSlider.cs" />
+    <Compile Include="Assets\Apex Examples\Apex Path\Scripts\Misc\DoorSliderTakeTwo.cs" />
+    <Compile Include="Assets\Apex Examples\Apex Path\Scripts\Misc\ExampleUnitTypes.cs" />
+    <Compile Include="Assets\Apex Examples\Apex Path\Scripts\Misc\FixationPoint.cs" />
+    <Compile Include="Assets\Apex Examples\Apex Path\Scripts\Misc\GravitySwitch.cs" />
+    <Compile Include="Assets\Apex Examples\Apex Path\Scripts\Misc\ObjectPendler.cs" />
+    <Compile Include="Assets\Apex Examples\Apex Path\Scripts\Misc\ObstacleSpawner.cs" />
+    <Compile Include="Assets\Apex Examples\Apex Path\Scripts\Misc\OmniSpeedController.cs" />
+    <Compile Include="Assets\Apex Examples\Apex Path\Scripts\Misc\PauseZone.cs" />
+    <Compile Include="Assets\Apex Examples\Apex Path\Scripts\Misc\Slider.cs" />
+    <Compile Include="Assets\Apex Examples\Apex Path\Scripts\Misc\WaitForPendle.cs" />
+    <Compile Include="Assets\Apex Examples\Apex Path\Scripts\SceneSpecific\ChangeUnitSpeed\GenericSpeedComponent.cs" />
+    <Compile Include="Assets\Apex Examples\Apex Path\Scripts\SceneSpecific\ChangeUnitSpeed\UnitHandler.cs" />
+    <Compile Include="Assets\Apex Examples\Apex Path\Scripts\SceneSpecific\CostProviders\CustomManhattanDistance.cs" />
+    <Compile Include="Assets\Apex Examples\Apex Path\Scripts\SceneSpecific\CostProviders\SampleMoveCostProviderFactory.cs" />
+    <Compile Include="Assets\Apex Examples\Apex Path\Scripts\SceneSpecific\CostProviders\SampleProviderAndFactory.cs" />
+    <Compile Include="Assets\Apex Examples\Apex Path\Scripts\SceneSpecific\CustomBlockDetection\OddBlockDetector.cs" />
+    <Compile Include="Assets\Apex Examples\Apex Path\Scripts\SceneSpecific\CustomBlockDetection\OddBlockDetectorFactory.cs" />
+    <Compile Include="Assets\Apex Examples\Apex Path\Scripts\SceneSpecific\CustomBlockDetection\RuntimeGrid.cs" />
+    <Compile Include="Assets\Apex Examples\Apex Path\Scripts\SceneSpecific\Follow\FollowCommands.cs" />
+    <Compile Include="Assets\Apex Examples\Apex Path\Scripts\SceneSpecific\Follow\FollowMaster.cs" />
+    <Compile Include="Assets\Apex Examples\Apex Path\Scripts\SceneSpecific\Follow\FollowSimple.cs" />
+    <Compile Include="Assets\Apex Examples\Apex Path\Scripts\SceneSpecific\Grouping\AttributeBasedStrategy.cs" />
+    <Compile Include="Assets\Apex Examples\Apex Path\Scripts\SceneSpecific\Grouping\GroupingExample.cs" />
+    <Compile Include="Assets\Apex Examples\Apex Path\Scripts\SceneSpecific\Grouping\OnePathForAllGroup.cs" />
+    <Compile Include="Assets\Apex Examples\Apex Path\Scripts\SceneSpecific\Grouping\OnePathForAllStrategy.cs" />
+    <Compile Include="Assets\Apex Examples\Apex Path\Scripts\SceneSpecific\LoadBalancing\CustomLoadBalancedItem.cs" />
+    <Compile Include="Assets\Apex Examples\Apex Path\Scripts\SceneSpecific\LoadBalancing\ExamplesLoadBalancer.cs" />
+    <Compile Include="Assets\Apex Examples\Apex Path\Scripts\SceneSpecific\LoadBalancing\LoadBalancerAdvancedDemoControl.cs" />
+    <Compile Include="Assets\Apex Examples\Apex Path\Scripts\SceneSpecific\LoadBalancing\LoadBalancerBasicDemoControl.cs" />
+    <Compile Include="Assets\Apex Examples\Apex Path\Scripts\SceneSpecific\LoadBalancing\LongRunningActionExample.cs" />
+    <Compile Include="Assets\Apex Examples\Apex Path\Scripts\SceneSpecific\LoadBalancing\MarshallerExample.cs" />
+    <Compile Include="Assets\Apex Examples\Apex Path\Scripts\SceneSpecific\LoadBalancing\OneTimeActionExample.cs" />
+    <Compile Include="Assets\Apex Examples\Apex Path\Scripts\SceneSpecific\LoadBalancing\PillarToggle.cs" />
+    <Compile Include="Assets\Apex Examples\Apex Path\Scripts\SceneSpecific\LoadBalancing\PillarToggleBalanced.cs" />
+    <Compile Include="Assets\Apex Examples\Apex Path\Scripts\SceneSpecific\LoadBalancing\PillarToggleCoroutine.cs" />
+    <Compile Include="Assets\Apex Examples\Apex Path\Scripts\SceneSpecific\LoadBalancing\PooledActionsExample.cs" />
+    <Compile Include="Assets\Apex Examples\Apex Path\Scripts\SceneSpecific\LoadBalancing\RepetableActionExample.cs" />
+    <Compile Include="Assets\Apex Examples\Apex Path\Scripts\SceneSpecific\PathRequests\ManualPathExample.cs" />
+    <Compile Include="Assets\Apex Examples\Apex Path\Scripts\SceneSpecific\PathRequests\PathRequestExample1.cs" />
+    <Compile Include="Assets\Apex Examples\Apex Path\Scripts\SceneSpecific\PathRequests\PathRequestExample2.cs" />
+    <Compile Include="Assets\Apex Examples\Apex Path\Scripts\SceneSpecific\PathRequests\PathRequestExample3.cs" />
+    <Compile Include="Assets\Apex Examples\Apex Path\Scripts\SceneSpecific\PathRequests\PathRequestExample4.cs" />
+    <Compile Include="Assets\Apex Examples\Apex Path\Scripts\SceneSpecific\RequestPreProcessing\OffGridPostProcessor.cs" />
+    <Compile Include="Assets\Apex Examples\Apex Path\Scripts\SceneSpecific\RequestPreProcessing\OffGridPreProcessor.cs" />
+    <Compile Include="Assets\Apex Examples\Apex Path\Scripts\SceneSpecific\RequestPreProcessing\OnlyEvenAdvanced.cs" />
+    <Compile Include="Assets\Apex Examples\Apex Path\Scripts\SceneSpecific\RequestPreProcessing\OnlyEvenSimple.cs" />
+    <Compile Include="Assets\Apex Examples\Apex Path\Scripts\SceneSpecific\RequestPreProcessing\OnlySafeAdvanced.cs" />
+    <Compile Include="Assets\Apex Examples\Apex Path\Scripts\SceneSpecific\RequestPreProcessing\OnlySafeSimple.cs" />
+    <Compile Include="Assets\Apex Examples\Apex Path\Scripts\SceneSpecific\RequestPreProcessing\PathAddition.cs" />
+    <Compile Include="Assets\Apex Examples\Apex Path\Scripts\SceneSpecific\RequestPreProcessing\SafeHavens.cs" />
+    <Compile Include="Assets\Apex Examples\Apex Path\Scripts\SceneSpecific\RuntimeGrids\BombSpawner.cs" />
+    <Compile Include="Assets\Apex Examples\Apex Path\Scripts\SceneSpecific\RuntimeGrids\BridgeSpawner.cs" />
+    <Compile Include="Assets\Apex Examples\Apex Path\Scripts\SceneSpecific\RuntimeGrids\GridCreator.cs" />
+    <Compile Include="Assets\Apex Examples\Apex Path\Scripts\SceneSpecific\RuntimeGrids\MultiGridManager.cs" />
+    <Compile Include="Assets\Apex Examples\Apex Path\Scripts\SceneSpecific\RuntimeGrids\ObstacleDestroyer.cs" />
+    <Compile Include="Assets\Apex Examples\Apex Path\Scripts\SceneSpecific\RuntimeGrids\ObstacleDestroyerExplode.cs" />
+    <Compile Include="Assets\Apex Examples\Apex Path\Scripts\SceneSpecific\RuntimeGrids\UnitSpawner.cs" />
+    <Compile Include="Assets\Apex Examples\Apex Path\Scripts\SceneSpecific\SteeringAndOrientation\ExampleOrientation.cs" />
+    <Compile Include="Assets\Apex Examples\Apex Path\Scripts\SceneSpecific\SteeringAndOrientation\ExampleSteering1.cs" />
+    <Compile Include="Assets\Apex Examples\Apex Path\Scripts\SceneSpecific\SteeringAndOrientation\ExampleSteering2.cs" />
+    <Compile Include="Assets\Apex Examples\Apex Path\Scripts\SceneSpecific\SteeringAndOrientation\TurnThenMove.cs" />
+    <Compile Include="Assets\Apex Examples\Apex Path\Scripts\SceneSpecific\TargetPolling\StickyMove.cs" />
+    <Compile Include="Assets\Apex Examples\Apex Path\Scripts\SceneSpecific\UnitFacades\ExtendedUnitFacade.cs" />
+    <Compile Include="Assets\Apex Examples\Apex Path\Scripts\SceneSpecific\UnitFacades\ExtendedUnitFacadeFactory.cs" />
+    <Compile Include="Assets\Apex Examples\Apex Path\Scripts\SceneSpecific\UnitFacades\UnitFacadeExample.cs" />
+    <Compile Include="Assets\Apex Examples\Apex Path\Scripts\Steering\OneSpeed.cs" />
+    <Compile Include="Assets\Apex Examples\Apex Path\Scripts\Steering\PickupItem.cs" />
+    <Compile Include="Assets\Apex Examples\Apex Path\Scripts\Steering\PickupMaster.cs" />
+    <Compile Include="Assets\Apex Examples\Apex Path\Scripts\Steering\PickupWorker.cs" />
+    <Compile Include="Assets\Apex Examples\Apex Path\Scripts\Steering\SteerToFollowComponent.cs" />
+    <Compile Include="Assets\Apex Examples\Apex Path\Scripts\TransformManipulation\GrowBounds.cs" />
+    <Compile Include="Assets\Apex Examples\Apex Path\Scripts\TransformManipulation\RandomVelocity.cs" />
+    <Compile Include="Assets\Apex Examples\Apex Path\Scripts\TransformManipulation\Rotate.cs" />
+    <Compile Include="Assets\Apex Examples\Apex Steer\Scripts\CircleResolution.cs" />
+    <Compile Include="Assets\Apex Examples\Apex Steer\Scripts\DebugChooseFormationComponent.cs" />
+    <Compile Include="Assets\Apex Examples\Apex Steer\Scripts\Extensibility\UnitFacadeExtended.cs" />
+    <Compile Include="Assets\Apex Examples\Apex Steer\Scripts\Input\InputReceiverPCExtended.cs" />
+    <Compile Include="Assets\Apex Examples\Apex Steer\Scripts\SlidingDoor.cs" />
+    <Compile Include="Assets\Apex Examples\Apex Steer\Scripts\SpawnAndFollowWaypoints.cs" />
+    <Compile Include="Assets\Apex Examples\Apex Steer\Scripts\SteerAISpawner.cs" />
+    <Compile Include="Assets\Apex Examples\Apex Steer\Scripts\SteerFormationChanger.cs" />
+    <Compile Include="Assets\Apex Examples\Apex Steer\Scripts\SteerForPointComponent.cs" />
+    <Compile Include="Assets\Apex Examples\Apex Steer\Scripts\SteerMakeGroupAndMove.cs" />
+    <Compile Include="Assets\Apex Examples\Apex Steer\Scripts\SteerPOIManager.cs" />
+    <Compile Include="Assets\Apex Tutorials\Scripts\DocumentationUrl.cs" />
+    <Compile Include="Assets\Apex Tutorials\Scripts\OpenDoorOnButton.cs" />
+    <Compile Include="Assets\Apex Tutorials\Scripts\SimpleMoveLoop.cs" />
+    <Compile Include="Assets\Apex\Apex Advanced Dynamic Obstacles\Scripts\DataStructures\ConvexHull.cs" />
+    <Compile Include="Assets\Apex\Apex Advanced Dynamic Obstacles\Scripts\Debugging\DynamicObstacleVisualizer.cs" />
+    <Compile Include="Assets\Apex\Apex Advanced Dynamic Obstacles\Scripts\WorldGeometry\DynamicObstacle.cs" />
+    <Compile Include="Assets\Apex\Apex Advanced Dynamic Obstacles\Scripts\WorldGeometry\DynamicObstacleBase.cs" />
+    <Compile Include="Assets\Apex\Apex Advanced Dynamic Obstacles\Scripts\WorldGeometry\IDynamicObstacle.cs" />
+    <Compile Include="Assets\Apex\Apex Advanced Dynamic Obstacles\Scripts\WorldGeometry\ManualDynamicObstacle.cs" />
+    <Compile Include="Assets\Apex\Apex Cost\Scripts\PathFinding\SimpleCostField.cs" />
+    <Compile Include="Assets\Apex\Apex Path\Scripts\Common\AttributedComponent.cs" />
+    <Compile Include="Assets\Apex\Apex Path\Scripts\Common\AttributeManipulatingTrigger.cs" />
+    <Compile Include="Assets\Apex\Apex Path\Scripts\Common\AttributeMask.cs" />
+    <Compile Include="Assets\Apex\Apex Path\Scripts\Common\AttributePropertyAttribute.cs" />
+    <Compile Include="Assets\Apex\Apex Path\Scripts\Common\AttributeSensitiveTrigger.cs" />
+    <Compile Include="Assets\Apex\Apex Path\Scripts\Common\AttributesMaster.cs" />
+    <Compile Include="Assets\Apex\Apex Path\Scripts\Common\ColliderMeasurement.cs" />
+    <Compile Include="Assets\Apex\Apex Path\Scripts\Common\DefaultEntityAttributesEnum.cs" />
+    <Compile Include="Assets\Apex\Apex Path\Scripts\Common\EntityAttributesEnumAttribute.cs" />
+    <Compile Include="Assets\Apex\Apex Path\Scripts\Common\GridEvaluatorClosestMatch.cs" />
+    <Compile Include="Assets\Apex\Apex Path\Scripts\Common\GridEvaluatorQueueBased.cs" />
+    <Compile Include="Assets\Apex\Apex Path\Scripts\Common\IHaveAttributes.cs" />
+    <Compile Include="Assets\Apex\Apex Path\Scripts\CommonExtensions.cs" />
+    <Compile Include="Assets\Apex\Apex Path\Scripts\DataStructures\DirectionVector.cs" />
+    <Compile Include="Assets\Apex\Apex Path\Scripts\DataStructures\HeightDictionary.cs" />
+    <Compile Include="Assets\Apex\Apex Path\Scripts\DataStructures\HeightLookupType.cs" />
+    <Compile Include="Assets\Apex\Apex Path\Scripts\DataStructures\HeightQuadTree.cs" />
+    <Compile Include="Assets\Apex\Apex Path\Scripts\DataStructures\PlaneVector.cs" />
+    <Compile Include="Assets\Apex\Apex Path\Scripts\DataStructures\PlaneVectorComparer.cs" />
+    <Compile Include="Assets\Apex\Apex Path\Scripts\DataStructures\StackWithLookAhead.cs" />
+    <Compile Include="Assets\Apex\Apex Path\Scripts\DataStructures\WaypointList.cs" />
+    <Compile Include="Assets\Apex\Apex Path\Scripts\Debugging\ClearanceVisualizer.cs" />
+    <Compile Include="Assets\Apex\Apex Path\Scripts\Debugging\GridVisualizer.cs" />
+    <Compile Include="Assets\Apex\Apex Path\Scripts\Debugging\PathFinderVisualizer.cs" />
+    <Compile Include="Assets\Apex\Apex Path\Scripts\Debugging\PathVisualizer.cs" />
+    <Compile Include="Assets\Apex\Apex Path\Scripts\Debugging\PortalVisualizer.cs" />
+    <Compile Include="Assets\Apex\Apex Path\Scripts\Debugging\SteeringMonitor.cs" />
+    <Compile Include="Assets\Apex\Apex Path\Scripts\Debugging\UnitVisualizer.cs" />
+    <Compile Include="Assets\Apex\Apex Path\Scripts\Debugging\Visualizer.cs" />
+    <Compile Include="Assets\Apex\Apex Path\Scripts\Deprecated\ApexComponentMasterOld.cs" />
+    <Compile Include="Assets\Apex\Apex Path\Scripts\Deprecated\GridComponentOldProps.cs" />
+    <Compile Include="Assets\Apex\Apex Path\Scripts\Deprecated\LoadBalancerComponentOld.cs" />
+    <Compile Include="Assets\Apex\Apex Path\Scripts\Deprecated\LoadBalancerPerformanceVisualizerOld.cs" />
+    <Compile Include="Assets\Apex\Apex Path\Scripts\Deprecated\SelectableUnitComponent.cs" />
+    <Compile Include="Assets\Apex\Apex Path\Scripts\Deprecated\TurnableUnitComponent.cs" />
+    <Compile Include="Assets\Apex\Apex Path\Scripts\GameState\GameStateManager.cs" />
+    <Compile Include="Assets\Apex\Apex Path\Scripts\GameState\Selections.cs" />
+    <Compile Include="Assets\Apex\Apex Path\Scripts\Input\InputController.cs" />
+    <Compile Include="Assets\Apex\Apex Path\Scripts\Input\InputReceiverAttribute.cs" />
+    <Compile Include="Assets\Apex\Apex Path\Scripts\Input\InputReceiverBasic.cs" />
+    <Compile Include="Assets\Apex\Apex Path\Scripts\Input\SelectionRectangleComponent.cs" />
+    <Compile Include="Assets\Apex\Apex Path\Scripts\LoadBalancing\NavLoadBalancer.cs" />
+    <Compile Include="Assets\Apex\Apex Path\Scripts\Messages\GridStatusMessage.cs" />
+    <Compile Include="Assets\Apex\Apex Path\Scripts\Messages\UnitDeathMessage.cs" />
+    <Compile Include="Assets\Apex\Apex Path\Scripts\Messages\UnitNavigationEventMessage.cs" />
+    <Compile Include="Assets\Apex\Apex Path\Scripts\Messages\UnitsSelectedMessage.cs" />
+    <Compile Include="Assets\Apex\Apex Path\Scripts\PathFinding\BasicPathRequest.cs" />
+    <Compile Include="Assets\Apex\Apex Path\Scripts\PathFinding\CallbackPathRequest.cs" />
+    <Compile Include="Assets\Apex\Apex Path\Scripts\PathFinding\CostProviderType.cs" />
+    <Compile Include="Assets\Apex\Apex Path\Scripts\PathFinding\DecayingPathRequest.cs" />
+    <Compile Include="Assets\Apex\Apex Path\Scripts\PathFinding\DefaultCellCostStrategy.cs" />
+    <Compile Include="Assets\Apex\Apex Path\Scripts\PathFinding\EnsureDestinationClearancePreProcessorComponent.cs" />
+    <Compile Include="Assets\Apex\Apex Path\Scripts\PathFinding\ICellCostStrategy.cs" />
+    <Compile Include="Assets\Apex\Apex Path\Scripts\PathFinding\ICellCostStrategyFactory.cs" />
+    <Compile Include="Assets\Apex\Apex Path\Scripts\PathFinding\IDirectPather.cs" />
+    <Compile Include="Assets\Apex\Apex Path\Scripts\PathFinding\IMoveCostFactory.cs" />
+    <Compile Include="Assets\Apex\Apex Path\Scripts\PathFinding\INeedPath.cs" />
+    <Compile Include="Assets\Apex\Apex Path\Scripts\PathFinding\IPathFinderOptions.cs" />
+    <Compile Include="Assets\Apex\Apex Path\Scripts\PathFinding\IPathingEngine.cs" />
+    <Compile Include="Assets\Apex\Apex Path\Scripts\PathFinding\IPathNavigationOptions.cs" />
+    <Compile Include="Assets\Apex\Apex Path\Scripts\PathFinding\IPathNode.cs" />
+    <Compile Include="Assets\Apex\Apex Path\Scripts\PathFinding\IPathRequest.cs" />
+    <Compile Include="Assets\Apex\Apex Path\Scripts\PathFinding\IPathService.cs" />
+    <Compile Include="Assets\Apex\Apex Path\Scripts\PathFinding\IPathSmootherFactory.cs" />
+    <Compile Include="Assets\Apex\Apex Path\Scripts\PathFinding\IPortalNode.cs" />
+    <Compile Include="Assets\Apex\Apex Path\Scripts\PathFinding\IRequestPreProcessor.cs" />
+    <Compile Include="Assets\Apex\Apex Path\Scripts\PathFinding\ISmoothPaths.cs" />
+    <Compile Include="Assets\Apex\Apex Path\Scripts\PathFinding\MoveCost\CardinalDistance.cs" />
+    <Compile Include="Assets\Apex\Apex Path\Scripts\PathFinding\MoveCost\DiagonalDistance.cs" />
+    <Compile Include="Assets\Apex\Apex Path\Scripts\PathFinding\MoveCost\DiagonalDistanceUniform.cs" />
+    <Compile Include="Assets\Apex\Apex Path\Scripts\PathFinding\MoveCost\EuclideanDistance.cs" />
+    <Compile Include="Assets\Apex\Apex Path\Scripts\PathFinding\MoveCost\IMoveCost.cs" />
+    <Compile Include="Assets\Apex\Apex Path\Scripts\PathFinding\MoveCost\ManhattanDistance.cs" />
+    <Compile Include="Assets\Apex\Apex Path\Scripts\PathFinding\MoveCost\MoveCostBase.cs" />
+    <Compile Include="Assets\Apex\Apex Path\Scripts\PathFinding\MoveCost\MoveCostDiagonalBase.cs" />
+    <Compile Include="Assets\Apex\Apex Path\Scripts\PathFinding\Path.cs" />
+    <Compile Include="Assets\Apex\Apex Path\Scripts\PathFinding\PathFinderOptions.cs" />
+    <Compile Include="Assets\Apex\Apex Path\Scripts\PathFinding\PathingAStar.cs" />
+    <Compile Include="Assets\Apex\Apex Path\Scripts\PathFinding\PathingEngineBase.cs" />
+    <Compile Include="Assets\Apex\Apex Path\Scripts\PathFinding\PathingEngineType.cs" />
+    <Compile Include="Assets\Apex\Apex Path\Scripts\PathFinding\PathingJumpPointSearch.cs" />
+    <Compile Include="Assets\Apex\Apex Path\Scripts\PathFinding\PathingStatus.cs" />
+    <Compile Include="Assets\Apex\Apex Path\Scripts\PathFinding\PathNavigationOptions.cs" />
+    <Compile Include="Assets\Apex\Apex Path\Scripts\PathFinding\PathNodeComparer.cs" />
+    <Compile Include="Assets\Apex\Apex Path\Scripts\PathFinding\PathOptionsComponent.cs" />
+    <Compile Include="Assets\Apex\Apex Path\Scripts\PathFinding\PathRequestBase.cs" />
+    <Compile Include="Assets\Apex\Apex Path\Scripts\PathFinding\PathResult.cs" />
+    <Compile Include="Assets\Apex\Apex Path\Scripts\PathFinding\PathService.cs" />
+    <Compile Include="Assets\Apex\Apex Path\Scripts\PathFinding\PathServiceComponent.cs" />
+    <Compile Include="Assets\Apex\Apex Path\Scripts\PathFinding\PathSmoother.cs" />
+    <Compile Include="Assets\Apex\Apex Path\Scripts\PathFinding\Position.cs" />
+    <Compile Include="Assets\Apex\Apex Path\Scripts\PathFinding\ReplanCallback.cs" />
+    <Compile Include="Assets\Apex\Apex Path\Scripts\PathFinding\ReplanMode.cs" />
+    <Compile Include="Assets\Apex\Apex Path\Scripts\PathFinding\RequestPreProcessorBase.cs" />
+    <Compile Include="Assets\Apex\Apex Path\Scripts\PathFinding\RequestType.cs" />
+    <Compile Include="Assets\Apex\Apex Path\Scripts\PathFinding\Waypoint.cs" />
+    <Compile Include="Assets\Apex\Apex Path\Scripts\QuickStarts.cs" />
+    <Compile Include="Assets\Apex\Apex Path\Scripts\QuickStarts\BasicAvoidanceQuickStart.cs" />
+    <Compile Include="Assets\Apex\Apex Path\Scripts\QuickStarts\GameWorldQuickStart.cs" />
+    <Compile Include="Assets\Apex\Apex Path\Scripts\QuickStarts\NavigatingUnitOnPatrolQuickStart.cs" />
+    <Compile Include="Assets\Apex\Apex Path\Scripts\QuickStarts\NavigatingUnitQuickStart.cs" />
+    <Compile Include="Assets\Apex\Apex Path\Scripts\QuickStarts\NavigatingUnitWanderingQuickStart.cs" />
+    <Compile Include="Assets\Apex\Apex Path\Scripts\QuickStarts\NavigatingUnitWithSelectionQuickStart.cs" />
+    <Compile Include="Assets\Apex\Apex Path\Scripts\QuickStarts\PatrolRouteQuickStart.cs" />
+    <Compile Include="Assets\Apex\Apex Path\Scripts\QuickStarts\PortalQuickStart.cs" />
+    <Compile Include="Assets\Apex\Apex Path\Scripts\Services\AdvancedMessageBus.cs" />
+    <Compile Include="Assets\Apex\Apex Path\Scripts\Services\AdvancedMessageBusFactoryComponent.cs" />
+    <Compile Include="Assets\Apex\Apex Path\Scripts\Services\BasicMessageBus.cs" />
+    <Compile Include="Assets\Apex\Apex Path\Scripts\Services\GameServices.cs" />
+    <Compile Include="Assets\Apex\Apex Path\Scripts\Services\GameServicesInitializerComponent.cs" />
+    <Compile Include="Assets\Apex\Apex Path\Scripts\Services\IHandleMessage.cs" />
+    <Compile Include="Assets\Apex\Apex Path\Scripts\Services\IMessageBus.cs" />
+    <Compile Include="Assets\Apex\Apex Path\Scripts\Services\IMessageBusFactory.cs" />
+    <Compile Include="Assets\Apex\Apex Path\Scripts\Services\UnityServices.cs" />
+    <Compile Include="Assets\Apex\Apex Path\Scripts\Services\UnityWrappers.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>UnityWrappers.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Assets\Apex\Apex Path\Scripts\Steering\BasicScanner.cs" />
+    <Compile Include="Assets\Apex\Apex Path\Scripts\Steering\Behaviours\PatrolBehaviour.cs" />
+    <Compile Include="Assets\Apex\Apex Path\Scripts\Steering\Behaviours\PatrolComponent.cs" />
+    <Compile Include="Assets\Apex\Apex Path\Scripts\Steering\Behaviours\PatrolMaster.cs" />
+    <Compile Include="Assets\Apex\Apex Path\Scripts\Steering\Behaviours\PatrolPointsComponent.cs" />
+    <Compile Include="Assets\Apex\Apex Path\Scripts\Steering\Behaviours\ReplanWhenBlockedBehaviour.cs" />
+    <Compile Include="Assets\Apex\Apex Path\Scripts\Steering\Behaviours\ReplanWhenStuckBehaviour.cs" />
+    <Compile Include="Assets\Apex\Apex Path\Scripts\Steering\Behaviours\WanderBehaviour.cs" />
+    <Compile Include="Assets\Apex\Apex Path\Scripts\Steering\Behaviours\WanderComponent.cs" />
+    <Compile Include="Assets\Apex\Apex Path\Scripts\Steering\Behaviours\WanderMaster.cs" />
+    <Compile Include="Assets\Apex\Apex Path\Scripts\Steering\Components\ArrivalBase.cs" />
+    <Compile Include="Assets\Apex\Apex Path\Scripts\Steering\Components\FleeObstacleComponent.cs" />
+    <Compile Include="Assets\Apex\Apex Path\Scripts\Steering\Components\HumanoidSpeedComponent.cs" />
+    <Compile Include="Assets\Apex\Apex Path\Scripts\Steering\Components\IProcessPathResults.cs" />
+    <Compile Include="Assets\Apex\Apex Path\Scripts\Steering\Components\SteerForBasicAvoidanceComponent.cs" />
+    <Compile Include="Assets\Apex\Apex Path\Scripts\Steering\Components\SteerForPathComponent.cs" />
+    <Compile Include="Assets\Apex\Apex Path\Scripts\Steering\Components\SteerForPathReplanWhenBlocked.cs" />
+    <Compile Include="Assets\Apex\Apex Path\Scripts\Steering\Components\SteerForPathReplanWhenNoRoute.cs" />
+    <Compile Include="Assets\Apex\Apex Path\Scripts\Steering\Components\SteerForPathResultProcessorComponent.cs" />
+    <Compile Include="Assets\Apex\Apex Path\Scripts\Steering\Components\SteerToAlignWithVelocity.cs" />
+    <Compile Include="Assets\Apex\Apex Path\Scripts\Steering\Components\SteerToLookAt.cs" />
+    <Compile Include="Assets\Apex\Apex Path\Scripts\Steering\HeightNavigation\CapsuleCastProvider.cs" />
+    <Compile Include="Assets\Apex\Apex Path\Scripts\Steering\HeightNavigation\DefaultHeightNavigator.cs" />
+    <Compile Include="Assets\Apex\Apex Path\Scripts\Steering\HeightNavigation\HeightMapBoxFivePointProvider.cs" />
+    <Compile Include="Assets\Apex\Apex Path\Scripts\Steering\HeightNavigation\HeightMapBoxThreePointProvider.cs" />
+    <Compile Include="Assets\Apex\Apex Path\Scripts\Steering\HeightNavigation\HeightMapSphericalThreePointProvider.cs" />
+    <Compile Include="Assets\Apex\Apex Path\Scripts\Steering\HeightNavigation\HeightOutput.cs" />
+    <Compile Include="Assets\Apex\Apex Path\Scripts\Steering\HeightNavigation\HighPointList.cs" />
+    <Compile Include="Assets\Apex\Apex Path\Scripts\Steering\HeightNavigation\IHeightNavigator.cs" />
+    <Compile Include="Assets\Apex\Apex Path\Scripts\Steering\HeightNavigation\IUnitHeightProvider.cs" />
+    <Compile Include="Assets\Apex\Apex Path\Scripts\Steering\HeightNavigation\IUnitHeightProviderFactory.cs" />
+    <Compile Include="Assets\Apex\Apex Path\Scripts\Steering\HeightNavigation\NoHeightNavigator.cs" />
+    <Compile Include="Assets\Apex\Apex Path\Scripts\Steering\HeightNavigation\ProviderType.cs" />
+    <Compile Include="Assets\Apex\Apex Path\Scripts\Steering\HeightNavigation\RaycastBoxFivePointProvider.cs" />
+    <Compile Include="Assets\Apex\Apex Path\Scripts\Steering\HeightNavigation\RaycastBoxThreePointProvider.cs" />
+    <Compile Include="Assets\Apex\Apex Path\Scripts\Steering\HeightNavigation\RaycastSphericalThreePointProvider.cs" />
+    <Compile Include="Assets\Apex\Apex Path\Scripts\Steering\HeightNavigation\SphereCastProvider.cs" />
+    <Compile Include="Assets\Apex\Apex Path\Scripts\Steering\HeightNavigation\ZeroHeightProvider.cs" />
+    <Compile Include="Assets\Apex\Apex Path\Scripts\Steering\HeightNavigationCapabilities.cs" />
+    <Compile Include="Assets\Apex\Apex Path\Scripts\Steering\HeightSampling\HeightMapSampler.cs" />
+    <Compile Include="Assets\Apex\Apex Path\Scripts\Steering\HeightSampling\HeightSamplingMode.cs" />
+    <Compile Include="Assets\Apex\Apex Path\Scripts\Steering\HeightSampling\HeightStrategy.cs" />
+    <Compile Include="Assets\Apex\Apex Path\Scripts\Steering\HeightSampling\ISampleHeights.cs" />
+    <Compile Include="Assets\Apex\Apex Path\Scripts\Steering\HeightSampling\ISampleHeightsSimple.cs" />
+    <Compile Include="Assets\Apex\Apex Path\Scripts\Steering\HeightSampling\NullSampler.cs" />
+    <Compile Include="Assets\Apex\Apex Path\Scripts\Steering\HeightSampling\RaycastSampler.cs" />
+    <Compile Include="Assets\Apex\Apex Path\Scripts\Steering\IDefineSpeed.cs" />
+    <Compile Include="Assets\Apex\Apex Path\Scripts\Steering\IMovable.cs" />
+    <Compile Include="Assets\Apex\Apex Path\Scripts\Steering\IMoveUnits.cs" />
+    <Compile Include="Assets\Apex\Apex Path\Scripts\Steering\IMoveUnitsFactory.cs" />
+    <Compile Include="Assets\Apex\Apex Path\Scripts\Steering\IMovingObject.cs" />
+    <Compile Include="Assets\Apex\Apex Path\Scripts\Steering\IOrientationBehaviour.cs" />
+    <Compile Include="Assets\Apex\Apex Path\Scripts\Steering\ISteeringBehaviour.cs" />
+    <Compile Include="Assets\Apex\Apex Path\Scripts\Steering\NavigationSettingsComponent.cs" />
+    <Compile Include="Assets\Apex\Apex Path\Scripts\Steering\OrientationComponent.cs" />
+    <Compile Include="Assets\Apex\Apex Path\Scripts\Steering\OrientationOutput.cs" />
+    <Compile Include="Assets\Apex\Apex Path\Scripts\Steering\Props\PatrolPoint.cs" />
+    <Compile Include="Assets\Apex\Apex Path\Scripts\Steering\Props\PatrolRoute.cs" />
+    <Compile Include="Assets\Apex\Apex Path\Scripts\Steering\SlowingAlgorithm.cs" />
+    <Compile Include="Assets\Apex\Apex Path\Scripts\Steering\SpeedComponent.cs" />
+    <Compile Include="Assets\Apex\Apex Path\Scripts\Steering\SteerableUnitComponent.cs" />
+    <Compile Include="Assets\Apex\Apex Path\Scripts\Steering\SteeringComponent.cs" />
+    <Compile Include="Assets\Apex\Apex Path\Scripts\Steering\SteeringGroup.cs" />
+    <Compile Include="Assets\Apex\Apex Path\Scripts\Steering\SteeringInput.cs" />
+    <Compile Include="Assets\Apex\Apex Path\Scripts\Steering\SteeringOutput.cs" />
+    <Compile Include="Assets\Apex\Apex Path\Scripts\Units\DefaultTransientUnitGroup.cs" />
+    <Compile Include="Assets\Apex\Apex Path\Scripts\Units\DefaultUnitGroupingStrategy.cs" />
+    <Compile Include="Assets\Apex\Apex Path\Scripts\Units\Grouping.cs" />
+    <Compile Include="Assets\Apex\Apex Path\Scripts\Units\GroupingManager.cs" />
+    <Compile Include="Assets\Apex\Apex Path\Scripts\Units\IGroupable.cs" />
+    <Compile Include="Assets\Apex\Apex Path\Scripts\Units\IGrouping.cs" />
+    <Compile Include="Assets\Apex\Apex Path\Scripts\Units\IGroupingStrategy.cs" />
+    <Compile Include="Assets\Apex\Apex Path\Scripts\Units\IUnit.cs" />
+    <Compile Include="Assets\Apex\Apex Path\Scripts\Units\IUnitFacade.cs" />
+    <Compile Include="Assets\Apex\Apex Path\Scripts\Units\IUnitFacadeFactory.cs" />
+    <Compile Include="Assets\Apex\Apex Path\Scripts\Units\IUnitGroupingStrategyFactory.cs" />
+    <Compile Include="Assets\Apex\Apex Path\Scripts\Units\IUnitProperties.cs" />
+    <Compile Include="Assets\Apex\Apex Path\Scripts\Units\TransientGroup.cs" />
+    <Compile Include="Assets\Apex\Apex Path\Scripts\Units\UnitComponent.cs" />
+    <Compile Include="Assets\Apex\Apex Path\Scripts\Units\UnitFacade.cs" />
+    <Compile Include="Assets\Apex\Apex Path\Scripts\UnityExtensions.cs" />
+    <Compile Include="Assets\Apex\Apex Path\Scripts\Utilities\Consts.cs" />
+    <Compile Include="Assets\Apex\Apex Path\Scripts\Utilities\IThreadFactory.cs" />
+    <Compile Include="Assets\Apex\Apex Path\Scripts\Utilities\ThreadFactory.cs" />
+    <Compile Include="Assets\Apex\Apex Path\Scripts\Utilities\Utils.cs" />
+    <Compile Include="Assets\Apex\Apex Path\Scripts\WorldGeometry\Axis.cs" />
+    <Compile Include="Assets\Apex\Apex Path\Scripts\WorldGeometry\Cell.cs" />
+    <Compile Include="Assets\Apex\Apex Path\Scripts\WorldGeometry\CellConstructionStrategy.cs" />
+    <Compile Include="Assets\Apex\Apex Path\Scripts\WorldGeometry\CellMatrix.cs" />
+    <Compile Include="Assets\Apex\Apex Path\Scripts\WorldGeometry\CellMatrixData.cs" />
+    <Compile Include="Assets\Apex\Apex Path\Scripts\WorldGeometry\ColliderDetectionMode.cs" />
+    <Compile Include="Assets\Apex\Apex Path\Scripts\WorldGeometry\DynamicObstacle.cs" />
+    <Compile Include="Assets\Apex\Apex Path\Scripts\WorldGeometry\DynamicObstacleBase.cs" />
+    <Compile Include="Assets\Apex\Apex Path\Scripts\WorldGeometry\FixedHeightMapComponent.cs" />
+    <Compile Include="Assets\Apex\Apex Path\Scripts\WorldGeometry\FlatCell.cs" />
+    <Compile Include="Assets\Apex\Apex Path\Scripts\WorldGeometry\FlatCellClearanceProvider.cs" />
+    <Compile Include="Assets\Apex\Apex Path\Scripts\WorldGeometry\FlatCellData.cs" />
+    <Compile Include="Assets\Apex\Apex Path\Scripts\WorldGeometry\FlatCellHeightSettingsProvider.cs" />
+    <Compile Include="Assets\Apex\Apex Path\Scripts\WorldGeometry\FlatClearanceCell.cs" />
+    <Compile Include="Assets\Apex\Apex Path\Scripts\WorldGeometry\Geometry.cs" />
+    <Compile Include="Assets\Apex\Apex Path\Scripts\WorldGeometry\GeometryExtensions.cs" />
+    <Compile Include="Assets\Apex\Apex Path\Scripts\WorldGeometry\Grid.cs" />
+    <Compile Include="Assets\Apex\Apex Path\Scripts\WorldGeometry\GridAwareComponent.cs" />
+    <Compile Include="Assets\Apex\Apex Path\Scripts\WorldGeometry\GridBuilder.cs" />
+    <Compile Include="Assets\Apex\Apex Path\Scripts\WorldGeometry\GridComponent.cs" />
+    <Compile Include="Assets\Apex\Apex Path\Scripts\WorldGeometry\GridConfig.cs" />
+    <Compile Include="Assets\Apex\Apex Path\Scripts\WorldGeometry\GridManager.cs" />
+    <Compile Include="Assets\Apex\Apex Path\Scripts\WorldGeometry\GridPortal.cs" />
+    <Compile Include="Assets\Apex\Apex Path\Scripts\WorldGeometry\GridPortalComponent.cs" />
+    <Compile Include="Assets\Apex\Apex Path\Scripts\WorldGeometry\GridSection.cs" />
+    <Compile Include="Assets\Apex\Apex Path\Scripts\WorldGeometry\HeightMapDetailLevel.cs" />
+    <Compile Include="Assets\Apex\Apex Path\Scripts\WorldGeometry\HeightMapManager.cs" />
+    <Compile Include="Assets\Apex\Apex Path\Scripts\WorldGeometry\HeightSettingsProviderBase.cs" />
+    <Compile Include="Assets\Apex\Apex Path\Scripts\WorldGeometry\IBlockDetector.cs" />
+    <Compile Include="Assets\Apex\Apex Path\Scripts\WorldGeometry\IBlockDetectorFactory.cs" />
+    <Compile Include="Assets\Apex\Apex Path\Scripts\WorldGeometry\ICellFactory.cs" />
+    <Compile Include="Assets\Apex\Apex Path\Scripts\WorldGeometry\ICellMatrixConfiguration.cs" />
+    <Compile Include="Assets\Apex\Apex Path\Scripts\WorldGeometry\IClearanceProvider.cs" />
+    <Compile Include="Assets\Apex\Apex Path\Scripts\WorldGeometry\IDynamicObstacle.cs" />
+    <Compile Include="Assets\Apex\Apex Path\Scripts\WorldGeometry\IGrid.cs" />
+    <Compile Include="Assets\Apex\Apex Path\Scripts\WorldGeometry\IGridCell.cs" />
+    <Compile Include="Assets\Apex\Apex Path\Scripts\WorldGeometry\IGridManager.cs" />
+    <Compile Include="Assets\Apex\Apex Path\Scripts\WorldGeometry\IGridSource.cs" />
+    <Compile Include="Assets\Apex\Apex Path\Scripts\WorldGeometry\IHaveClearance.cs" />
+    <Compile Include="Assets\Apex\Apex Path\Scripts\WorldGeometry\IHeightLookup.cs" />
+    <Compile Include="Assets\Apex\Apex Path\Scripts\WorldGeometry\IHeightMap.cs" />
+    <Compile Include="Assets\Apex\Apex Path\Scripts\WorldGeometry\IHeightSettingsProvider.cs" />
+    <Compile Include="Assets\Apex\Apex Path\Scripts\WorldGeometry\InvalidDestinationComponent.cs" />
+    <Compile Include="Assets\Apex\Apex Path\Scripts\WorldGeometry\IPortalAction.cs" />
+    <Compile Include="Assets\Apex\Apex Path\Scripts\WorldGeometry\IPortalActionFactory.cs" />
+    <Compile Include="Assets\Apex\Apex Path\Scripts\WorldGeometry\IPositioned.cs" />
+    <Compile Include="Assets\Apex\Apex Path\Scripts\WorldGeometry\LayerMappingComponent.cs" />
+    <Compile Include="Assets\Apex\Apex Path\Scripts\WorldGeometry\Layers.cs" />
+    <Compile Include="Assets\Apex\Apex Path\Scripts\WorldGeometry\ManualDynamicObstacle.cs" />
+    <Compile Include="Assets\Apex\Apex Path\Scripts\WorldGeometry\MatrixDirection.cs" />
+    <Compile Include="Assets\Apex\Apex Path\Scripts\WorldGeometry\NeighbourPosition.cs" />
+    <Compile Include="Assets\Apex\Apex Path\Scripts\WorldGeometry\Perimeter.cs" />
+    <Compile Include="Assets\Apex\Apex Path\Scripts\WorldGeometry\PortalActionMoveComponent.cs" />
+    <Compile Include="Assets\Apex\Apex Path\Scripts\WorldGeometry\PortalActionNoneComponent.cs" />
+    <Compile Include="Assets\Apex\Apex Path\Scripts\WorldGeometry\PortalActionTeleportComponent.cs" />
+    <Compile Include="Assets\Apex\Apex Path\Scripts\WorldGeometry\PortalCell.cs" />
+    <Compile Include="Assets\Apex\Apex Path\Scripts\WorldGeometry\PortalConnectorAction.cs" />
+    <Compile Include="Assets\Apex\Apex Path\Scripts\WorldGeometry\PortalDirection.cs" />
+    <Compile Include="Assets\Apex\Apex Path\Scripts\WorldGeometry\PortalType.cs" />
+    <Compile Include="Assets\Apex\Apex Path\Scripts\WorldGeometry\RichCell.cs" />
+    <Compile Include="Assets\Apex\Apex Path\Scripts\WorldGeometry\RichCellData.cs" />
+    <Compile Include="Assets\Apex\Apex Path\Scripts\WorldGeometry\RichCellHeightSettingsProvider.cs" />
+    <Compile Include="Assets\Apex\Apex Path\Scripts\WorldGeometry\RichClearanceCell.cs" />
+    <Compile Include="Assets\Apex\Apex Path\Scripts\WorldGeometry\StandardCell.cs" />
+    <Compile Include="Assets\Apex\Apex Path\Scripts\WorldGeometry\StandardCellClearanceProvider.cs" />
+    <Compile Include="Assets\Apex\Apex Path\Scripts\WorldGeometry\StandardCellData.cs" />
+    <Compile Include="Assets\Apex\Apex Path\Scripts\WorldGeometry\StandardCellHeightSettingsProvider.cs" />
+    <Compile Include="Assets\Apex\Apex Path\Scripts\WorldGeometry\StandardClearanceCell.cs" />
+    <Compile Include="Assets\Apex\Apex Path\Scripts\WorldGeometry\TerrainHeightMap.cs" />
+    <Compile Include="Assets\Apex\Apex Path\Scripts\WorldGeometry\ZeroHeightMap.cs" />
+    <Compile Include="Assets\Apex\Apex Steer\Scripts\Debugging\PathVisualizerSteering.cs" />
+    <Compile Include="Assets\Apex\Apex Steer\Scripts\QuickStarts.cs" />
+    <Compile Include="Assets\Apex\Apex Steer\Scripts\QuickStarts\VectorFieldNavigationQuickStart.cs" />
+    <Compile Include="Assets\Apex\Apex Steer\Scripts\Services\GameServicesSteering.cs" />
+    <Compile Include="Assets\Apex\Apex Steer\Scripts\SteerExtensions.cs" />
+    <Compile Include="Assets\Apex\Apex Steer\Scripts\Steering\Components\Formations\FormationEllipsoid.cs" />
+    <Compile Include="Assets\Apex\Apex Steer\Scripts\Steering\Components\Formations\FormationGrid.cs" />
+    <Compile Include="Assets\Apex\Apex Steer\Scripts\Steering\Components\Formations\FormationLine.cs" />
+    <Compile Include="Assets\Apex\Apex Steer\Scripts\Steering\Components\Formations\FormationRow.cs" />
+    <Compile Include="Assets\Apex\Apex Steer\Scripts\Steering\Components\Formations\FormationSpiral.cs" />
+    <Compile Include="Assets\Apex\Apex Steer\Scripts\Steering\Components\Formations\FormationWing.cs" />
+    <Compile Include="Assets\Apex\Apex Steer\Scripts\Steering\Components\Formations\IFormation.cs" />
+    <Compile Include="Assets\Apex\Apex Steer\Scripts\Steering\Components\SteerForBlockedCellRepulsionComponent.cs" />
+    <Compile Include="Assets\Apex\Apex Steer\Scripts\Steering\Components\SteerForContainmentComponent.cs" />
+    <Compile Include="Assets\Apex\Apex Steer\Scripts\Steering\Components\SteerForEvasionComponent.cs" />
+    <Compile Include="Assets\Apex\Apex Steer\Scripts\Steering\Components\SteerForFleeComponent.cs" />
+    <Compile Include="Assets\Apex\Apex Steer\Scripts\Steering\Components\SteerForFormationComponent.cs" />
+    <Compile Include="Assets\Apex\Apex Steer\Scripts\Steering\Components\SteerForPursuitComponent.cs" />
+    <Compile Include="Assets\Apex\Apex Steer\Scripts\Steering\Components\SteerForSeekComponent.cs" />
+    <Compile Include="Assets\Apex\Apex Steer\Scripts\Steering\Components\SteerForSeparationComponent.cs" />
+    <Compile Include="Assets\Apex\Apex Steer\Scripts\Steering\Components\SteerForUnitAvoidanceComponent.cs" />
+    <Compile Include="Assets\Apex\Apex Steer\Scripts\Steering\Components\SteerForVectorFieldComponent.cs" />
+    <Compile Include="Assets\Apex\Apex Steer\Scripts\Steering\Components\SteeringController.cs" />
+    <Compile Include="Assets\Apex\Apex Steer\Scripts\Steering\Components\SteeringScanner.cs" />
+    <Compile Include="Assets\Apex\Apex Steer\Scripts\Steering\Components\SteerToAlignWithModelUnit.cs" />
+    <Compile Include="Assets\Apex\Apex Steer\Scripts\Steering\Components\SteerToAutoJumpComponent.cs" />
+    <Compile Include="Assets\Apex\Apex Steer\Scripts\Steering\Components\SteerToJumpComponent.cs" />
+    <Compile Include="Assets\Apex\Apex Steer\Scripts\Steering\DistanceComparer.cs" />
+    <Compile Include="Assets\Apex\Apex Steer\Scripts\Steering\NavigationSettings.cs" />
+    <Compile Include="Assets\Apex\Apex Steer\Scripts\Steering\NavigationSettingsComponentSteering.cs" />
+    <Compile Include="Assets\Apex\Apex Steer\Scripts\Steering\Vector Fields\CrossGridVectorField.cs" />
+    <Compile Include="Assets\Apex\Apex Steer\Scripts\Steering\Vector Fields\FullGridVectorField.cs" />
+    <Compile Include="Assets\Apex\Apex Steer\Scripts\Steering\Vector Fields\FunnelVectorField.cs" />
+    <Compile Include="Assets\Apex\Apex Steer\Scripts\Steering\Vector Fields\IVectorField.cs" />
+    <Compile Include="Assets\Apex\Apex Steer\Scripts\Steering\Vector Fields\ProgressiveVectorField.cs" />
+    <Compile Include="Assets\Apex\Apex Steer\Scripts\Steering\Vector Fields\VectorFieldCell.cs" />
+    <Compile Include="Assets\Apex\Apex Steer\Scripts\Steering\Vector Fields\VectorFieldManagerComponent.cs" />
+    <Compile Include="Assets\Apex\Apex Steer\Scripts\Steering\Vector Fields\VectorFieldOptions.cs" />
+    <Compile Include="Assets\Apex\Apex Steer\Scripts\Units\DefaultSteeringTransientUnitGroup.cs" />
+    <Compile Include="Assets\Apex\Apex Steer\Scripts\Units\DefaultSteeringUnitGroupingStrategy.cs" />
+    <Compile Include="Assets\Apex\Apex Steer\Scripts\Units\SteeringUnitGroupingStrategyFactory.cs" />
+    <Compile Include="Assets\Apex\Apex Steer\Scripts\Units\TransientGroupSteer.cs" />
+    <Compile Include="Assets\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Assets\Apex\Apex Path\Scripts\Services\UnityWrappers.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>UnityWrappers.cs</LastGenOutput>
+    </None>
+    <None Include="Assets\Apex\Apex Advanced Dynamic Obstacles\ChangeLog.txt" />
+    <None Include="Assets\Apex\Apex Binaries\ApexShared.XML" />
+    <None Include="Assets\Apex\Apex Path\ChangeLog.txt" />
+    <None Include="Assets\Apex\Apex Path\Getting Started.txt" />
+    <None Include="Assets\Apex\Apex Steer\ChangeLog.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Target Name="GenerateTargetFrameworkMonikerAttribute" />
+</Project>

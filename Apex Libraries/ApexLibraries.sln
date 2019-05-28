@@ -1,0 +1,107 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.572
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ApexSerialization", "ApexSerialization\ApexSerialization.csproj", "{7DEB45DD-60B9-42A2-B33D-AF565846BAAE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ApexShared", "ApexShared\ApexShared\ApexShared.csproj", "{587BA07A-45B8-43E8-9185-0E3C567FD285}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ApexSharedEditor", "ApexShared\ApexSharedEditor\ApexSharedEditor.csproj", "{222FCCEE-9813-4D0D-B8F1-B3EE0D1B6014}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Unity2017 = Debug|Unity2017
+		Debug|Unity2018 = Debug|Unity2018
+		Debug|Unity4 = Debug|Unity4
+		Debug|Unity5 = Debug|Unity5
+		Release|Unity2017 = Release|Unity2017
+		Release|Unity2018 = Release|Unity2018
+		Release|Unity4 = Release|Unity4
+		Release|Unity5 = Release|Unity5
+		ReleaseWithDocs|Unity2017 = ReleaseWithDocs|Unity2017
+		ReleaseWithDocs|Unity2018 = ReleaseWithDocs|Unity2018
+		ReleaseWithDocs|Unity4 = ReleaseWithDocs|Unity4
+		ReleaseWithDocs|Unity5 = ReleaseWithDocs|Unity5
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{7DEB45DD-60B9-42A2-B33D-AF565846BAAE}.Debug|Unity2017.ActiveCfg = Debug|Unity2017
+		{7DEB45DD-60B9-42A2-B33D-AF565846BAAE}.Debug|Unity2017.Build.0 = Debug|Unity2017
+		{7DEB45DD-60B9-42A2-B33D-AF565846BAAE}.Debug|Unity2018.ActiveCfg = Debug|Unity2018
+		{7DEB45DD-60B9-42A2-B33D-AF565846BAAE}.Debug|Unity2018.Build.0 = Debug|Unity2018
+		{7DEB45DD-60B9-42A2-B33D-AF565846BAAE}.Debug|Unity4.ActiveCfg = Debug|Unity4
+		{7DEB45DD-60B9-42A2-B33D-AF565846BAAE}.Debug|Unity4.Build.0 = Debug|Unity4
+		{7DEB45DD-60B9-42A2-B33D-AF565846BAAE}.Debug|Unity5.ActiveCfg = Debug|Unity5
+		{7DEB45DD-60B9-42A2-B33D-AF565846BAAE}.Debug|Unity5.Build.0 = Debug|Unity5
+		{7DEB45DD-60B9-42A2-B33D-AF565846BAAE}.Release|Unity2017.ActiveCfg = Release|Unity2017
+		{7DEB45DD-60B9-42A2-B33D-AF565846BAAE}.Release|Unity2017.Build.0 = Release|Unity2017
+		{7DEB45DD-60B9-42A2-B33D-AF565846BAAE}.Release|Unity2018.ActiveCfg = Release|Unity2018
+		{7DEB45DD-60B9-42A2-B33D-AF565846BAAE}.Release|Unity2018.Build.0 = Release|Unity2018
+		{7DEB45DD-60B9-42A2-B33D-AF565846BAAE}.Release|Unity4.ActiveCfg = Release|Unity4
+		{7DEB45DD-60B9-42A2-B33D-AF565846BAAE}.Release|Unity4.Build.0 = Release|Unity4
+		{7DEB45DD-60B9-42A2-B33D-AF565846BAAE}.Release|Unity5.ActiveCfg = Release|Unity5
+		{7DEB45DD-60B9-42A2-B33D-AF565846BAAE}.Release|Unity5.Build.0 = Release|Unity5
+		{7DEB45DD-60B9-42A2-B33D-AF565846BAAE}.ReleaseWithDocs|Unity2017.ActiveCfg = ReleaseWithDocs|Unity2017
+		{7DEB45DD-60B9-42A2-B33D-AF565846BAAE}.ReleaseWithDocs|Unity2017.Build.0 = ReleaseWithDocs|Unity2017
+		{7DEB45DD-60B9-42A2-B33D-AF565846BAAE}.ReleaseWithDocs|Unity2018.ActiveCfg = ReleaseWithDocs|Unity2018
+		{7DEB45DD-60B9-42A2-B33D-AF565846BAAE}.ReleaseWithDocs|Unity2018.Build.0 = ReleaseWithDocs|Unity2018
+		{7DEB45DD-60B9-42A2-B33D-AF565846BAAE}.ReleaseWithDocs|Unity4.ActiveCfg = ReleaseWithDocs|Unity4
+		{7DEB45DD-60B9-42A2-B33D-AF565846BAAE}.ReleaseWithDocs|Unity4.Build.0 = ReleaseWithDocs|Unity4
+		{7DEB45DD-60B9-42A2-B33D-AF565846BAAE}.ReleaseWithDocs|Unity5.ActiveCfg = ReleaseWithDocs|Unity5
+		{7DEB45DD-60B9-42A2-B33D-AF565846BAAE}.ReleaseWithDocs|Unity5.Build.0 = ReleaseWithDocs|Unity5
+		{587BA07A-45B8-43E8-9185-0E3C567FD285}.Debug|Unity2017.ActiveCfg = Debug|Unity2017
+		{587BA07A-45B8-43E8-9185-0E3C567FD285}.Debug|Unity2017.Build.0 = Debug|Unity2017
+		{587BA07A-45B8-43E8-9185-0E3C567FD285}.Debug|Unity2018.ActiveCfg = Debug|Unity2018
+		{587BA07A-45B8-43E8-9185-0E3C567FD285}.Debug|Unity2018.Build.0 = Debug|Unity2018
+		{587BA07A-45B8-43E8-9185-0E3C567FD285}.Debug|Unity4.ActiveCfg = Debug|Unity4
+		{587BA07A-45B8-43E8-9185-0E3C567FD285}.Debug|Unity4.Build.0 = Debug|Unity4
+		{587BA07A-45B8-43E8-9185-0E3C567FD285}.Debug|Unity5.ActiveCfg = Debug|Unity5
+		{587BA07A-45B8-43E8-9185-0E3C567FD285}.Debug|Unity5.Build.0 = Debug|Unity5
+		{587BA07A-45B8-43E8-9185-0E3C567FD285}.Release|Unity2017.ActiveCfg = Release|Unity2017
+		{587BA07A-45B8-43E8-9185-0E3C567FD285}.Release|Unity2017.Build.0 = Release|Unity2017
+		{587BA07A-45B8-43E8-9185-0E3C567FD285}.Release|Unity2018.ActiveCfg = Release|Unity2018
+		{587BA07A-45B8-43E8-9185-0E3C567FD285}.Release|Unity2018.Build.0 = Release|Unity2018
+		{587BA07A-45B8-43E8-9185-0E3C567FD285}.Release|Unity4.ActiveCfg = Release|Unity4
+		{587BA07A-45B8-43E8-9185-0E3C567FD285}.Release|Unity4.Build.0 = Release|Unity4
+		{587BA07A-45B8-43E8-9185-0E3C567FD285}.Release|Unity5.ActiveCfg = Release|Unity5
+		{587BA07A-45B8-43E8-9185-0E3C567FD285}.Release|Unity5.Build.0 = Release|Unity5
+		{587BA07A-45B8-43E8-9185-0E3C567FD285}.ReleaseWithDocs|Unity2017.ActiveCfg = ReleaseWithDocs|Unity2017
+		{587BA07A-45B8-43E8-9185-0E3C567FD285}.ReleaseWithDocs|Unity2017.Build.0 = ReleaseWithDocs|Unity2017
+		{587BA07A-45B8-43E8-9185-0E3C567FD285}.ReleaseWithDocs|Unity2018.ActiveCfg = ReleaseWithDocs|Unity2018
+		{587BA07A-45B8-43E8-9185-0E3C567FD285}.ReleaseWithDocs|Unity2018.Build.0 = ReleaseWithDocs|Unity2018
+		{587BA07A-45B8-43E8-9185-0E3C567FD285}.ReleaseWithDocs|Unity4.ActiveCfg = ReleaseWithDocs|Unity4
+		{587BA07A-45B8-43E8-9185-0E3C567FD285}.ReleaseWithDocs|Unity4.Build.0 = ReleaseWithDocs|Unity4
+		{587BA07A-45B8-43E8-9185-0E3C567FD285}.ReleaseWithDocs|Unity5.ActiveCfg = ReleaseWithDocs|Unity5
+		{587BA07A-45B8-43E8-9185-0E3C567FD285}.ReleaseWithDocs|Unity5.Build.0 = ReleaseWithDocs|Unity5
+		{222FCCEE-9813-4D0D-B8F1-B3EE0D1B6014}.Debug|Unity2017.ActiveCfg = Debug|Unity2017
+		{222FCCEE-9813-4D0D-B8F1-B3EE0D1B6014}.Debug|Unity2017.Build.0 = Debug|Unity2017
+		{222FCCEE-9813-4D0D-B8F1-B3EE0D1B6014}.Debug|Unity2018.ActiveCfg = Debug|Unity2018
+		{222FCCEE-9813-4D0D-B8F1-B3EE0D1B6014}.Debug|Unity2018.Build.0 = Debug|Unity2018
+		{222FCCEE-9813-4D0D-B8F1-B3EE0D1B6014}.Debug|Unity4.ActiveCfg = Debug|Unity4
+		{222FCCEE-9813-4D0D-B8F1-B3EE0D1B6014}.Debug|Unity4.Build.0 = Debug|Unity4
+		{222FCCEE-9813-4D0D-B8F1-B3EE0D1B6014}.Debug|Unity5.ActiveCfg = Debug|Unity5
+		{222FCCEE-9813-4D0D-B8F1-B3EE0D1B6014}.Debug|Unity5.Build.0 = Debug|Unity5
+		{222FCCEE-9813-4D0D-B8F1-B3EE0D1B6014}.Release|Unity2017.ActiveCfg = Release|Unity2017
+		{222FCCEE-9813-4D0D-B8F1-B3EE0D1B6014}.Release|Unity2017.Build.0 = Release|Unity2017
+		{222FCCEE-9813-4D0D-B8F1-B3EE0D1B6014}.Release|Unity2018.ActiveCfg = Release|Unity2018
+		{222FCCEE-9813-4D0D-B8F1-B3EE0D1B6014}.Release|Unity2018.Build.0 = Release|Unity2018
+		{222FCCEE-9813-4D0D-B8F1-B3EE0D1B6014}.Release|Unity4.ActiveCfg = Release|Unity4
+		{222FCCEE-9813-4D0D-B8F1-B3EE0D1B6014}.Release|Unity4.Build.0 = Release|Unity4
+		{222FCCEE-9813-4D0D-B8F1-B3EE0D1B6014}.Release|Unity5.ActiveCfg = Release|Unity5
+		{222FCCEE-9813-4D0D-B8F1-B3EE0D1B6014}.Release|Unity5.Build.0 = Release|Unity5
+		{222FCCEE-9813-4D0D-B8F1-B3EE0D1B6014}.ReleaseWithDocs|Unity2017.ActiveCfg = ReleaseWithDocs|Unity2017
+		{222FCCEE-9813-4D0D-B8F1-B3EE0D1B6014}.ReleaseWithDocs|Unity2017.Build.0 = ReleaseWithDocs|Unity2017
+		{222FCCEE-9813-4D0D-B8F1-B3EE0D1B6014}.ReleaseWithDocs|Unity2018.ActiveCfg = ReleaseWithDocs|Unity2018
+		{222FCCEE-9813-4D0D-B8F1-B3EE0D1B6014}.ReleaseWithDocs|Unity2018.Build.0 = ReleaseWithDocs|Unity2018
+		{222FCCEE-9813-4D0D-B8F1-B3EE0D1B6014}.ReleaseWithDocs|Unity4.ActiveCfg = ReleaseWithDocs|Unity4
+		{222FCCEE-9813-4D0D-B8F1-B3EE0D1B6014}.ReleaseWithDocs|Unity4.Build.0 = ReleaseWithDocs|Unity4
+		{222FCCEE-9813-4D0D-B8F1-B3EE0D1B6014}.ReleaseWithDocs|Unity5.ActiveCfg = ReleaseWithDocs|Unity5
+		{222FCCEE-9813-4D0D-B8F1-B3EE0D1B6014}.ReleaseWithDocs|Unity5.Build.0 = ReleaseWithDocs|Unity5
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {199BE84C-352B-402C-9074-0461A4DF3896}
+	EndGlobalSection
+EndGlobal

@@ -1,0 +1,83 @@
+﻿v 1.0.7.3
+	- Fixed a null reference exception occurring when adding AI clients at runtime to an empty UtilityAIComponent.
+
+v 1.0.7.2
+	- Removed News window and product update notifications (these come via Unity).
+	- Added an unscaled time load balancer
+	- Added ability to clear load balancer
+	- Load balancer and the load balanced pool now has preallocation methods
+	- Added a number of improvements to supporting classes such as DynamicArray and SimpleQueue
+	- Fixed a bug with the json parser in case of null strings
+
+v 1.0.7.1
+	- Support for Unity 2017
+	- Licensing requirement removed.
+
+v 1.0.6.1
+	Bug Fixes:
+	- Fixed a bug where the resolution of connector links from composite action were done prior to the execution of the composite action, which an unintended change from the previous version.
+
+v 1.0.6
+	Bug Fixes:
+	- Fixed a bug that prevented manually executed AIs (via AIManager.ExecuteAI) to properly select actions on linked selectors.
+	- Fixed a bug with pooled load balancer tasks, where such tasks would not repeat as they should.
+
+	Improvements:
+	- Added a stack trace to AI load errors to facilitate troubleshooting.
+	- Added a link.xml file to prevent stripping from removing types/members actually used.
+	- Added TerminableCompositeAction which supports adding IRequireTermination actions. Any such action will be terminated when the composite is.
+	- Added a TerminableAction for a generic version of an IRequireTermination implementation.
+
+v 1.0.5
+	Bug Fixes:
+	- Visualization will now properly show for an entity selected in the hierarchy before pressing play in the editor.
+	- Visualization for AIs with multiple paths to an AI link will now work as expected.
+	- A number of additional fixes to visualization mainly to do with run time loading and enabling/disabling of AIs.
+
+v 1.0.4
+	Bug Fixes:
+	- Fixed a bug where auto generation of Context and Context Provider from the Utility AI Component would generate incorrect c#.
+	- Fixed a bug with List fields in the inspector.
+	- Fixed a few bugs related to replacing certain action types with others.
+
+	Improvements:
+	- Dictionary fields are now supported in the inspector.
+	- New composite qualifiers, 'All above threshold' and 'Minimum or Nothing'
+	- The Repair utility will now offer options for enum fields/properties
+	- Instead of using a random existing Resources folder for storing AIs, the root Resources folder is used or created if it does not exist.
+	- Selected views are now always drawn on top.
+
+v 1.0.3
+	Bug Fixes:
+	- Disabling an AI in the Utility AI Component for non-prefab entities was not properly persisted.
+	- Scores over 9999 can now be properly displayed in the editor (during visual debugging).
+	- Fixed a bug where context visualizers did not persist their settings.
+	- Fixed a bug with visualizers for Actions with Options not working properly.
+	- Fixed a bug with IRequireTermination actions not behaving as intended.
+	- IRequireTermination actions now actually work as intended.
+	- Fixed a bug with the repair tool related to removed fields.
+
+	Breaking Changes:
+	- IRequireTermination's Terminate method now takes an IAIContext parameter which was required all along since the AI itself is stateless.
+
+	Improvements:
+	- Composite actions can now also act as connectors (executed after all other actions are complete).
+	- Empty categories will no longer be displayed in the inspector.
+
+	Plus a number of minor improvements.
+
+v 1.0.2.1
+	Bug Fixes:
+	- Fixed an overly eager news pop-up
+
+v 1.0.2
+	Improvements:
+	- The duplicate command (ctrl-D) is now available from the context menu.
+	- Middle mouse button can now be used to pan the view.
+	- MaskMatch now has a NoMatch option and the CompareOperator has a NotEquals option.
+
+v 1.0.1
+	Bug Fixes:
+	- Fixed an issue with Quick Starts not showing properly.
+
+v. 1.0 Initial Release

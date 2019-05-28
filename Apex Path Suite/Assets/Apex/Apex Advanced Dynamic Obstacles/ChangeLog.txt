@@ -1,0 +1,10 @@
+﻿v 1.0.2
+	Changes:
+		- Update for Apex Path 2.4
+
+v 1.0.1 
+	  - Minor update for Apex Path 2.0 to upgrade example scenes.
+
+v 1.0 Initial Release
+	  - There are now two bounding modes, the original Axis aligned mode and a new Adaptive mode where the obstacle will only block cells it actually covers.
+	  - There is a new visualizer available to see the runtime bounding behaviour. 

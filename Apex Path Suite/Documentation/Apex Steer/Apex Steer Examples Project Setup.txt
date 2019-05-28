@@ -1,0 +1,6 @@
+Setting up the Examples project
+-----------------------------------------------
+
+1. Locate the folder to which ‘Apex Path Examples and Tutorials Project.zip’ file was extracted.
+
+2. Extract the 'Apex Steer Examples and Tutorials Project' to the same folder.

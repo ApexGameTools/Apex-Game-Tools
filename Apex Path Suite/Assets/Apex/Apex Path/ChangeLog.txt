@@ -1,0 +1,414 @@
+﻿v 2.5.1:
+	- Included correct ApexShared 
+
+v 2.5:
+	- Support for Unity 2017
+
+v 2.4.6:
+	Bug Fixes:
+	- NavigationUnitWithSelection quick start can now be used at runtime without exceptions.
+	- Fixed a bug with pooled load balancer tasks, where such tasks would not repeat as they should.
+	- Fixed a bug with path costs and direct paths (mainly the unobstructed path optimization).
+
+	Improvements:
+	- Removed a number of deprecated messages
+
+v 2.4.5:
+	Bug Fixes:
+	- Added a new Path Options option to units to control whether to optimize path finding in the case of unobstructed paths.
+	  This optimization was made in a previous release, but has the side effect that portals inside the same grid are not evaluated if this optimization is performed.
+	  If you use portals between positions inside the same grid, then you most likely want to turn this optimization off on the units.
+
+	Breaking Changes:
+	- The InLayer method of the Layers class no longer makes a strict match against the Apex layer, but rather tests if the game object is in any of the unity layers represented by the Apex layer.
+
+v 2.4.4:
+	Bug Fixes:
+	- Corrected some example scenes that had swapped names.
+	- Fixed a bug with rotation, typically seen with lookAt.
+
+	Improvements:
+	- Fixed some dead documentation links
+	- New Apply method on IGrid and Matrix<T> classes that allow applying an action on a range of items (cells). Useful for collecting data or applying updates.
+	- The synchronous version of Initialize on the GridComponent now also sends a GridStatusMessage (and portals will respond)
+	- Replaced the portal action None with portal action Move.
+	- The Load Balancer has a number of new extensions using pooled actions for easy and allocation free scheduling of tasks (see video once it is published)
+	- The layers required are now automatically added to the project (when using a quick start) if they do not exist.
+
+v 2.4.3:
+	Bug Fixes:
+	- Fixed a bug with infinite recursion on DefaultHeightNavigator.heightProvider
+	- Fixed a bug with the PatrolMaster and WanderMaster and destroying objects when lingerForSeconds > 0
+
+	Improvements:
+	- Yet another take on the Patrol editor. No more numeric keys.
+
+v 2.4.2.1
+	Bug Fixes:
+	- Fixed an overly eager news pop-up
+
+v 2.4.2
+	Bug Fixes:
+	- Prevent Diagonal Moves will now be respected by portals as long as Manhattan cost is used in the Path Service.
+
+	Improvements:
+	- The 'Request NextWaypoint Distance' setting on the PathOptionsComponent now ensures a minimum value of 0.2.
+	- A new Path Finder Visualizer is available for the Game World to visualize how the path finder works.
+	- An proper error message will now be returned if attempting to issue a Prevent Diagonal Moves request against a Jump Point Search engine. Previously such requests would just return a No Path Exists result.
+	- When using the Grid Utility, portals are set relative to transform by default.
+
+	Breaking Changes:
+	- Using Custom Cost Providers for the Path Service, now require that the mode is set to Custom. Previously it would detect the custom provider regardless, which seemed unintuitive.
+
+v 2.4.1
+	Bug Fixes:
+	- Fixed a bug with the new Patrol and Wander behaviors that would consume messages not meant for them, effectively making them fail when used together.
+	- Fixed a bug with the Grid Field Utility where the Subsections X field could not be changed.
+	- Fixed an issue with Quick Starts not showing properly.
+	- Fixed a bug where the setting to prevent diagonal moves was ignored for unobstructed paths.
+
+	Improvements:
+	- Removed the ManualPath class as it is no longer used.
+	- Added a synchronous Initialize method to the grid component.
+
+v 2.4
+	New Features:
+	- Part of Apex Path is now compiled in ApexShared.dll. There is also a Full Source zip file, and if you target Windows8 apps or Phone you must use that.
+	  Choose which to use before you upgrade scenes!
+	- Added a customData field to IPathRequest to allow request pre- and post processors to communicate.
+	- There are a few new methods on the GridPortal Component for creating connector portals at run time.
+	- The Grid component now has a Connector Portal Width which can be used to control the width of connector portals when auto connecting.
+	- The UnitFacade now has a lookAt property. This can be used in conjunction with the new Steer to Look At orientation component, or used for other purposes.
+
+	Bug Fixes:
+	- Fixed a bug where in rare cases a waiting unit would report being stuck once resumed.
+	- Fixed a bug with navigation messages reporting (0,0,0) as their intended destination.
+	- Fixed a bug where units would skip part of their path and continue to the next waypoint where they would fail to arrive.
+	  This would happen if the next waypoint was resolved far from the current one, e.g. Request Next Waypoint Distance set to a high value.
+	- Fixed a corner case bug where a position on the very right hand or top edge of the a grid would resolve the grid but not a cell.
+
+	Improvements:
+	- Restructured the component menu
+	- Portals created through the Grid Field Utility are now relative to their transform, so the entire grid field can easily be repositioned.
+	- A number of improvements to how stored groups work
+	- Connector portals no longer use a separately defined action and Portal Action None has been deprecated.
+	- Fixed some issues with Apex Component Master in relation to prefabs.
+
+	Breaking Changes:
+	- Removed GetHeuristic from IPathNode. Internal unused method removed.
+
+v 2.3.2
+	Bug Fixes:
+	- API docs somehow got lost in the last drop.
+
+v 2.3.1
+	Bug Fixes:
+	- Fixed a bug with portalling
+
+v 2.3
+	New Features:
+	- Clearance. The grid now supports units of varying sizes without restricting the cell size. Watch the new tutorial video for details.
+	- Request Preprocessors. A new way to apply requirements to a path request before it is processed. Watch the new tutorial video for details.
+	- New wander behaviour using a manager. The old wander behaviour still exists, but the new one is recommended.
+	- New patrol behaviour using a manager.
+	- Including the Apex.Steering.Behaviours namespace will give access to a number of new extension methods on the unit to issue commands to wander or patrol.
+
+	Breaking Changes:
+	- Cell.IsWalkable now takes an IUnitProperties argument.
+	- All IsWalkable variants have been renamed to properly adhere to naming conventions, i.e. IsWalkable.
+	- All IsWalkable variants now also have a WithClearance alternative.
+	- The grid's GetNearestWalkablePerimeterCell has a new signature
+
+v 2.2.3.0
+	Bug Fixes:
+	- Fixed a bug with stationary dynamic obstacles, which caused them to not activate in scenarios with run time grid initialization.
+
+v 2.2.2.0
+	Bug Fixes:
+	- Fixed an issue with WIN8.
+	- Fixed a bug with grid runtime updates, where a callback was never called.
+	- Fixed UnitComponent cloning where attributes were not properly copied.
+	- Fixed a bug with manual replanning
+
+v 2.2.1.0
+	Bug Fixes:
+	- Fixed a bug where an exception would be thrown in cases where the unit had moved a certain distance from when it requested a path.
+
+v 2.2.0.0
+	Improvements:
+	- Added an extension point to allow custom detection of terrain and obstacles during grid initialization.
+	  Implement an IBlockDetector, an IBlockDetectorFactory component and set the grid's obstacleAndGroundDetection mode to Custom.
+	  Also supports run time creation. See the examples project (CustomBlockDetection folder) for example code.
+	- Added a GetPoints method to the Path class which returns an enumerator for all the points on the path, excluding placeholder nodes such as portals.
+	- Added a GetNeighbourGrid method to the IGrid, GridComponent and GridManager (extension methods) to allow easy access to neighbouring grids.
+	- Portals have a new mode Basic which acts the same as Connector did previously. Connector portals are now only intended for connecting grids and operate somewhat differently from other portals to provide better and faster pathing.
+	- Portals no longer draw gizmos by default when not selected. Portals can be explicitly set to draw gizmos and a new Portal Visualizer can control all portals if desired.
+	- The portal currently being edited now has an indicator.
+	- Added an extension to grid components Connect(...) which allows for easy run time connection of adjacent grids.
+	- Added an option to grids to automatically connect with adjacent grids at run time.
+	- If a Grid Component is destroyed at run time, all portals associated with it are automatically destroyed as well.
+	- It is now possible to get a reference to all portals associated with a grid via the GridManager.
+	- Cell sizes less than 1 are now supported.
+	- Path requests now support an optional 'via' property to request a path via a set of waypoints.
+	- A new result status 'CompletePartial' can be returned from requests using the above mentioned 'via' points. This will happen if a path could be found to some waypoints but not all.
+	- Unit arrival in SteerForPath has been improved, mainly for units with low deceleration capabilities.
+	- Path replanning will now attempt to access previously inaccessible areas if those were part of the original request.
+
+	Bug Fixes:
+	- Fixed a bug with baking if the height map has 0 same height points.
+	- Fixed a rare bug where the Default Height Navigator would not properly initialize when first added.
+	- Fixed a portal bug where run time initialization could result in a corrupted state causing the portal to complain about not having all grids present.
+	- Fixed a bug with Seek logic that did not work properly
+	- Fixed a bug with synchronous mode path finding, where a frame would sometimes be skipped.
+	- Units with the 'Gravity Only' setting for height navigation, will no longer float off into the air believing themselves able to fly.
+
+v 2.1.0.0
+	Improvements:
+	- Height navigation has been radically changed, please refer to the Height Navigation 2 video under tutorials for details.
+	  To upgrade your scenes, please use the Update Scene tool under the Tool -> Apex menu.
+	- The Steerable Unit Component now has an option to average actual velocity instead of calculating it every frame.
+	  This solves an issue that could arise if implementing custom locomotion logic where the unit is not actually moved each frame.
+	- Setting the exceptionsMask property on a Dynamic Obstacle at runtime will now update the grid immediately to reflect the change.
+
+v 2.0.2.0
+	Improvement:
+	- An update to certain scripts in preparation for Apex Steer
+	- Units now have an isAlive property, which will be true as long as the unit exists in the scene
+
+	Bug Fixes:
+	- Fixed an issue with the steerable unit component that would cause rigidbody units to move due to physics after they should have stopped.
+	- Fixed a bug that caused units to ignore move requests made in response to the DestinationReached message.
+
+v 2.0.1.0
+	New Features:
+	- Steer for Path now has a Strict Path Following property to control how it follows a path.
+	  This is on by default, which produces behaviour identical to before.
+	  If toggled off the unit will proceed on its path if it passes by its current target path node, regardless of distance to it.
+	  In short this means that if it overshoots it will just proceed. A video will be produced to show the effects of this.
+	- A new ManualDynamicObstacle is available to allow custom blocking of areas.
+
+	Improvements:
+	- Changed dynamic obstacles to use the grid's obstacle sensitivity by default.
+	- Added additional options for runtime grid updating.
+
+	Bug Fixes:
+	- Apex Component Master failed when removing components.
+	- Corrected the internal version marker so the product window no longer state an update is available, when it is not.
+	- The Mixed Mode for Obstacle and Ground detection on the grid is now actually mixed mode...
+	- Some fixes regarding prefabs and Apex components
+	- Fixed some Unity 5 issues
+	- Fixed a tool-tip issue
+
+	Known issues:
+	- Cell sizes less than 1 cause issues due to how costs are integer based. We have added a warning about this instead of capping the size to minimum 1,
+	  since some may have simply written their own cost provider to fix this. It should be noted that this issue is not new to 2.0.
+	- There a are a few issues with height navigation, mainly to do with box collider units and aligning with elevation.
+	  Units also do not stick perfectly to the ground on slopes.
+
+v 2.0
+	New Features:
+	- A new Upgrade Scene menu item is available, which will upgrade scenes made with older versions of Apex Path to this version, adding and replacing components.
+	- Unit interaction is now done through a IUnitFacade, please watch the tutorial videos for details.
+	- Added a UnitsSelectedMessage, which will be posted when units are selected.
+	- The height navigation options are now set per scene or per unit instead of per grid, through the new Navigation Settings component available on the Game World.
+	- Height sampling and navigation now provides 4 options. Generating and using a height map or no height at all are still present.
+	  New are ray cast and sphere cast. Both new options do not generate a height map and hence take no memory for this, instead they do real time height sampling.
+	- Grouping of units via selection or otherwise has changed completely, see the tutorial videos for details.
+	- All Apex Components are now consolidated by the Component Master, to reduce component clutter.
+	- Unity 5.0 support.
+	
+	Improvements:
+	- The ZeroHeightMap now returns negative infinity instead of pos.y when sampling a position, since a zero height map represents no height.
+	- Moved various path finder settings to its own component which is shared among those that use it.
+	- Grids now have an option to select the method used to detect terrain and obstacles, this is mainly due to a Unity bug where the default CheckCapsule will fail in certain scenarios.
+	- All registered units in a scene can be retrieved via the GameStateManager (through GameServices)
+	- Various extension to existing data structures and a couple of new ones
+	- Numerous tweaks to existing components.
+
+	Breaking Changes:
+	- Steering has changed completely, watch the tutorial videos for details.
+	- The INeedPath interface now only requires a single method to be implemented. All unit related data is passed to the request by way of the 'requesterProperties'.
+	- The CallbackPathRequest constructor no longer requires unit data such as radius and attributes, these are contained in the new required 'requesterProperties' property.
+	- The path finder options of a path request are now consolidated in the pathFinderOptions property
+	- Removed the speed index property from the HumanoidSpeedComponent since it is not an optimal way to control animations as it does not reflect the actual speed of a unit.
+	- Off Grid Navigation is no longer an option since it works poorly with groups and is just generally not useful.
+	
+	Bug Fixes:
+	- Fixed yet another bug with WP8 and WinRT
+
+	Known Issues:
+	- There a are a few issues with height navigation, mainly to do with box collider units and aligning with elevation.
+	  Units also do not stick perfectly to the ground on slopes.
+	- The documentation is not fully up to date.
+
+v 1.2.5
+	Improvements:
+	- Added patch functionality to the Products window so that minor fixes such as this can be applied without having to download a new package manually.
+
+	Bug Fixes:
+	- Fixed a bug with the Grid that was caused by the new Portal Editor.
+	- Fixed the Portal Editor so portals can now be properly drawn on elevated terrain.
+
+v 1.2.4
+	Improvements:
+	- Replaced the AsyncFailed event of the Path Finder Service with a callback to fix a problem with AOT compilation.
+	- Portals editor has been changed, which should hopefully make it easier to set up portals.
+	- Portals can now be either one- or two-way.
+	- Prepared for Advanced Dynamic Obstacles release
+	- The max constraint on Obstacle Sensitivity on the Grid has been removed. This may lead to some funky behaviour if set to an unreasonably high value.
+	  The original constraint is still applied when processing height settings for cells.
+
+	Bug Fixes:
+	- Again a few win8 specific errors had crept in, they are now fixed.
+
+v 1.2.3
+	New Features:
+	- Obstacle Sensitivity Range is now in effect for Dynamic Obstacles similar to static obstacles. Options exists to use the Grid's setting or a custom one.
+	- Added a simple utility to create and edit an Attribute set.
+	- Added a marshaller that allows marshalling actions from another thread onto the main thread. This is now used by the CallbackPathRequest, hence callbacks will now be made on the main thread.
+	- Added automatic update checking and a Products window for Apex products to give an overview of installed / available packages.
+	- The grid component now has an 'offset' property when 'Link Origin to Transform' is checked. This allows the grid to be offset some amount in relation to its transform.
+	
+	Breaking Changes:
+	- ISteerable has been deprecated and merged into IMovable. The distinction between these two really caused more confusion than clarity.
+	- The currentDestination property on IMovable has been deprecated and is now called nextNodePosition instead.
+	  The property has always returned the location of the next node along the path being travelled, but its name suggested otherwise.
+	  It is now also a nullable Vector3 instead of an IPositioned, to align it with the finalDestination property.
+	- RectangleXZ is now a struct.
+
+	Improvements:
+	- Dynamic Obstacle performance improved by approximately 400%.
+	- The PathResult's properties are now writable so that result processors can change them.
+	- The Grid Field tool has moved to the Tools menu.
+	- The UnitNavigationEventMessage NodeReached event is now raised after the next node has been resolved, so that nextNodePosition will return the expected next node rather than the one already reported as reached.
+	- The path service now exposes a property that makes changing the cost provider to use easier than before.
+	- Portals now have an option to be treated relative to their transform, i.e. the end points will use local space. This means portals can work properly in prefabs.
+	- The 'currentPath' property of the IMovable is now of type Path instead of the previous less helpful IIterable<IPositioned>
+	- The grid visualizer will now update if the transform, on which the grid resides, is moved.
+	- Improved a few component editors.
+
+	Bug Fixes:
+	- Corrected a multithreading issue involving dynamic obstacles with frequent updates.
+	- Corrected a few labels on attributed components in the Unity editor.
+	- Fixed the PortalActionTeleportComponent, it was teleporting units into the terrain.
+	- Fixed a bug where runtime initialization of a grid with a portal already on it would only partially initialize the portal.
+	- Fixed a bug where static obstacle detection would detect obstacles outside the boundaries on elevated terrain.
+	- Terrain checking will no longer fail to detect terrain at the joint points of terrain pieces.
+	- Fixed a bug with the Navigating Unit with Selection quick start in Win8 / WP8 apps when a custom input receiver is defined.
+	- Fixed a bug with manually initialized grids, where loaded at runtime and moved to position before initialization would not move the grid accordingly.
+
+v 1.2.2 Patch 2
+	New Features:
+	- ISteerable now has a finalDestination property
+	- A new request type CallbackPathRequest was added. This allows for interaction with the path finder without having to implement INeedPath
+	- All request types now have a 'type' property. Currently two types are available, Normal and IntelOnly, the latter being an optimization for AI use.
+	- SteerForPathComponent now implements IInjectPathFinderOptions which allows for having custom requests injected with the path finder options assigned to a unit
+	- Path results now include a 'pathCost' property which represents the length of the path and the cost of its individual nodes.
+	- Paths are now represented by the Path class. It derives from the StackWithLookAhead and thusly is not a breaking change. It is simply more clear and adds some additional possibilities, e.g IMovable.MoveAlong(...).
+	- A SimpleQueue was added to data structures
+	- A new Example scene 'Item Pickup' was added, showing some of the new features.
+
+	Breaking Changes:
+	- RepetableAction is now correctly named RepeatableAction. Simply search and replace.
+	- The ManualPath and the matching IMovable.MoveAlong method felt clumsy and have been deprecated. Instead use the new Path class and the matching IMovable.MoveAlong methods.
+	- Cleaned up the IPathService interface to only expose methods intended for use outside the framework. Not likely to affect you.
+	- Cleaned up the IPathRequest and its implementation. Not likely to affect you.
+
+	Improvements:
+	- StackWithLookAhead now has an indexer and implements IIndexable
+	- The currentPath and currentWaypoints properties of ISteerable are now indexable
+	- Connector portals now produce smoother paths (even more so than 1.2.1)
+	- Shortcut portals covering multiple cells will now correctly choose entry and exits points that result in the shortest path.
+	- IUnit now also implements IHaveAttributes
+
+	Bug Fixes:
+	- Windows Store App and WP8 Apps no longer throw exceptions on compilation, for real this time.
+	- Fixed a nasty bug where units would increase their speed in certain scenarios, especially obvious when issuing manual paths.
+	- Two examples that broke in patch 1 are now back in operation.
+	- The path finder and path smoother, now properly respects the custom cost of individual grid cells
+
+v 1.2.1 Patch 1
+	New Features:
+	- The GridManager now has methods to get references to GridComponents given a position or bounds struct.
+	- A new message 'GridStatusMessage' is sent when grids do runtime initialization or are disabled.
+	- New factory methods enable runtime instantiation of grids and portals
+	- The GetCell method on IGrid now has an overload that allows to adjust the position to the grid bounds, i.e. find the closest cell on the grid if the position is outside the grid.
+
+	Breaking Changes:
+	- The Disable method on the GridComponent now requires an argument specifying the maximum milliseconds to use per frame. This is related to the changes/fixes below.
+	- IMoveCost signature changed. Unlikely to affect anyone, but a breaking change nonetheless.
+	- IPortalAction's GetActionCost now takes a IMoveCost argument to allow for better cost calculations.
+
+	Bug Fixes:
+	- Windows Store App and WP8 Apps no longer throw exceptions on compilation.
+	- The editor for attributed components no longer fails if no attribute set is defined.
+	- Portals now respond to grids being initialized / disabled at runtime and no longer cause exceptions when placed on grids where automatic initialization is turned off.
+	- Dynamic obstacles now have an option to support dynamic grids, i.e. initialization / disabling at runtime. Set this to true if you initialize / disable grids at runtime.
+	- The callback argument in the Initialize method on the GridComponent can now be null if you don't require a callback.
+	- Basic avoidance will no longer throw an exception if a unit being avoided, is destroyed
+
+	Improvements:
+	- The 'Navigate to Nearest if Blocked' setting now also applies to actual blocked cells.
+	- Changed the Mac Support of the default input receiver. It now has a 'Right Click Supported' property instead. If your Mac is not set up for right click support, uncheck that option.
+	- Grids not set to automatic initialization are now drawn semi transparent.
+	- Movement across stitched together grids is now smoother.
+
+v 1.2 Feature update
+	New Features:
+	- The Grid visualizer will now perform far better. It will now only draw the grid when within a configurable zoom level.
+	- Portals now come in two flavors, shortcuts and connectors. Shortcuts are portals such as teleporters that could provide a shortcut to the unit, while connectors simply connect with each other without being seen as shortcuts.
+	  The difference is that shortcut portals have a rather heavy cost with regards to path finding, whereas connectors have no cost. A video explaining this will be released soon.
+	- Added a Stop method to the IMovingObject interface.
+	- Cell size is now a float.
+	- The IMovable interface now has a MoveAlong(path) method which can be used to feed a path directly to the unit.
+	- The cell's isPermanentlyBlocked property is now public.
+	- The patrol behavior now has an option to visit patrol points at random.
+	- The default input receiver now also works on Mac. You should still replace it with your own though.
+	- The CharacterControllerMover is now included by default and will be used automatically for locomotion of units with a CharacterController.
+	  The example class is still there as a reference for overriding locomotion.
+	- The cut corners setting on the Path Service has moved to the Steer for Path component to allow per unit basis settings of this value.
+	- New option to prevent off-grid navigation, this will force unit to move only on grids and they will only be able to move between grids using connector portals.
+	- New option to make units move to the closest possible location if the actual destination is blocked or otherwise inaccessible.
+	- New option to send out an announcement for every node reached along a path.
+	- First iteration on improving the Inspector editors for the various components. This have caused some properties to appear in a different order than before.
+	- Added a tool window under the Windows menu. Apex Path - Grid Field will allow for easy creating of a field consisting of multiple stitched together grids.
+
+	Breaking Changes:
+	- The 'Use Path Smooting' property on the Steer for Path component had its typo corrected to 'Use Path Smoothing'.
+	  So if you disabled path smoothing, you will have to do so again, sorry.
+	- The enum SlowingAlgortim and the Steer for Path property Slowing Algoritm also had their typos fixed, so if you made changes here, you will have to do them again, sorry.
+	
+	Bug Fixes:
+	- Selecting units at various heights should now work properly.
+	- Adding a portal now properly places it in relation to its game object.
+	- The path visualizer no longer incorrectly shows an extra intermittent node in connection with portals.
+	- A number of minor bugs.
+
+	Delayed improvements:
+	- We wanted to improve the memory footprint of the grid height map. This proved to be a tougher challenge than initially assumed, so we have delayed that to a later update.
+
+v. 1.1 patch 1
+	New Features:
+	- Option to disallow diagonal movement added to the SteerForPath Component.
+	- IControlFacingOrientation now has an Unsubscribe method.
+	
+	Bug fixes:
+	- MenuExtensions had escaped the editor folder, they are now back in the fold.
+	- The basic avoidance steering will no longer affect units with no velocity.
+	   
+v. 1.1 Minor feature update
+	- Adds basic avoidance to steering. A new Quickstart will now add this to units.
+	- Minor improvement to the replacement of input receivers, input receivers are now resolved by means of an attribute.
+	- Improved configuration options when defining load balancers.
+	- Streamlined facing orientation control to behave the same as locomotion with regards to overriding default behavior. This is a *Breaking* change.
+	- Grid baked data can now be stored as an asset. This allows for prefab'ing grids.
+	- Grids now have an option to disable automatic initialization, and instead an Initialize method must be called manually. This Initialize method does its work smoothly over several frames.
+	- Grids can now be disabled to release all memory used, but calling Disable().
+	- The dynamic update time limit on grids has been removed and instead must be supplied in the call to perform a dynamic update.
+	- Baked grids can now be re-baked without first having to press 'Edit'.
+	- SteerableUnitComponent now has a setting to control the minimum speed at which units turn.
+
+	Bug fixes:
+	- Game services are now properly initialized before other components.
+
+v. 1.0 Initial Release

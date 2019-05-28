@@ -1,0 +1,167 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="4.0">
+  <PropertyGroup>
+    <!-- The configuration and platform will be used to determine which
+         assemblies to include from solution and project documentation
+         sources -->
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{cc881a93-931e-4439-9f7c-81e81100b7f4}</ProjectGuid>
+    <SHFBSchemaVersion>1.9.9.0</SHFBSchemaVersion>
+    <!-- AssemblyName, Name, and RootNamespace are not used by SHFB but Visual
+         Studio adds them anyway -->
+    <AssemblyName>Documentation</AssemblyName>
+    <RootNamespace>Documentation</RootNamespace>
+    <Name>Documentation</Name>
+    <!-- SHFB properties -->
+    <OutputPath>..\Documentation\Apex Steer\</OutputPath>
+    <HtmlHelpName>ApexSteerAPI</HtmlHelpName>
+    <Language>en-US</Language>
+    <FrameworkVersion>.NET Framework 3.5</FrameworkVersion>
+    <PresentationStyle>VS2013</PresentationStyle>
+    <CopyrightText>Copyright &amp;#169%3b 2014 Apex Software. All rights reserved.</CopyrightText>
+    <HelpTitle>Apex Steer API</HelpTitle>
+    <SyntaxFilters>C#</SyntaxFilters>
+    <BinaryTOC>False</BinaryTOC>
+    <DocumentationSources>
+      <DocumentationSource sourceFile="..\Documentation\Source\ApexPath.dll" />
+<DocumentationSource sourceFile="..\Documentation\Source\ApexPath.xml" /></DocumentationSources>
+    <NamespaceSummaries>
+      <NamespaceSummaryItem name="Apex.Examples.Animation" isDocumented="False" />
+<NamespaceSummaryItem name="Apex.Examples.Input" isDocumented="False" />
+<NamespaceSummaryItem name="Apex.Examples.Misc" isDocumented="False" />
+<NamespaceSummaryItem name="Apex.Examples.Steering" isDocumented="False" />
+<NamespaceSummaryItem name="Apex.Tutorials" isDocumented="False" />
+<NamespaceSummaryItem name="Apex.Examples.SceneSpecific.RuntimeGrids" isDocumented="False" />
+<NamespaceSummaryItem name="Apex.Examples.TransformManipulation" isDocumented="False" />
+<NamespaceSummaryItem name="Apex.Examples.SceneSpecific.CustomBlockDetection" isDocumented="False" />
+<NamespaceSummaryItem name="Apex.Examples.SceneSpecific.RequestPreProcessing" isDocumented="False" />
+<NamespaceSummaryItem name="Apex.Test.Tests" isDocumented="False" /></NamespaceSummaries>
+    <VisibleItems>InheritedMembers, Protected, SealedProtected</VisibleItems>
+    <FeedbackEMailAddress>support%40apexgametools.com</FeedbackEMailAddress>
+    <MissingTags>Summary, Parameter, Returns, AutoDocumentCtors, AutoDocumentDispose</MissingTags>
+    <BuildAssemblerVerbosity>OnlyWarningsAndErrors</BuildAssemblerVerbosity>
+    <MaximumGroupParts>2</MaximumGroupParts>
+    <NamespaceGrouping>False</NamespaceGrouping>
+    <SdkLinkTarget>Blank</SdkLinkTarget>
+    <RootNamespaceContainer>False</RootNamespaceContainer>
+    <Preliminary>False</Preliminary>
+    <NamingMethod>Guid</NamingMethod>
+    <ContentPlacement>AboveNamespaces</ContentPlacement>
+    <ApiFilter>
+      <Filter entryType="Namespace" fullName="" isExposed="False" />
+<Filter entryType="Namespace" fullName="Apex" isExposed="False">
+  <Filter entryType="Class" fullName="Apex.SteerExtensions" filterName="SteerExtensions" isExposed="True" />
+</Filter>
+<Filter entryType="Namespace" fullName="Apex.Common" isExposed="False" />
+<Filter entryType="Namespace" fullName="Apex.DataStructures" isExposed="False" />
+<Filter entryType="Namespace" fullName="Apex.Debugging" isExposed="False" />
+<Filter entryType="Namespace" fullName="Apex.Examples.CostStrategy.FixedCosts" isExposed="False" />
+<Filter entryType="Namespace" fullName="Apex.Examples.Extensibility" isExposed="False" />
+<Filter entryType="Namespace" fullName="Apex.Examples.Input" isExposed="False" />
+<Filter entryType="Namespace" fullName="Apex.Examples.Misc" isExposed="False" />
+<Filter entryType="Namespace" fullName="Apex.Examples.SceneSpecific.ChangeUnitSpeed" isExposed="False" />
+<Filter entryType="Namespace" fullName="Apex.Examples.SceneSpecific.Grouping" isExposed="False" />
+<Filter entryType="Namespace" fullName="Apex.Examples.SceneSpecific.PathRequests" isExposed="False" />
+<Filter entryType="Namespace" fullName="Apex.Examples.SceneSpecific.RuntimeGrids" isExposed="False" />
+<Filter entryType="Namespace" fullName="Apex.Examples.SceneSpecific.SteeringAndOrientation" isExposed="False" />
+<Filter entryType="Namespace" fullName="Apex.Examples.SceneSpecific.UnitFacades" isExposed="False" />
+<Filter entryType="Namespace" fullName="Apex.Examples.Steering" isExposed="False" />
+<Filter entryType="Namespace" fullName="Apex.Examples.TransformManipulation" isExposed="False" />
+<Filter entryType="Namespace" fullName="Apex.GameState" isExposed="False" />
+<Filter entryType="Namespace" fullName="Apex.Input" isExposed="False" />
+<Filter entryType="Namespace" fullName="Apex.LoadBalancing" isExposed="False" />
+<Filter entryType="Namespace" fullName="Apex.Messages" isExposed="False" />
+<Filter entryType="Namespace" fullName="Apex.PathFinding" isExposed="False" />
+<Filter entryType="Namespace" fullName="Apex.PathFinding.MoveCost" isExposed="False" />
+<Filter entryType="Namespace" fullName="Apex.QuickStarts" isExposed="False">
+  <Filter entryType="Class" fullName="Apex.QuickStarts.NavigationWithSelectionVectorFields" filterName="NavigationWithSelectionVectorFields" isExposed="True" />
+  <Filter entryType="Class" fullName="Apex.QuickStarts.NavigationWithVectorFields" filterName="NavigationWithVectorFields" isExposed="True" />
+  <Filter entryType="Class" fullName="Apex.QuickStarts.VectorFieldGameWorldQuickStart" filterName="VectorFieldGameWorldQuickStart" isExposed="True" />
+</Filter>
+<Filter entryType="Namespace" fullName="Apex.Services" isExposed="False" />
+<Filter entryType="Namespace" fullName="Apex.Steer" isExposed="False" />
+<Filter entryType="Namespace" fullName="Apex.Steering" isExposed="False">
+  <Filter entryType="Class" fullName="Apex.Steering.FormationEllipsoid" filterName="FormationEllipsoid" isExposed="True" />
+  <Filter entryType="Class" fullName="Apex.Steering.FormationGrid" filterName="FormationGrid" isExposed="True" />
+  <Filter entryType="Class" fullName="Apex.Steering.FormationLine" filterName="FormationLine" isExposed="True" />
+  <Filter entryType="Class" fullName="Apex.Steering.FormationRow" filterName="FormationRow" isExposed="True" />
+  <Filter entryType="Class" fullName="Apex.Steering.FormationSpiral" filterName="FormationSpiral" isExposed="True" />
+  <Filter entryType="Class" fullName="Apex.Steering.FormationWing" filterName="FormationWing" isExposed="True" />
+  <Filter entryType="Interface" fullName="Apex.Steering.IFormation" filterName="IFormation" isExposed="True" />
+</Filter>
+<Filter entryType="Namespace" fullName="Apex.Steering.Behaviours" isExposed="False" />
+<Filter entryType="Namespace" fullName="Apex.Steering.Components" isExposed="True">
+  <Filter entryType="Class" fullName="Apex.Steering.Components.ArrivalBase" filterName="ArrivalBase" isExposed="False" />
+  <Filter entryType="Class" fullName="Apex.Steering.Components.FleeObstacleComponent" filterName="FleeObstacleComponent" isExposed="False" />
+  <Filter entryType="Class" fullName="Apex.Steering.Components.HumanoidSpeedComponent" filterName="HumanoidSpeedComponent" isExposed="False" />
+  <Filter entryType="Interface" fullName="Apex.Steering.Components.IProcessPathResults" filterName="IProcessPathResults" isExposed="False" />
+  <Filter entryType="Class" fullName="Apex.Steering.Components.SteerForBasicAvoidanceComponent" filterName="SteerForBasicAvoidanceComponent" isExposed="False" />
+  <Filter entryType="Class" fullName="Apex.Steering.Components.SteerForCohesionComponent" filterName="SteerForCohesionComponent" isExposed="False" />
+  <Filter entryType="Class" fullName="Apex.Steering.Components.SteerForPathComponent" filterName="SteerForPathComponent" isExposed="False" />
+  <Filter entryType="Class" fullName="Apex.Steering.Components.SteerForPathReplanWhenBlocked" filterName="SteerForPathReplanWhenBlocked" isExposed="False" />
+  <Filter entryType="Class" fullName="Apex.Steering.Components.SteerForPathReplanWhenNoRoute" filterName="SteerForPathReplanWhenNoRoute" isExposed="False" />
+  <Filter entryType="Class" fullName="Apex.Steering.Components.SteerForPathResultProcessorComponent" filterName="SteerForPathResultProcessorComponent" isExposed="False" />
+  <Filter entryType="Class" fullName="Apex.Steering.Components.SteerForPointComponent" filterName="SteerForPointComponent" isExposed="False" />
+  <Filter entryType="Class" fullName="Apex.Steering.Components.SteerForSampledUnitAvoidanceComponent" filterName="SteerForSampledUnitAvoidanceComponent" isExposed="False" />
+  <Filter entryType="Class" fullName="Apex.Steering.Components.SteerToAlignWithVelocity" filterName="SteerToAlignWithVelocity" isExposed="False" />
+</Filter>
+<Filter entryType="Namespace" fullName="Apex.Steering.Messages" isExposed="False" />
+<Filter entryType="Namespace" fullName="Apex.Steering.Props" isExposed="False" />
+<Filter entryType="Namespace" fullName="Apex.TechDemo" isExposed="False" />
+<Filter entryType="Namespace" fullName="Apex.Test" isExposed="False" />
+<Filter entryType="Namespace" fullName="Apex.Test.Scripts" isExposed="False" />
+<Filter entryType="Namespace" fullName="Apex.Test.Steering" isExposed="False" />
+<Filter entryType="Namespace" fullName="Apex.Tutorials" isExposed="False" />
+<Filter entryType="Namespace" fullName="Apex.Units" isExposed="False">
+  <Filter entryType="Class" fullName="Apex.Units.DefaultSteeringTransientUnitGroup" filterName="DefaultSteeringTransientUnitGroup" isExposed="True" />
+  <Filter entryType="Class" fullName="Apex.Units.DefaultSteeringUnitGroupingStrategy" filterName="DefaultSteeringUnitGroupingStrategy" isExposed="True" />
+</Filter>
+<Filter entryType="Namespace" fullName="Apex.Utilities" isExposed="False" />
+<Filter entryType="Namespace" fullName="Apex.WorldGeometry" isExposed="False" />
+<Filter entryType="Namespace" fullName="Assets.Robot.Scripts" isExposed="False" />
+<Filter entryType="Namespace" fullName="UnityEngine" isExposed="True">
+  <Filter entryType="Class" fullName="UnityEngine.Behaviour" filterName="Behaviour" isExposed="False" />
+  <Filter entryType="Class" fullName="UnityEngine.Component" filterName="Component" isExposed="False" />
+  <Filter entryType="Class" fullName="UnityEngine.MonoBehaviour" filterName="MonoBehaviour" isExposed="False" />
+  <Filter entryType="Class" fullName="UnityEngine.Object" filterName="Object" isExposed="False" />
+  <Filter entryType="Class" fullName="UnityEngine.ScriptableObject" filterName="ScriptableObject" isExposed="False" />
+</Filter></ApiFilter>
+    <PlugInConfigurations>
+      <PlugInConfig id="Wildcard Assembly References" enabled="True">
+        <configuration>
+  <references>
+    <reference path="..\Library\UnityAssemblies\" wildcard="*.dll" recurse="true" />
+  </references>
+</configuration>
+      </PlugInConfig>
+    </PlugInConfigurations>
+    <BuildLogFile />
+    <HtmlHelp1xCompilerPath />
+    <HtmlHelp2xCompilerPath />
+    <WorkingPath />
+    <ComponentPath />
+  </PropertyGroup>
+  <!-- There are no properties for these groups.  AnyCPU needs to appear in
+       order for Visual Studio to perform the build.  The others are optional
+       common platform types that may appear. -->
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x64' ">
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x64' ">
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|Win32' ">
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|Win32' ">
+  </PropertyGroup>
+  <!-- Import the SHFB build targets -->
+  <Import Project="$(SHFBROOT)\SandcastleHelpFileBuilder.targets" />
+</Project>

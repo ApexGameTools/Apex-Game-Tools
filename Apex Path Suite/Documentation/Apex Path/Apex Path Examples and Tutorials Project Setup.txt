@@ -1,0 +1,8 @@
+Setting up the Examples and Tutorials project
+-----------------------------------------------
+
+1. Locate the ‘Apex Path Examples and Tutorials Project.zip’ file.
+
+2. Create a folder in your file system and unzip the file there.
+
+3. Open Unity3D and select File -> Open Project -> Open Other… and select the folder you created.

@@ -1,0 +1,21 @@
+                          Apex Path Getting Started
+---------------------------------------------------------------------------------------
+
+1. Ensure you have a Ground to walk on and a Unit to walk around with, as a minimum.
+
+2. From the Component menu, add the component Apex -> QuickStarts -> Navigating Unit with Selection, to the Unit.
+
+3. Using the Unity Layer Manager, define 3 layers for the ground, obstacles and units respectively. We call them 'Terrain', 'Blocks' and 'Units' for reference.
+
+4a. Add all walkable ground geometry to the 'Terrain' layer.
+
+4b. Add obstacle geometry to the 'Blocks' layer.
+
+4c. Add units to the 'Unit' layer.
+
+5. Locate the Layer Mapping component on the newly created Game World object in the hierarchy. Map each layer listed to the actual layer defined in Unity.
+
+6. Press play, select the unit using the mouse and right click to make it walk.
+
+Please refer to the actual documentation for more details on the components and services provided by Apex Path.
+

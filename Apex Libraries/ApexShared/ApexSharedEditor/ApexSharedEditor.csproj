@@ -1,0 +1,166 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">Unity4</Platform>
+    <ProjectGuid>{222FCCEE-9813-4D0D-B8F1-B3EE0D1B6014}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Apex.Editor</RootNamespace>
+    <AssemblyName>ApexSharedEditor</AssemblyName>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile>Unity Full v3.5</TargetFrameworkProfile>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>..\..\..\Precompiled\$(Platform)\Apex Shared\Editor\</OutputPath>
+    <DefineConstants>TRACE;DEBUG;APEX_DLL</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>..\..\..\Precompiled\$(Platform)\Apex Shared\Editor\</OutputPath>
+    <DefineConstants>TRACE;APEX_DLL</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'ReleaseWithDocs' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>..\..\..\Precompiled\$(Platform)\Apex Shared\Editor\</OutputPath>
+    <DefineConstants>TRACE;APEX_DLL</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Platform)' == 'Unity4' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Platform)' == 'Unity5' ">
+    <DefineConstants>$(DefineConstants);UNITY_5</DefineConstants>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Platform)' == 'Unity2017' ">
+    <DefineConstants>$(DefineConstants);UNITY_2017</DefineConstants>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Platform)' == 'Unity2018' ">
+    <DefineConstants>$(DefineConstants);UNITY_2017</DefineConstants>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Xml" />
+    <Reference Include="UnityEditor">
+      <HintPath>..\..\..\References\Unity2018\UnityEditor.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEngine">
+      <HintPath>..\..\..\References\Unity2018\UnityEngine.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="ApexQuickStartEditor.cs" />
+    <Compile Include="ApexComponentMasterEditor.cs" />
+    <Compile Include="AssetPath.cs" />
+    <Compile Include="EditorAsync.cs" />
+    <Compile Include="EditorFields.cs" />
+    <Compile Include="EditorUtilities.cs" />
+    <Compile Include="GenericSelectorWindow.cs" />
+    <Compile Include="LabelPropertyDrawer.cs" />
+    <Compile Include="ListView.cs" />
+    <Compile Include="LoadBalancerComponentEditor.cs" />
+    <Compile Include="LoadBalancerPerformanceVisualizerEditor.cs" />
+    <Compile Include="MaxCheckedPropertyDrawer.cs" />
+    <Compile Include="MouseButton.cs" />
+    <Compile Include="PopupConstraints.cs" />
+    <Compile Include="SelectorWindow.cs" />
+    <Compile Include="SharedMenuExtentions.cs" />
+    <Compile Include="MinCheckedPropertyDrawer.cs" />
+    <Compile Include="ProductsWindow.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RangeXPropertyDrawer.cs" />
+    <Compile Include="Resources\PngResource.cs" />
+    <Compile Include="Resources\ResourceManager.cs" />
+    <Compile Include="Resources\UIResources.cs" />
+    <Compile Include="SharedStyles.cs" />
+    <Compile Include="Versioning\IProductIdentifier.cs" />
+    <Compile Include="Versioning\VersionUpgraderWindow.cs" />
+    <Compile Include="Versioning\ApexProductAttribute.cs" />
+    <Compile Include="Versioning\ApexSettings.cs" />
+    <Compile Include="Versioning\ProductInfo.cs" />
+    <Compile Include="Versioning\ProductManager.cs" />
+    <Compile Include="Versioning\ProductStatus.cs" />
+    <Compile Include="Versioning\ProductType.cs" />
+    <Compile Include="Versioning\VersionUpgradeAction.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\ApexShared\ApexShared.csproj">
+      <Project>{587ba07a-45b8-43e8-9185-0e3c567fd285}</Project>
+      <Name>ApexShared</Name>
+      <Private>False</Private>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\ApexPath.png" />
+    <EmbeddedResource Include="Resources\ApexSteer.png" />
+    <EmbeddedResource Include="Resources\Example.png" />
+    <EmbeddedResource Include="Resources\Extension.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\dark\apexlogo.png" />
+    <EmbeddedResource Include="Resources\light\apexlogo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\..\..\ApexGameTools.licenseheader">
+      <Link>ApexGameTools.licenseheader</Link>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\ApexUtilityAI.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\dark\add.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\dark\changetype.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\dark\listitemheader.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\dark\trash_recyclebin.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\light\add.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\light\changetype.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\light\listitemheader.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\light\trash_recyclebin.png" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PostBuildEvent>
+    </PostBuildEvent>
+  </PropertyGroup>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

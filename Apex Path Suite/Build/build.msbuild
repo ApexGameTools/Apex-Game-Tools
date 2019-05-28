@@ -1,0 +1,415 @@
+<?xml version="1.0" encoding="utf-8"?> 
+<Project ToolsVersion="12.0" DefaultTargets="PackageSourceProduct" xmlns="http://schemas.microsoft.com/developer/msbuild/2003"> 
+	<Import Project="$(MSBuildExtensionsPath)\MSBuildCommunityTasks\MSBuild.Community.Tasks.Targets"/>
+	<UsingTask AssemblyFile="../ExternalTools/ExtensionPack/MSBuild.ExtensionPack.dll" TaskName="MSBuild.ExtensionPack.FileSystem.Folder"/>
+	<UsingTask AssemblyFile="../ExternalTools/ExtensionPack/MSBuild.ExtensionPack.dll" TaskName="MSBuild.ExtensionPack.Xml.XmlFile"/>
+	<!--
+		Options can be added to the bat file. Add new options to the /p: parameter separated by ;
+			BuildApiDocs=false will disable building of api docs 
+			Targets=Rebuild will force a rebuild of dlls
+			OutputDir=The unity project root to which dlls are copied, i.e. the root not the Assets or Assets/Apex folder.
+			pdb2mdbPath="path" will override the path to the pdb2mdb tool
+	-->
+	<PropertyGroup>
+		<StagingRoot>..\Asset Store Submission</StagingRoot>
+	</PropertyGroup>
+		
+	<!-- Target for building Apex Product Dlls -->
+	<Target Name="BuildDlls">
+		<Error Text="Missing platform, please specify the platform." Condition="'$(Platform)' == ''" />
+		
+		<PropertyGroup>
+			<Targets Condition="'$(Targets)' == ''">Build</Targets>
+			<Configuration Condition="'$(Configuration)' == ''">Release</Configuration>
+			<pdb2mdbPath Condition="'$(pdb2mdbPath)' == ''">C:\Program Files (x86)\Unity\Editor\Data\MonoBleedingEdge\lib\mono\4.0</pdb2mdbPath>
+			<LicensingDllPath>$([System.IO.Path]::GetFullPath('..\Precompiled\$(Platform)\Apex Licensing\Editor\ApexLicensing.dll'))</LicensingDllPath>
+		</PropertyGroup>
+		
+		<MSBuild Projects="../Source/Apex Suite.sln" Properties="Configuration=$(Configuration);Platform=$(Platform);ProductVariant=$(ProductVariant)" Targets="$(Targets)" >
+			<Output TaskParameter="TargetOutputs" ItemName="BuiltAssemblies" />
+		</MSBuild>
+
+		<Exec Command='"$(pdb2mdbPath)\pdb2mdb.exe" "%(BuiltAssemblies.Identity)"' WorkingDirectory="$([System.IO.Path]::GetDirectoryName(%(BuiltAssemblies.Identity)))" />
+		
+		<ItemGroup>
+			<KeySignFile Include="..\Source\ApexLicensing\ApexSign.pfx" />
+		</ItemGroup>
+		<Copy SourceFiles="@(KeySignFile)" DestinationFolder="..\Precompiled\$(Platform)\Apex Licensing\Editor" SkipUnchangedFiles="true" />
+		<Exec Command='..\ExternalTools\ConfuserEx\Confuser.CLI.exe -n -o="Confused" "$(LicensingDllPath)"' />
+
+		<Message Text="Built:" /> 
+		<Message Text="%(BuiltAssemblies.Identity)" />
+	
+	</Target>
+	
+	<Target Name="BuildDllsAllPlatforms" >
+		<MSBuild Projects="$(MSBuildProjectFile)" Properties="Configuration=$(Configuration);Targets=$(Targets);ProductVariant=$(ProductVariant);Platform=Unity4" Targets="BuildDlls"  />
+		<MSBuild Projects="$(MSBuildProjectFile)" Properties="Configuration=$(Configuration);Targets=$(Targets);ProductVariant=$(ProductVariant);Platform=Unity5" Targets="BuildDlls"  />
+		<MSBuild Projects="$(MSBuildProjectFile)" Properties="Configuration=$(Configuration);Targets=$(Targets);ProductVariant=$(ProductVariant);Platform=Unity2017" Targets="BuildDlls"  />
+	</Target>
+	
+	<!-- Target for copying Apex Product Dlls. -->
+	<Target Name="CopyDlls" DependsOnTargets="BuildDlls">
+		<PropertyGroup>
+			<OutputRootDir >$(OutputDir)</OutputRootDir>
+			<OutputRootDir Condition="$(OutputRootDir.EndsWith('&quot;'))">$(OutputRootDir.TrimEnd('&quot;'))\</OutputRootDir>
+			<OutputRootDir Condition="'$(OutputRootDir)' != '' And !$(OutputRootDir.EndsWith('\'))">$(OutputRootDir)\</OutputRootDir>
+			<OutputRootDir Condition="'$(OutputRootDir)' == ''">..\Assets\</OutputRootDir>
+			<DllTargetDir>$(OutputRootDir)Apex\Apex Binaries</DllTargetDir>
+		</PropertyGroup>
+		
+		<ItemGroup>
+			<LicensingDll Include="../Precompiled/$(Platform)/Apex Licensing/Editor/Confused/*.dll" />
+			<SharedDlls Include="../Precompiled/$(Platform)/Apex Shared/**/*.*" Exclude="../Precompiled/$(Platform)/Apex Shared/**/*.pdb" />
+			<SerializationDll Include="../Precompiled/$(Platform)/Apex Serialization/**/*.*" Exclude="../Precompiled/$(Platform)/Apex Serialization/**/*.pdb" Condition=" $(Solution) != '' "/>
+			<ProductsDlls Include="../Precompiled/$(Platform)/$(Solution)/**/*.*" Exclude="../Precompiled/$(Platform)/$(Solution)/**/*.pdb" Condition=" $(Solution) != '' "/>
+			<AllDlls Include="@(SharedDlls);@(ProductsDlls);@(SerializationDll)" />
+		</ItemGroup>
+		
+		<Copy SourceFiles="@(AllDlls)" DestinationFiles="@(AllDlls->'$(DllTargetDir)\%(RecursiveDir)%(Filename)%(Extension)')" SkipUnchangedFiles="true" ContinueOnError="true" />
+	</Target>
+	
+	<!-- Target for preparing target relevant packaging output folder. -->
+	<Target Name="PrepareTargetFolder" Returns="$(TargetDir);$(ProductVariant)">
+
+		<PropertyGroup>
+			<ProductVariant Condition=" '$(ProductVariant)' == '' ">Default</ProductVariant>	
+		</PropertyGroup>
+		<PropertyGroup Condition=" '$(Platform)' != '' " >
+			<TargetDir>$(StagingRoot)\$(Solution)\$(Platform)\$(ProductVariant)\</TargetDir>
+		</PropertyGroup>
+		<PropertyGroup Condition=" '$(Platform)' == '' " >
+			<TargetDir>$(StagingRoot)\$(Solution)\</TargetDir>
+		</PropertyGroup>
+		
+	</Target>
+	
+	<Target Name="NukeTargetFolders" >
+		<PropertyGroup>
+			<BaseDir>$(StagingRoot)\$(Solution)</BaseDir>
+		</PropertyGroup>
+		<MSBuild.ExtensionPack.FileSystem.Folder TaskAction="RemoveContent" Path="$(BaseDir)" Force="true" Condition="Exists($(BaseDir))" />
+		<RemoveDir Directories="$(BaseDir)" />
+	</Target>
+	
+	<!-- Target for packaging an Apex Source Code Product. -->
+	<Target Name="PackageSourceProduct" DependsOnTargets="NukeTargetFolders">
+		<Error Text="Missing Solution, please specify the Solution." Condition="'$(Solution)' == ''" />
+		
+		<PropertyGroup>
+			<BuildApiDocs Condition=" '$(BuildApiDocs)' == '' ">true</BuildApiDocs>
+			<PlatformDependent Condition=" '$(PlatformDependent)' == '' ">false</PlatformDependent>
+		</PropertyGroup>
+		
+		<MSBuild Projects="../UnityVS.ApexGameTools.CSharp.csproj" Properties="Configuration=Docs" Targets="Build" Condition=" $(BuildApiDocs) " />
+		<MSBuild Projects="$(Solution) API.shfbproj" Properties="Configuration=Release" Condition=" $(BuildApiDocs) And $(Solution) != 'Apex Advanced Dynamic Obstacles'"/>
+		<MSBuild Projects="Apex Path API Extensibility Digest.shfbproj" Properties="Configuration=Release" Condition=" $(BuildApiDocs) And $(Solution) == 'Apex Path' "/>
+		
+		<MSBuild Projects="$(MSBuildProjectFile)" Properties="Configuration=ReleaseWithDocs" Targets="BuildDllsAllPlatforms" Condition=" $(PlatformDependent) " />
+		<MSBuild Projects="Apex Shared API.shfbproj" Properties="Configuration=Release" Condition=" $(BuildApiDocs) And $(PlatformDependent) " />
+		
+		<MSBuild Projects="$(MSBuildProjectFile)" Properties="Solution=$(Solution);BuildApiDocs=$(BuildApiDocs)" Targets="PackageSource" Condition=" !$(PlatformDependent) "/>
+		
+		<MSBuild Projects="$(MSBuildProjectFile)" Properties="Solution=$(Solution);BuildApiDocs=$(BuildApiDocs);Platform=Unity4" Targets="PackageSource" Condition=" $(PlatformDependent) " />
+		<MSBuild Projects="$(MSBuildProjectFile)" Properties="Solution=$(Solution);BuildApiDocs=$(BuildApiDocs);Platform=Unity5" Targets="PackageSource" Condition=" $(PlatformDependent) " />
+		<MSBuild Projects="$(MSBuildProjectFile)" Properties="Solution=$(Solution);BuildApiDocs=$(BuildApiDocs);Platform=Unity2017" Targets="PackageSource" Condition=" $(PlatformDependent) " />
+	</Target>
+	
+	<!-- Sub Target for packaging an Apex Source Code Product. -->
+	<Target Name="PackageSource" DependsOnTargets="PrepareTargetFolder">
+		<Error Text="Missing target dir, please specify the target dir." Condition="'$(TargetDir)' == ''" />
+		
+		<PropertyGroup>
+			<TargetDir>$(TargetDir)/Apex/</TargetDir>
+			<DocsDir>$(TargetDir)$(Solution) Examples and Documentation</DocsDir>
+			<PlatformDependent Condition=" '$(PlatformDependent)' == '' ">false</PlatformDependent>
+		</PropertyGroup>
+	
+		<ItemGroup>
+			<Assets Include="../Assets/Apex/$(Solution)/**/*.*" />
+		</ItemGroup>
+			
+		<ItemGroup Condition=" '$(Solution)' == 'Apex Path' ">
+			<EditorData Include="../Assets/Apex/Editor/Data/Products.*" />
+		</ItemGroup>
+		
+		<ItemGroup Condition=" '$(Platform)' != '' ">
+			<Shared Include="../Precompiled/$(Platform)/Apex Shared/**/*.*" Exclude="../Precompiled/$(Platform)/Apex Shared/**/*.pdb" />
+			<Docs Include="../Documentation/Apex Shared/*.chm" />
+		</ItemGroup>
+
+		<ItemGroup>
+			<Docs Include="../Documentation/$(Solution)/*.pdf" />
+			<Docs Include="../Documentation/$(Solution)/*.chm" />
+			<Docs Include="../Documentation/$(Solution)/*.txt" />
+		</ItemGroup>
+		
+		<Copy SourceFiles="@(Assets)" DestinationFiles="@(Assets->'$(TargetDir)$(Solution)\%(RecursiveDir)%(Filename)%(Extension)')" />
+		<Copy SourceFiles="@(Shared)" DestinationFiles="@(Shared->'$(TargetDir)Apex Binaries\%(RecursiveDir)%(Filename)%(Extension)')" />
+		<Copy SourceFiles="@(EditorData)" DestinationFolder="$(TargetDir)Editor\Data" />
+		<Copy SourceFiles="@(Docs)" DestinationFolder="$(DocsDir)" />
+		
+		<ItemGroup>
+			<Examples Include="../Assets/Apex Examples/$(Solution)/**/*.*" />
+		</ItemGroup>
+		
+		<ItemGroup Condition=" '$(Solution)' == 'Apex Path' ">
+			<ExampleResources Include="../Assets/Apex Examples/Resources/**/*.*" />
+			<Tutorials Include="../Assets/Apex Tutorials/**/*.*" />
+			<ProjSettings Include="../ProjectSettings/**/*.*" />
+		</ItemGroup>
+				
+		<PropertyGroup>
+			<ZipStaging>$(StagingRoot)/ZipStaging</ZipStaging>
+		</PropertyGroup>
+
+		<Copy SourceFiles="@(Assets)" DestinationFiles="@(Assets->'$(ZipStaging)/Assets/Apex/$(Solution)/%(RecursiveDir)%(Filename)%(Extension)')" />
+		<Copy SourceFiles="@(Shared)" DestinationFiles="@(Shared->'$(ZipStaging)/Assets/Apex/Apex Binaries/%(RecursiveDir)%(Filename)%(Extension)')" />
+		<Copy SourceFiles="@(Examples)" DestinationFiles="@(Examples->'$(ZipStaging)/Assets/Apex Examples/$(Solution)/%(RecursiveDir)%(Filename)%(Extension)')" />
+		<Copy SourceFiles="@(ExampleResources)" DestinationFiles="@(ExampleResources->'$(ZipStaging)/Assets/Apex Examples/Resources/%(RecursiveDir)%(Filename)%(Extension)')" />
+		<Copy SourceFiles="@(Tutorials)" DestinationFiles="@(Tutorials->'$(ZipStaging)/Assets/Apex Tutorials/%(RecursiveDir)%(Filename)%(Extension)')" />
+		<Copy SourceFiles="@(ProjSettings)" DestinationFiles="@(ProjSettings->'$(ZipStaging)/ProjectSettings/%(RecursiveDir)%(Filename)%(Extension)')" />
+		
+		<ItemGroup>
+			<ZipSource Include="$(ZipStaging)/**/*.*"/>
+		</ItemGroup>
+		<Zip Files="@(ZipSource->'%(FullPath)')" ZipFileName="$(DocsDir)\$(Solution) Examples and Tutorials Project.zip" WorkingDirectory ="$([System.IO.Path]::GetFullPath('$(ZipStaging)'))" />
+		
+		<MSBuild.ExtensionPack.FileSystem.Folder TaskAction="RemoveContent" Path="$(ZipStaging)" />
+		<RemoveDir Directories="$(ZipStaging)" />
+		
+		<MSBuild Projects="$(MSBuildProjectFile)" Properties="TargetDir=$(TargetDir);Platform=$(Platform)" Targets="PackageFullSource" Condition=" $(PlatformDependent) " />
+	</Target>
+	
+	<!-- Sub Target for packaging an full source Apex Source Code Product. -->
+	<Target Name="PackageFullSource" >
+		<Error Text="Missing target dir, please specify the target dir." Condition="'$(TargetDir)' == ''" />
+		
+		<ItemGroup>
+			<AllExceptShared Include="$(TargetDir)**/*.*" Exclude="$(TargetDir)**/Apex Binaries/**/*.*" />
+			<Shared Include="..\Source\ApexShared\ApexShared\**\*.*" 
+					Exclude="..\Source\ApexShared\ApexShared\**\bin\**\*.*;..\Source\ApexShared\ApexShared\**\obj\**\*.*;..\Source\ApexShared\ApexShared\**\Properties\**\*.*;..\Source\ApexShared\ApexShared\*.csproj*;..\Source\ApexShared\ApexShared\*.cache" />
+			<SharedEditor Include="..\Source\ApexShared\ApexSharedEditor\**\*.*" 
+						  Exclude="..\Source\ApexShared\ApexSharedEditor\**\bin\**\*.*;..\Source\ApexShared\ApexSharedEditor\**\obj\**\*.*;..\Source\ApexShared\ApexSharedEditor\**\Properties\**\*.*;..\Source\ApexShared\ApexSharedEditor\*.csproj*;..\Source\ApexShared\ApexSharedEditor\*.cache" />
+		</ItemGroup>
+		
+		<PropertyGroup>
+			<ZipStaging>$(StagingRoot)/ZipStaging</ZipStaging>
+		</PropertyGroup>
+		
+		<Copy SourceFiles="@(AllExceptShared)" DestinationFiles="@(AllExceptShared->'$(ZipStaging)/Apex/%(RecursiveDir)%(Filename)%(Extension)')" />
+		<Copy SourceFiles="@(Shared)" DestinationFiles="@(Shared->'$(ZipStaging)/Apex/Apex Shared/%(RecursiveDir)%(Filename)%(Extension)')" />
+		<Copy SourceFiles="@(SharedEditor)" DestinationFiles="@(SharedEditor->'$(ZipStaging)/Apex/Apex Shared/Editor/%(RecursiveDir)%(Filename)%(Extension)')" />
+		
+		<ItemGroup>
+			<ZipSource Include="$(ZipStaging)/**/*.*"/>
+		</ItemGroup>
+		<Zip Files="@(ZipSource->'%(FullPath)')" ZipFileName="$(TargetDir)FullSource/FullSource.zip" WorkingDirectory ="$([System.IO.Path]::GetFullPath('$(ZipStaging)'))" />
+		
+		<MSBuild.ExtensionPack.FileSystem.Folder TaskAction="RemoveContent" Path="$(ZipStaging)" />
+		<RemoveDir Directories="$(ZipStaging)" />
+	</Target>
+	
+	<!-- Target for packaging an Apex Dll Product. -->
+	<Target Name="PackageDllProduct" DependsOnTargets="NukeTargetFolders">
+		<Error Text="Missing Solution, please specify the Solution." Condition="'$(Solution)' == ''" />
+		
+		<PropertyGroup>
+			<BuildApiDocs Condition=" '$(BuildApiDocs)' == '' ">true</BuildApiDocs>
+			<ProductName Condition=" '$(ProductName)' == '' ">$(Solution)</ProductName>
+		</PropertyGroup>
+
+		<MSBuild Projects="$(MSBuildProjectFile)" Properties="Solution=$(Solution);ProductName=$(ProductName);BuildApiDocs=$(BuildApiDocs)" Targets="PackageDllProductVariant" />
+		
+		<ItemGroup>
+			<Variants Include="$(ProductVariants.Split('|'))" />
+		</ItemGroup>
+		<MSBuild Projects="$(MSBuildProjectFile)" Properties="Solution=$(Solution);ProductName=$(ProductName);BuildApiDocs=false;ProductVariant=%(Variants.Identity)" Targets="PackageDllProductVariant" Condition="'%(Variants.Identity)' != ''" />
+
+	</Target>
+	
+		<!-- Target for packaging an Apex Product Variant. -->
+	<Target Name="PackageDllProductVariant">
+		<PropertyGroup>
+			<Configuration>Release</Configuration>
+			<Configuration Condition="$(BuildApiDocs)">ReleaseWithDocs</Configuration>
+		</PropertyGroup>
+		
+		<MSBuild Projects="$(MSBuildProjectFile)" Properties="Configuration=$(Configuration);ProductVariant=$(ProductVariant);Targets=Rebuild" Targets="BuildDllsAllPlatforms" />
+		
+		<MSBuild Projects="Apex Shared API.shfbproj" Properties="Configuration=Release" Condition="$(BuildApiDocs)" />
+		<MSBuild Projects="Apex Serialization API.shfbproj" Properties="Configuration=Release" Condition="$(BuildApiDocs)" />
+		<MSBuild Projects="$(Solution) API.shfbproj" Properties="Configuration=Release" Condition="$(BuildApiDocs)" />
+		
+		<MSBuild Projects="$(MSBuildProjectFile)" Properties="Solution=$(Solution);ProductName=$(ProductName);ProductVariant=$(ProductVariant);Platform=Unity4" Targets="CreateUnityPackage" />
+		<MSBuild Projects="$(MSBuildProjectFile)" Properties="Solution=$(Solution);ProductName=$(ProductName);ProductVariant=$(ProductVariant);Platform=Unity5" Targets="CreateUnityPackage" />
+		<MSBuild Projects="$(MSBuildProjectFile)" Properties="Solution=$(Solution);ProductName=$(ProductName);ProductVariant=$(ProductVariant);Platform=Unity2017" Targets="CreateUnityPackage" />
+		
+		<PropertyGroup>
+			<ProductVariant Condition=" '$(ProductVariant)' == '' ">Default</ProductVariant>
+			<PackageFolder>$(StagingRoot)/$(Solution)/UnityPackages/$(ProductVariant)</PackageFolder>
+		</PropertyGroup>
+		<ItemGroup>
+			<ZipSource Include="$(PackageFolder)/**/*.*"/>
+		</ItemGroup>
+		<Zip Files="@(ZipSource->'%(FullPath)')" ZipFileName="$(PackageFolder)/$(Solution) $(ProductVariant).zip" WorkingDirectory="$([System.IO.Path]::GetFullPath('$(PackageFolder)'))" />
+	</Target>
+	
+	<!-- Sub Target for packaging an Apex Dll Product. -->
+	<Target Name="PackageDll" DependsOnTargets="PrepareTargetFolder">
+		<Error Text="Missing target dir, please specify the target dir." Condition="'$(TargetDir)' == ''" />
+		
+		<PropertyGroup>
+			<DocsDir>$(TargetDir)/Apex/$(Solution) Examples and Documentation</DocsDir>
+			<SourceDir>$(Solution.Replace(' ', ''))</SourceDir>
+			<SourceDir>../Source/$(SourceDir)/$(SourceDir)</SourceDir>
+		</PropertyGroup>
+		
+		<ItemGroup>
+			<LinkerXml Include="../Precompiled/link.xml" />
+			<Shared Include="../Precompiled/$(Platform)/Apex Shared/**/*.*" Exclude="../Precompiled/$(Platform)/Apex Shared/**/*.pdb" />
+			<SerializationDll Include="../Precompiled/$(Platform)/Apex Serialization/**/*.*" Exclude="../Precompiled/$(Platform)/Apex Serialization/**/*.pdb" />
+			<Asset Include="../Precompiled/$(Platform)/$(Solution)/**/*.*" Exclude="../Precompiled/$(Platform)/$(Solution)/**/*.pdb" />
+			<EditorData Include="../Assets/Apex/Editor/Data/Products.*" />
+			<ChangeLog Include="$(SourceDir)/ChangeLog.txt" />
+		</ItemGroup>
+
+		<ItemGroup>
+			<Docs Include="../Documentation/$(Solution)/*.pdf" />
+			<Docs Include="../Documentation/$(Solution)/*.chm" />
+			<Docs Include="../Documentation/$(Solution)/*.txt" />
+			<Docs Include="../Documentation/Apex Shared/*.chm" />
+			<Docs Include="../Documentation/Apex Serialization/*.chm" />
+		</ItemGroup>
+		
+		<Copy SourceFiles="@(LinkerXml)" DestinationFiles="@(LinkerXml->'$(TargetDir)Apex/Apex Binaries/%(Filename)%(Extension)')" />
+		<Copy SourceFiles="@(Asset)" DestinationFiles="@(Asset->'$(TargetDir)Apex/Apex Binaries/%(RecursiveDir)%(Filename)%(Extension)')" />
+		<Copy SourceFiles="@(Shared)" DestinationFiles="@(Shared->'$(TargetDir)Apex/Apex Binaries/%(RecursiveDir)%(Filename)%(Extension)')" />
+		<Copy SourceFiles="@(SerializationDll)" DestinationFiles="@(SerializationDll->'$(TargetDir)Apex/Apex Binaries/%(RecursiveDir)%(Filename)%(Extension)')" />
+		<Copy SourceFiles="@(EditorData)" DestinationFolder="$(TargetDir)Apex/Editor/Data" />
+		<Copy SourceFiles="@(ChangeLog)" DestinationFolder="$(TargetDir)Apex/$(ProductName)" Condition="Exists('%(FullPath)')" />
+		<Copy SourceFiles="@(Docs)" DestinationFolder="$(DocsDir)" />
+		
+		<ItemGroup>
+			<Examples Include="../Assets/Apex Examples/$(Solution)/**/*.*" />
+			<ProjSettings Include="../ProjectSettings/**/*.*" />
+			<EditorData Include="../Assets/Apex/Editor/Data/AIGeneralSettings.*" />
+		</ItemGroup>
+		
+		<PropertyGroup>
+			<ZipStaging>$(StagingRoot)/ZipStaging</ZipStaging>
+		</PropertyGroup>
+
+		<Copy SourceFiles="@(LinkerXml)" DestinationFiles="@(LinkerXml->'$(ZipStaging)/Assets/Apex/Apex Binaries/%(Filename)%(Extension)')" />
+		<Copy SourceFiles="@(Asset)" DestinationFiles="@(Asset->'$(ZipStaging)/Assets/Apex/Apex Binaries/%(RecursiveDir)%(Filename)%(Extension)')" />
+		<Copy SourceFiles="@(Shared)" DestinationFiles="@(Shared->'$(ZipStaging)/Assets/Apex/Apex Binaries/%(RecursiveDir)%(Filename)%(Extension)')" />
+		<Copy SourceFiles="@(SerializationDll)" DestinationFiles="@(SerializationDll->'$(ZipStaging)/Assets/Apex/Apex Binaries/%(RecursiveDir)%(Filename)%(Extension)')" />
+		<Copy SourceFiles="@(Examples)" DestinationFiles="@(Examples->'$(ZipStaging)/Assets/Apex Examples/$(Solution)/%(RecursiveDir)%(Filename)%(Extension)')" />
+		<Copy SourceFiles="@(ProjSettings)" DestinationFiles="@(ProjSettings->'$(ZipStaging)/ProjectSettings/%(RecursiveDir)%(Filename)%(Extension)')" />
+		<Copy SourceFiles="@(EditorData)" DestinationFolder="$(ZipStaging)/Assets/Apex/Editor/Data" />
+		
+		<ItemGroup>
+			<ZipSource Include="$(ZipStaging)/**/*.*"/>
+		</ItemGroup>
+		<Zip Files="@(ZipSource->'%(FullPath)')" ZipFileName="$(DocsDir)\$(Solution) Examples and Tutorials Project.zip" WorkingDirectory ="$([System.IO.Path]::GetFullPath('$(ZipStaging)'))" />
+		
+		<MSBuild.ExtensionPack.FileSystem.Folder TaskAction="RemoveContent" Path="$(ZipStaging)" />
+		<RemoveDir Directories="$(ZipStaging)" />
+	</Target>
+	
+	<Target Name="CreateUnityPackage" DependsOnTargets="PackageDll">
+		<PropertyGroup>
+			<UnityFolder>C:\Program Files (x86)\Unity\Editor\</UnityFolder>
+			<UnityFolder Condition="'$(Platform)' == 'Unity5'">C:\Program Files\Unity\Editor\</UnityFolder>
+			<UnityFolder Condition="'$(Platform)' == 'Unity2017'">C:\Program Files\Unity2017\Editor\</UnityFolder>
+			
+			<ProjectFolder>../../ApexGameToolsSubmission</ProjectFolder>
+			<ProjectFolder Condition="'$(Platform)' == 'Unity5'">../../ApexGameToolsSubmission 5</ProjectFolder>
+			<ProjectFolder Condition="'$(Platform)' == 'Unity2017'">../../ApexGameToolsSubmission 2017</ProjectFolder> 
+			<ProjectFolder>$([System.IO.Path]::GetFullPath('$(ProjectFolder)'))</ProjectFolder>
+			<SubmissionFolder>$([System.IO.Path]::GetFullPath('$(ProjectFolder)'))\Assets</SubmissionFolder> 
+			
+			<OutputFolder>$(StagingRoot)/$(Solution)/UnityPackages/$(ProductVariant)/$(Platform)</OutputFolder>
+			<OutputFile>$(OutputFolder)/$(Solution).unitypackage</OutputFile>
+			<OutputFile>$([System.IO.Path]::GetFullPath('$(OutputFile)'))</OutputFile>
+		</PropertyGroup>
+		
+		<ItemGroup>
+			<SubFoldersFull Include="$([System.IO.Directory]::GetDirectories('$(TargetDir)'))"/>
+			<AllContent Include="$(TargetDir)/**/*.*" />
+		</ItemGroup>
+		
+		<MSBuild.ExtensionPack.FileSystem.Folder TaskAction="RemoveContent" Path="$(SubmissionFolder)\%(SubFoldersFull.Filename)" Force="true" Condition="Exists('$(SubmissionFolder)\%(SubFoldersFull.Filename)')" />
+		<RemoveDir Directories="$(SubmissionFolder)\%(SubFoldersFull.Filename)" />
+		
+		<Copy SourceFiles="@(AllContent)" DestinationFiles="@(AllContent->'$(SubmissionFolder)/%(RecursiveDir)/%(Filename)%(Extension)')" />
+		
+		<PropertyGroup>
+			<AssetFolders>@(SubFoldersFull -> '"Assets/%(filename)"', ' ')</AssetFolders>
+		</PropertyGroup>
+		
+		<MakeDir Directories="$(OutputFolder)"/>
+		<Exec Command='"$(UnityFolder)Unity.exe" -quit -batchmode -projectPath "$(ProjectFolder)" -exportPackage $(AssetFolders) "$(OutputFile)"' />
+
+	</Target>
+	
+	<Target Name="CleanAISrc">
+		<PropertyGroup>
+			<SourcePath>../Source/</SourcePath>
+			<ZipStaging>$(StagingRoot)/ZipStaging</ZipStaging>
+		</PropertyGroup>
+
+		<Delete Files="$(SourcePath)Apex AI Source.zip" />
+		
+		<ItemGroup>
+			<Sln Include="$(SourcePath)Apex AI Plus.sln"/>
+			<ApexAI Include="$(SourcePath)ApexAI/**/*.*" Exclude="@(Excludes)"/>
+			<ApexSerialization Include="$(SourcePath)ApexSerialization/**/*.*" Exclude="@(Excludes)"/>
+			<ApexShared Include="$(SourcePath)ApexShared/**/*.*" Exclude="@(Excludes)"/>
+			<References Include="$(SourcePath)References/**/*.*" Exclude="@(Excludes)"/>
+		</ItemGroup>
+		
+		<Copy SourceFiles="@(Sln)" DestinationFiles="@(Sln->'$(ZipStaging)/%(RecursiveDir)%(Filename)%(Extension)')" />
+		<Copy SourceFiles="@(ApexAI)" DestinationFiles="@(ApexAI->'$(ZipStaging)/ApexAI/%(RecursiveDir)%(Filename)%(Extension)')" />
+		<Copy SourceFiles="@(ApexSerialization)" DestinationFiles="@(ApexSerialization->'$(ZipStaging)/ApexSerialization/%(RecursiveDir)%(Filename)%(Extension)')" />
+		<Copy SourceFiles="@(ApexShared)" DestinationFiles="@(ApexShared->'$(ZipStaging)/ApexShared/%(RecursiveDir)%(Filename)%(Extension)')" />
+		<Copy SourceFiles="@(References)" DestinationFiles="@(References->'$(ZipStaging)/References/%(RecursiveDir)%(Filename)%(Extension)')" />
+		
+		<ItemGroup>
+			<Namespaces Include="Mynamespace">
+				<Prefix>ms</Prefix>
+				<Uri>http://schemas.microsoft.com/developer/msbuild/2003</Uri>
+			</Namespaces>
+		</ItemGroup>
+		<XmlFile Namespaces="@(Namespaces)" TaskAction="RemoveElement" File="$(ZipStaging)/ApexSerialization/ApexSerialization.csproj" XPath="/ms:Project/ms:Import[@Project='..\..\ExternalTools\StyleAndVersion.targets']" />
+		<XmlFile Namespaces="@(Namespaces)" TaskAction="RemoveElement" File="$(ZipStaging)/ApexAI/ApexAI/ApexAI.csproj" XPath="/ms:Project/ms:Import[@Project='..\..\..\ExternalTools\StyleAndVersion.targets']" />
+		<XmlFile Namespaces="@(Namespaces)" TaskAction="RemoveElement" File="$(ZipStaging)/ApexAI/ApexAIEditor/ApexAIEditor.csproj" XPath="/ms:Project/ms:Import[@Project='..\..\..\ExternalTools\StyleAndVersion.targets']" />
+		<XmlFile Namespaces="@(Namespaces)" TaskAction="RemoveElement" File="$(ZipStaging)/ApexShared/ApexShared/ApexShared.csproj" XPath="/ms:Project/ms:Import[@Project='..\..\..\ExternalTools\StyleAndVersion.targets']" />
+		<XmlFile Namespaces="@(Namespaces)" TaskAction="RemoveElement" File="$(ZipStaging)/ApexShared/ApexSharedEditor/ApexSharedEditor.csproj" XPath="/ms:Project/ms:Import[@Project='..\..\..\ExternalTools\StyleAndVersion.targets']" />
+	  
+	  	<ItemGroup>
+			<Excludes Include="$(ZipStaging)/**/obj/**" />
+			<Excludes Include="$(ZipStaging)/**/bin/**" />
+			<Excludes Include="$(ZipStaging)/**/doc/**" />
+			<Excludes Include="$(ZipStaging)/**/*.scc" />
+			<Excludes Include="$(ZipStaging)/**/*.vssscc" />
+			<Excludes Include="$(ZipStaging)/**/*.vspscc" />
+			<Excludes Include="$(ZipStaging)/**/*.user" />
+			<Excludes Include="$(ZipStaging)/**/*.suo" />
+		</ItemGroup>
+		
+		<ItemGroup>
+			<Includes Include="$(ZipStaging)/**/*.*" />
+		</ItemGroup>
+		
+		<ItemGroup>
+			<ZipSource Include="@(Includes->'%(FullPath)')" Exclude="@(Excludes->'%(FullPath)')" />
+		</ItemGroup>
+	
+		<Zip Files="@(ZipSource->'%(FullPath)')" ZipFileName="$(SourcePath)Apex AI Source.zip" WorkingDirectory ="$([System.IO.Path]::GetFullPath('$(ZipStaging)'))" />
+		
+		<MSBuild.ExtensionPack.FileSystem.Folder TaskAction="RemoveContent" Path="$(ZipStaging)" />
+		<RemoveDir Directories="$(ZipStaging)" />
+	</Target>
+
+</Project>

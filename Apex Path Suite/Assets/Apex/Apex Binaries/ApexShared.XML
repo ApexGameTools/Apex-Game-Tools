@@ -1,0 +1,2857 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>ApexShared</name>
+    </assembly>
+    <members>
+        <member name="T:Apex.ApexRelevantAssemblyAttribute">
+            <summary>
+            Marks an assembly as containing implementations relevant to the function of Apex Products.
+            Only assemblies marked with this attribute will be searched for relevant classes etc.
+            </summary>
+        </member>
+        <member name="T:Apex.ApexComponentAttribute">
+            <summary>
+            Marks an Apex Component for identification by the <see cref="T:Apex.ApexComponentMaster"/>
+            </summary>
+        </member>
+        <member name="M:Apex.ApexComponentAttribute.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Apex.ApexComponentAttribute"/> class.
+            </summary>
+            <param name="category">The category.</param>
+        </member>
+        <member name="P:Apex.ApexComponentAttribute.category">
+            <summary>
+            Gets the category.
+            </summary>
+            <value>
+            The category.
+            </value>
+        </member>
+        <member name="T:Apex.ApexComponentMaster">
+            <summary>
+            Consolidates Apex Components
+            </summary>
+        </member>
+        <member name="M:Apex.ApexComponentMaster.Init(System.Collections.Generic.IEnumerable{Apex.ApexComponentMaster.ComponentCandidate})">
+            <summary>
+            Initializes this instance.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Apex.ApexComponentMaster.Toggle(Apex.ApexComponentMaster.ComponentInfo)">
+            <summary>
+            Toggles the specified component.
+            </summary>
+            <param name="cinfo">The component info.</param>
+        </member>
+        <member name="M:Apex.ApexComponentMaster.Toggle(System.String,System.Boolean)">
+            <summary>
+            Toggles the specified component by name.
+            </summary>
+            <param name="componentName">Name of the component.</param>
+            <param name="visible">toggle visible or not.</param>
+        </member>
+        <member name="M:Apex.ApexComponentMaster.ToggleAll">
+            <summary>
+            Toggles all components
+            </summary>
+        </member>
+        <member name="M:Apex.ApexComponentMaster.Cleanup">
+            <summary>
+            Cleanups this instance.
+            </summary>
+        </member>
+        <member name="P:Apex.ApexComponentMaster.componentCategories">
+            <summary>
+            Gets the component categories.
+            </summary>
+            <value>
+            The component categories.
+            </value>
+        </member>
+        <member name="T:Apex.ApexComponentMaster.ComponentCategory">
+            <summary>
+            Category wrapper
+            </summary>
+        </member>
+        <member name="T:Apex.DataStructures.DynamicArray`1">
+            <summary>
+            Ultra basic implementation of a dynamic array that forgoes most safety checks and relies on a certain usage pattern.
+            </summary>
+            <typeparam name="T"></typeparam>
+        </member>
+        <member name="T:Apex.DataStructures.IDynamicArray`1">
+            <summary>
+            Interface for Dynamic Arrays
+            </summary>
+            <typeparam name="T">The array item type.</typeparam>
+            <seealso cref="T:Apex.DataStructures.IIterable`1"/>
+        </member>
+        <member name="T:Apex.DataStructures.IIterable`1">
+            <summary>
+            Combination interface exposing both <see cref="T:Apex.DataStructures.IIndexable`1"/> and <see cref="T:System.Collections.Generic.IEnumerable`1"/>
+            </summary>
+            <typeparam name="T"></typeparam>
+        </member>
+        <member name="T:Apex.DataStructures.IIndexable`1">
+            <summary>
+            Interface for indexable ADTs
+            </summary>
+            <typeparam name="T">The type</typeparam>
+        </member>
+        <member name="P:Apex.DataStructures.IIndexable`1.count">
+            <summary>
+            Gets the count.
+            </summary>
+            <value>
+            The count.
+            </value>
+        </member>
+        <member name="P:Apex.DataStructures.IIndexable`1.Item(System.Int32)">
+            <summary>
+            Gets the value with the specified index.
+            </summary>
+            <param name="idx">The index.</param>
+            <returns>The value at the index</returns>
+        </member>
+        <member name="M:Apex.DataStructures.IDynamicArray`1.Add(`0)">
+            <summary>
+            Adds the specified item.
+            </summary>
+            <param name="item">The item.</param>
+        </member>
+        <member name="M:Apex.DataStructures.IDynamicArray`1.Remove(`0)">
+            <summary>
+            Removes the specified item.
+            </summary>
+            <param name="item">The item.</param>
+            <returns><c>true</c> if found and removed; otherwise <c>false</c></returns>
+        </member>
+        <member name="M:Apex.DataStructures.IDynamicArray`1.RemoveAt(System.Int32)">
+            <summary>
+            Removes the item at the specified index.
+            </summary>
+            <param name="index">The index.</param>
+        </member>
+        <member name="M:Apex.DataStructures.IDynamicArray`1.Clear">
+            <summary>
+            Clears the array.
+            </summary>
+        </member>
+        <member name="M:Apex.DataStructures.IDynamicArray`1.EnsureCapacity(System.Int32)">
+            <summary>
+            Ensures a certain capacity of the array, i.e. resizes the array to hold the specified number of items if not already able to.
+            </summary>
+            <param name="capacity">The capacity to ensure.</param>
+        </member>
+        <member name="T:Apex.DataStructures.ISortable`1">
+            <summary>
+            Common interface for sortable types, i.e. types that have members that can be sorted.
+            </summary>
+            <typeparam name="T">Type of the members</typeparam>
+        </member>
+        <member name="M:Apex.DataStructures.ISortable`1.Sort">
+            <summary>
+            Sorts this instance using the default comparer of its members.
+            </summary>
+        </member>
+        <member name="M:Apex.DataStructures.ISortable`1.Sort(System.Collections.Generic.IComparer{`0})">
+            <summary>
+            Sorts this instance using the specified comparer.
+            </summary>
+            <param name="comparer">The comparer.</param>
+        </member>
+        <member name="M:Apex.DataStructures.ISortable`1.Sort(System.Int32,System.Int32)">
+            <summary>
+            Sorts a subset of this instance using the default comparer of its members.
+            </summary>
+            <param name="index">The start index.</param>
+            <param name="length">The length.</param>
+        </member>
+        <member name="M:Apex.DataStructures.ISortable`1.Sort(System.Int32,System.Int32,System.Collections.Generic.IComparer{`0})">
+            <summary>
+            Sorts a subset of this instance using the specified comparer.
+            </summary>
+            <param name="index">The start index.</param>
+            <param name="length">The length.</param>
+            <param name="comparer">The comparer.</param>
+        </member>
+        <member name="M:Apex.DataStructures.DynamicArray`1.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Apex.DataStructures.DynamicArray`1"/> class.
+            </summary>
+        </member>
+        <member name="M:Apex.DataStructures.DynamicArray`1.#ctor(System.Int32)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Apex.DataStructures.DynamicArray`1"/> class.
+            </summary>
+            <param name="capacity">The capacity.</param>
+        </member>
+        <member name="M:Apex.DataStructures.DynamicArray`1.#ctor(`0[])">
+            <summary>
+            Initializes a new instance of the <see cref="T:Apex.DataStructures.DynamicArray`1"/> class.
+            </summary>
+            <param name="source">The source array.</param>
+        </member>
+        <member name="M:Apex.DataStructures.DynamicArray`1.#ctor(Apex.DataStructures.IIndexable{`0})">
+            <summary>
+            Initializes a new instance of the <see cref="T:Apex.DataStructures.DynamicArray`1"/> class.
+            </summary>
+            <param name="source">The source list.</param>
+        </member>
+        <member name="M:Apex.DataStructures.DynamicArray`1.#ctor(System.Collections.Generic.IEnumerable{`0})">
+            <summary>
+            Initializes a new instance of the <see cref="T:Apex.DataStructures.DynamicArray`1"/> class.
+            </summary>
+            <param name="source">The source list.</param>
+        </member>
+        <member name="M:Apex.DataStructures.DynamicArray`1.Add(`0)">
+            <summary>
+            Adds the specified item.
+            </summary>
+            <param name="item">The item.</param>
+        </member>
+        <member name="M:Apex.DataStructures.DynamicArray`1.AddRange(Apex.DataStructures.IIndexable{`0})">
+            <summary>
+            Adds the range of items.
+            </summary>
+            <param name="items">The items.</param>
+        </member>
+        <member name="M:Apex.DataStructures.DynamicArray`1.AddRange(System.Collections.Generic.IEnumerable{`0})">
+            <summary>
+            Adds the range of items.
+            </summary>
+            <param name="items">The items.</param>
+        </member>
+        <member name="M:Apex.DataStructures.DynamicArray`1.Remove(`0)">
+            <summary>
+            Removes the specified item.
+            </summary>
+            <param name="item">The item.</param>
+            <returns>
+              <c>true</c> if found and removed; otherwise <c>false</c>
+            </returns>
+        </member>
+        <member name="M:Apex.DataStructures.DynamicArray`1.RemoveAt(System.Int32)">
+            <summary>
+            Removes the item at the specified index.
+            </summary>
+            <param name="index">The index.</param>
+        </member>
+        <member name="M:Apex.DataStructures.DynamicArray`1.Reorder(System.Int32,System.Int32)">
+            <summary>
+            Reorders the array such that an item is moved form one index to another and the rest of the array adapts to that.
+            </summary>
+            <param name="fromIdx">The from (source) index.</param>
+            <param name="toIdx">The to (destination) index.</param>
+        </member>
+        <member name="M:Apex.DataStructures.DynamicArray`1.Clear">
+            <summary>
+            Clears the array.
+            </summary>
+        </member>
+        <member name="M:Apex.DataStructures.DynamicArray`1.Sort">
+            <summary>
+            Sorts this instance.
+            </summary>
+        </member>
+        <member name="M:Apex.DataStructures.DynamicArray`1.Sort(System.Collections.Generic.IComparer{`0})">
+            <summary>
+            Sorts this instance using the specified comparer.
+            </summary>
+            <param name="comparer">The comparer.</param>
+        </member>
+        <member name="M:Apex.DataStructures.DynamicArray`1.Sort(System.Int32,System.Int32)">
+            <summary>
+            Sorts a subset of this instance using the default comparer of its members.
+            </summary>
+            <param name="index">The start index.</param>
+            <param name="length">The length.</param>
+        </member>
+        <member name="M:Apex.DataStructures.DynamicArray`1.Sort(System.Int32,System.Int32,System.Collections.Generic.IComparer{`0})">
+            <summary>
+            Sorts a subset of this instance using the specified comparer.
+            </summary>
+            <param name="index">The start index.</param>
+            <param name="length">The length.</param>
+            <param name="comparer">The comparer.</param>
+        </member>
+        <member name="M:Apex.DataStructures.DynamicArray`1.EnsureCapacity(System.Int32)">
+            <summary>
+            Ensures a certain capacity of the array, i.e. resizes the array to hold the specified number of items if not already able to.
+            </summary>
+            <param name="capacity">The capacity to ensure.</param>
+        </member>
+        <member name="M:Apex.DataStructures.DynamicArray`1.ToString">
+            <summary>
+            Returns a <see cref="T:System.String"/> that represents this instance.
+            </summary>
+            <returns>
+            A <see cref="T:System.String"/> that represents this instance.
+            </returns>
+        </member>
+        <member name="P:Apex.DataStructures.DynamicArray`1.count">
+            <summary>
+            Gets the count.
+            </summary>
+            <value>
+            The count.
+            </value>
+        </member>
+        <member name="P:Apex.DataStructures.DynamicArray`1.Item(System.Int32)">
+            <summary>
+            Gets the value with the specified index. There is no bounds checking on get.
+            </summary>
+            <param name="idx">The index.</param>
+            <returns>The value at the index</returns>
+        </member>
+        <member name="T:Apex.AI.CompareOperator">
+            <summary>
+            Basic representation of compare operators
+            </summary>
+        </member>
+        <member name="F:Apex.AI.CompareOperator.None">
+            <summary>
+            No comparison, e.g. force a false return value
+            </summary>
+        </member>
+        <member name="F:Apex.AI.CompareOperator.LessThan">
+            <summary>
+            A &lt; B
+            </summary>
+        </member>
+        <member name="F:Apex.AI.CompareOperator.LessThanOrEquals">
+            <summary>
+            A &lt;= B
+            </summary>
+        </member>
+        <member name="F:Apex.AI.CompareOperator.Equals">
+            <summary>
+            A == B
+            </summary>
+        </member>
+        <member name="F:Apex.AI.CompareOperator.NotEquals">
+            <summary>
+            A != B
+            </summary>
+        </member>
+        <member name="F:Apex.AI.CompareOperator.GreaterThanOrEquals">
+            <summary>
+            A &gt;= B
+            </summary>
+        </member>
+        <member name="F:Apex.AI.CompareOperator.GreaterThan">
+            <summary>
+            A &gt; B
+            </summary>
+        </member>
+        <member name="T:Apex.DataStructures.BinaryHeap`1">
+            <summary>
+            Represents a Heap data structure.
+            </summary>
+            <typeparam name="T">The item type</typeparam>
+        </member>
+        <member name="T:Apex.DataStructures.BinaryHeapBase`1">
+            <summary>
+            Represents a Heap data structure.
+            </summary>
+            <typeparam name="T">The item type</typeparam>
+        </member>
+        <member name="M:Apex.DataStructures.BinaryHeapBase`1.#ctor(System.Int32,System.Collections.Generic.IComparer{`0})">
+            <summary>
+            Initializes a new instance of the <see cref="T:Apex.DataStructures.BinaryHeapBase`1"/> class.
+            </summary>
+            <param name="capacity">The capacity.</param>
+            <param name="comparer">The comparer used to compare the item in the heap.</param>
+        </member>
+        <member name="M:Apex.DataStructures.BinaryHeapBase`1.Peek">
+            <summary>
+            Gets the item at the front of the heap, but does not remove it.
+            </summary>
+            <returns>The item at the front of the heap.</returns>
+        </member>
+        <member name="M:Apex.DataStructures.BinaryHeapBase`1.Clear">
+            <summary>
+            Clears the heap, removing all items.
+            </summary>
+        </member>
+        <member name="M:Apex.DataStructures.BinaryHeapBase`1.Remove(`0)">
+            <summary>
+            Removes the specified item.
+            </summary>
+            <param name="item">The item.</param>
+            <returns>The item that was removed or null if it was not found.</returns>
+        </member>
+        <member name="M:Apex.DataStructures.BinaryHeapBase`1.Remove(System.Func{`0,System.Boolean})">
+            <summary>
+            Removes the first item that matches the specified predicate.
+            </summary>
+            <param name="predicate">The predicate.</param>
+            <returns>The item that was removed or null if no item was not found.</returns>
+        </member>
+        <member name="M:Apex.DataStructures.BinaryHeapBase`1.ReheapifyUpFrom(`0)">
+            <summary>
+            Recreates the heap upwards from the specified item.
+            </summary>
+            <param name="item">The item.</param>
+        </member>
+        <member name="M:Apex.DataStructures.BinaryHeapBase`1.ReheapifyDownFrom(`0)">
+            <summary>
+            Recreates the heap downwards from the specified item.
+            </summary>
+            <param name="item">The item.</param>
+        </member>
+        <member name="M:Apex.DataStructures.BinaryHeapBase`1.ReheapifyDownFrom(System.Int32)">
+            <summary>
+            Recreates the heap downwards from the specified index.
+            </summary>
+            <param name="childIdx">Index of the child.</param>
+            <exception cref="T:System.ArgumentOutOfRangeException">childIdx;Specified index is outside the valid range.</exception>
+        </member>
+        <member name="M:Apex.DataStructures.BinaryHeapBase`1.Resize">
+            <summary>
+            Resizes this instance.
+            </summary>
+        </member>
+        <member name="M:Apex.DataStructures.BinaryHeapBase`1.AddInternal(`0)">
+            <summary>
+            Enters an item in the heap.
+            </summary>
+            <param name="item">The item to add</param>
+        </member>
+        <member name="M:Apex.DataStructures.BinaryHeapBase`1.RemoveInternal">
+            <summary>
+            Removes the item at the front of the heap.
+            </summary>
+            <returns>The item at the front of the heap.</returns>
+        </member>
+        <member name="P:Apex.DataStructures.BinaryHeapBase`1.count">
+            <summary>
+            Gets the count.
+            </summary>
+            <value>
+            The count.
+            </value>
+        </member>
+        <member name="P:Apex.DataStructures.BinaryHeapBase`1.capacity">
+            <summary>
+            Gets the capacity.
+            </summary>
+            <value>
+            The capacity.
+            </value>
+        </member>
+        <member name="P:Apex.DataStructures.BinaryHeapBase`1.hasNext">
+            <summary>
+            Gets a value indicating whether this instance has any items.
+            </summary>
+            <value>
+              <c>true</c> if this instance has at least one item; otherwise, <c>false</c>.
+            </value>
+        </member>
+        <member name="M:Apex.DataStructures.BinaryHeap`1.#ctor(System.Int32,System.Collections.Generic.IComparer{`0})">
+            <summary>
+            Initializes a new instance of the <see cref="T:Apex.DataStructures.BinaryHeap`1"/> class.
+            </summary>
+            <param name="capacity">The capacity.</param>
+            <param name="comparer">The item comparer.</param>
+        </member>
+        <member name="M:Apex.DataStructures.BinaryHeap`1.Add(`0)">
+            <summary>
+            Enters an item in the heap.
+            </summary>
+            <param name="item">The item to add</param>
+        </member>
+        <member name="M:Apex.DataStructures.BinaryHeap`1.Remove">
+            <summary>
+            Removes the item at the front of the heap.
+            </summary>
+            <returns>The item at the front of the heap.</returns>
+        </member>
+        <member name="T:Apex.DataStructures.FunctionComparer`1">
+            <summary>
+            Simple wrapper to allow lambdas for comparison for sorting where only IComparer is supported.
+            </summary>
+            <typeparam name="T"></typeparam>
+        </member>
+        <member name="M:Apex.DataStructures.FunctionComparer`1.#ctor(System.Comparison{`0})">
+            <summary>
+            Initializes a new instance of the <see cref="T:Apex.DataStructures.FunctionComparer`1"/> class.
+            </summary>
+            <param name="comparer">The comparer.</param>
+        </member>
+        <member name="M:Apex.DataStructures.FunctionComparer`1.Compare(`0,`0)">
+            <summary>
+            Compares two objects and returns a value indicating whether one is less than, equal to, or greater than the other.
+            </summary>
+            <param name="x">The first object to compare.</param>
+            <param name="y">The second object to compare.</param>
+            <returns>
+            A signed integer that indicates the relative values of <paramref name="x" /> and <paramref name="y" />, as shown in the following table.Value Meaning Less than zero<paramref name="x" /> is less than <paramref name="y" />.Zero<paramref name="x" /> equals <paramref name="y" />.Greater than zero<paramref name="x" /> is greater than <paramref name="y" />.
+            </returns>
+        </member>
+        <member name="T:Apex.DataStructures.IndexableSet`1">
+            <summary>
+            A combination of a list and a hashset. Lookups are O(1) and the data structure is indexable.
+            </summary>
+            <typeparam name="T"></typeparam>
+        </member>
+        <member name="M:Apex.DataStructures.IndexableSet`1.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Apex.DataStructures.IndexableSet`1"/> class.
+            </summary>
+        </member>
+        <member name="M:Apex.DataStructures.IndexableSet`1.#ctor(System.Int32)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Apex.DataStructures.IndexableSet`1"/> class.
+            </summary>
+            <param name="capacity">The capacity.</param>
+        </member>
+        <member name="M:Apex.DataStructures.IndexableSet`1.#ctor(`0[])">
+            <summary>
+            Initializes a new instance of the <see cref="T:Apex.DataStructures.IndexableSet`1"/> class.
+            </summary>
+            <param name="items">The items.</param>
+        </member>
+        <member name="M:Apex.DataStructures.IndexableSet`1.#ctor(System.Collections.Generic.IEnumerable{`0})">
+            <summary>
+            Initializes a new instance of the <see cref="T:Apex.DataStructures.IndexableSet`1"/> class.
+            </summary>
+            <param name="items">The items.</param>
+        </member>
+        <member name="M:Apex.DataStructures.IndexableSet`1.Add(`0)">
+            <summary>
+            Adds the specified object.
+            </summary>
+            <param name="obj">The object.</param>
+        </member>
+        <member name="M:Apex.DataStructures.IndexableSet`1.AddRange(`0[])">
+            <summary>
+            Adds the range of objects.
+            </summary>
+            <param name="objects">The objects.</param>
+        </member>
+        <member name="M:Apex.DataStructures.IndexableSet`1.AddRange(System.Collections.Generic.IEnumerable{`0})">
+            <summary>
+            Adds the range of objects.
+            </summary>
+            <param name="objects">The objects.</param>
+        </member>
+        <member name="M:Apex.DataStructures.IndexableSet`1.AddRange(Apex.DataStructures.IIndexable{`0})">
+            <summary>
+            Adds the range of objects.
+            </summary>
+            <param name="objects">The objects.</param>
+        </member>
+        <member name="M:Apex.DataStructures.IndexableSet`1.Remove(`0)">
+            <summary>
+            Removes the specified object.
+            </summary>
+            <param name="obj">The object.</param>
+            <returns><c>true</c> if the object was found and removed; otherwise <c>false</c></returns>
+        </member>
+        <member name="M:Apex.DataStructures.IndexableSet`1.RemoveAt(System.Int32)">
+            <summary>
+            Removes the item at the specified index.
+            </summary>
+            <param name="index">The index.</param>
+        </member>
+        <member name="M:Apex.DataStructures.IndexableSet`1.Contains(`0)">
+            <summary>
+            Determines whether the set contains the object.
+            </summary>
+            <param name="obj">The object.</param>
+            <returns><c>true</c> if the object is contained in the set; otherwise <c>false</c></returns>
+        </member>
+        <member name="M:Apex.DataStructures.IndexableSet`1.Sort">
+            <summary>
+            Sorts this instance using the default comparer of its members.
+            </summary>
+        </member>
+        <member name="M:Apex.DataStructures.IndexableSet`1.Sort(System.Collections.Generic.IComparer{`0})">
+            <summary>
+            Sorts this instance using the specified comparer.
+            </summary>
+            <param name="comparer">The comparer.</param>
+        </member>
+        <member name="M:Apex.DataStructures.IndexableSet`1.Sort(System.Int32,System.Int32)">
+            <summary>
+            Sorts a subset of this instance using the default comparer of its members.
+            </summary>
+            <param name="index">The start index.</param>
+            <param name="length">The length.</param>
+        </member>
+        <member name="M:Apex.DataStructures.IndexableSet`1.Sort(System.Int32,System.Int32,System.Collections.Generic.IComparer{`0})">
+            <summary>
+            Sorts a subset of this instance using the specified comparer.
+            </summary>
+            <param name="index">The start index.</param>
+            <param name="length">The length.</param>
+            <param name="comparer">The comparer.</param>
+        </member>
+        <member name="M:Apex.DataStructures.IndexableSet`1.Clear">
+            <summary>
+            Clears this instance.
+            </summary>
+        </member>
+        <member name="M:Apex.DataStructures.IndexableSet`1.EnsureCapacity(System.Int32)">
+            <summary>
+            Ensures a certain capacity of the array, i.e. resizes the array to hold the specified number of items if not already able to.
+            </summary>
+            <param name="capacity">The capacity to ensure.</param>
+        </member>
+        <member name="P:Apex.DataStructures.IndexableSet`1.count">
+            <summary>
+            Gets the count.
+            </summary>
+            <value>
+            The count.
+            </value>
+        </member>
+        <member name="P:Apex.DataStructures.IndexableSet`1.Item(System.Int32)">
+            <summary>
+            Gets the value with the specified index.
+            </summary>
+            <param name="idx">The index.</param>
+            <returns>The value at the index</returns>
+        </member>
+        <member name="T:Apex.DataStructures.Matrix`1">
+            <summary>
+            Represents a matrix of items.
+            </summary>
+            <typeparam name="T">The item type</typeparam>
+        </member>
+        <member name="M:Apex.DataStructures.Matrix`1.#ctor(`0[0:,0:])">
+            <summary>
+            Initializes a new instance of the <see cref="T:Apex.DataStructures.Matrix`1"/> class.
+            </summary>
+            <param name="matrix">The matrix.</param>
+        </member>
+        <member name="M:Apex.DataStructures.Matrix`1.#ctor(System.Int32,System.Int32)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Apex.DataStructures.Matrix`1"/> class.
+            </summary>
+            <param name="columns">The number of columns in the matrix.</param>
+            <param name="rows">The number of rows in the matrix.</param>
+        </member>
+        <member name="M:Apex.DataStructures.Matrix`1.GetConcentricNeighbours(System.Int32,System.Int32,System.Int32,Apex.DataStructures.DynamicArray{`0})">
+            <summary>
+            Gets a layer of items around a center. A layer is defined as the outer neighbours of the concentric square given by the cellDistance argument.
+            Distance of 0 is the item itself, Distance of 1 is the 8 neighbouring items, Distance of 2 is the 16  outer most neighboring items to layer 1, etc. Think onion.
+            </summary>
+            <param name="column">The column from which to find neighbours</param>
+            <param name="row">The row from which to find neighbours</param>
+            <param name="cellDistance">The cell distance, 0 being the item itself.</param>
+            <param name="neighbours">A dynamic array to populate with the found neighbour cells.</param>
+            <returns>The list of items making up the layer.</returns>
+        </member>
+        <member name="M:Apex.DataStructures.Matrix`1.GetConcentricNeighbours(System.Int32,System.Int32,System.Int32)">
+            <summary>
+            Gets a layer of items around a center. A layer is defined as the outer neighbours of the concentric square given by the cellDistance argument.
+            Distance of 0 is the item itself, Distance of 1 is the 8 neighbouring items, Distance of 2 is the 16  outer most neighboring items to layer 1, etc. Think onion.
+            </summary>
+            <param name="column">The column from which to find neighbours</param>
+            <param name="row">The row from which to find neighbours</param>
+            <param name="cellDistance">The cell distance, 0 being the item itself.</param>
+            <returns>The list of items making up the layer.</returns>
+        </member>
+        <member name="M:Apex.DataStructures.Matrix`1.GetRange(Apex.DataStructures.MatrixBounds)">
+            <summary>
+            Gets a range of items
+            </summary>
+            <param name="bounds">The bounds specifying the index range.</param>
+            <returns>The range of items that lie inside the index range given by the parameter.</returns>
+        </member>
+        <member name="M:Apex.DataStructures.Matrix`1.GetRange(System.Int32,System.Int32,System.Int32,System.Int32)">
+            <summary>
+            Gets a range of items
+            </summary>
+            <param name="fromColumn">From column.</param>
+            <param name="toColumn">To column.</param>
+            <param name="fromRow">From row.</param>
+            <param name="toRow">To row.</param>
+            <returns>The range of items that lie in between and including the given parameters.</returns>
+        </member>
+        <member name="M:Apex.DataStructures.Matrix`1.GetRange(Apex.DataStructures.MatrixBounds,System.Collections.Generic.ICollection{`0})">
+            <summary>
+            Gets a range of items
+            </summary>
+            <param name="bounds">The bounds specifying the index range.</param>
+            <param name="result">The result to be populated by the range of items that lie inside the index range given by the parameter.</param>
+        </member>
+        <member name="M:Apex.DataStructures.Matrix`1.GetRange(Apex.DataStructures.MatrixBounds,System.Func{`0,System.Boolean},System.Collections.Generic.ICollection{`0})">
+            <summary>
+            Gets a range of items
+            </summary>
+            <param name="bounds">The bounds specifying the index range.</param>
+            <param name="predicate">A filter predicate, only those elements that match the predicate will be included in the result.</param>
+            <param name="result">The result to be populated by the range of items that lie inside the index range given by the parameter.</param>
+        </member>
+        <member name="M:Apex.DataStructures.Matrix`1.GetRange(System.Int32,System.Int32,System.Int32,System.Int32,System.Collections.Generic.ICollection{`0})">
+            <summary>
+            Gets a range of items
+            </summary>
+            <param name="fromColumn">From column.</param>
+            <param name="toColumn">To column.</param>
+            <param name="fromRow">From row.</param>
+            <param name="toRow">To row.</param>
+            <param name="result">The result to be populated by the range of items that lie in between and including the given parameters.</param>
+        </member>
+        <member name="M:Apex.DataStructures.Matrix`1.GetRange(System.Int32,System.Int32,System.Int32,System.Int32,System.Func{`0,System.Boolean},System.Collections.Generic.ICollection{`0})">
+            <summary>
+            Gets a range of items
+            </summary>
+            <param name="fromColumn">From column.</param>
+            <param name="toColumn">To column.</param>
+            <param name="fromRow">From row.</param>
+            <param name="toRow">To row.</param>
+            <param name="predicate">A filter predicate, only those elements that match the predicate will be included in the result.</param>
+            <param name="result">The result to be populated by the range of items that lie in between and including the given parameters.</param>
+        </member>
+        <member name="M:Apex.DataStructures.Matrix`1.Apply(Apex.DataStructures.MatrixBounds,System.Action{`0})">
+            <summary>
+            Applies an action to a range of items
+            </summary>
+            <param name="bounds">The bounds specifying the index range.</param>
+            <param name="act">The action to apply. This can be anything from modifying the items to collecting data from the items.</param>
+        </member>
+        <member name="M:Apex.DataStructures.Matrix`1.Apply(System.Int32,System.Int32,System.Int32,System.Int32,System.Action{`0})">
+            <summary>
+            Applies an action to a range of items
+            </summary>
+            <param name="fromColumn">From column.</param>
+            <param name="toColumn">To column.</param>
+            <param name="fromRow">From row.</param>
+            <param name="toRow">To row.</param>
+            <param name="act">The action to apply. This can be anything from modifying the items to collecting data from the items.</param>
+        </member>
+        <member name="M:Apex.DataStructures.Matrix`1.InBounds(System.Int32,System.Int32)">
+            <summary>
+            Are the matrix indexes within the bounds of the matrix.
+            </summary>
+            <param name="x">The x.</param>
+            <param name="z">The z.</param>
+            <returns><c>true if in bounds; otherwise false</c></returns>
+        </member>
+        <member name="M:Apex.DataStructures.Matrix`1.AdjustColumnToBounds(System.Int32)">
+            <summary>
+            Adjusts the column to bounds.
+            </summary>
+            <param name="x">The column index.</param>
+            <returns>The index adjusted to bounds</returns>
+        </member>
+        <member name="M:Apex.DataStructures.Matrix`1.AdjustRowToBounds(System.Int32)">
+            <summary>
+            Adjusts the row to bounds.
+            </summary>
+            <param name="z">The row index.</param>
+            <returns>The index adjusted to bounds</returns>
+        </member>
+        <member name="P:Apex.DataStructures.Matrix`1.columns">
+            <summary>
+            Gets the number of columns
+            </summary>
+            <value>
+            The number of columns
+            </value>
+        </member>
+        <member name="P:Apex.DataStructures.Matrix`1.rows">
+            <summary>
+            Gets the number of rows
+            </summary>
+            <value>
+            The number of rows
+            </value>
+        </member>
+        <member name="P:Apex.DataStructures.Matrix`1.rawMatrix">
+            <summary>
+            Gets the raw matrix. No bounds checking will be done on access
+            </summary>
+            <value>
+            The raw matrix.
+            </value>
+        </member>
+        <member name="P:Apex.DataStructures.Matrix`1.items">
+            <summary>
+            Gets the items in the matrix
+            </summary>
+            <value>
+            The items.
+            </value>
+        </member>
+        <member name="P:Apex.DataStructures.Matrix`1.Item(System.Int32,System.Int32)">
+            <summary>
+            Gets the item at the specified position in the matrix. Bounds check is performed and will return null if out of bounds.
+            </summary>
+            <param name="column">The column.</param>
+            <param name="row">The row.</param>
+            <returns>If the position is valid (in bounds) the item at that position is returned. Otherwise null is returned.</returns>
+        </member>
+        <member name="T:Apex.DataStructures.MatrixBounds">
+            <summary>
+            Represents a matrix boundary consisting of min/max values for matrix indexes.
+            </summary>
+        </member>
+        <member name="F:Apex.DataStructures.MatrixBounds.nullBounds">
+            <summary>
+            Represent an empty bounds
+            </summary>
+        </member>
+        <member name="F:Apex.DataStructures.MatrixBounds.minColumn">
+            <summary>
+            The minimum column index
+            </summary>
+        </member>
+        <member name="F:Apex.DataStructures.MatrixBounds.maxColumn">
+            <summary>
+            The maximum column index
+            </summary>
+        </member>
+        <member name="F:Apex.DataStructures.MatrixBounds.minRow">
+            <summary>
+            The minimum row index
+            </summary>
+        </member>
+        <member name="F:Apex.DataStructures.MatrixBounds.maxRow">
+            <summary>
+            The maximum row index
+            </summary>
+        </member>
+        <member name="M:Apex.DataStructures.MatrixBounds.#ctor(System.Int32,System.Int32,System.Int32,System.Int32)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Apex.DataStructures.MatrixBounds"/> struct.
+            </summary>
+            <param name="minColumn">The minimum column index.</param>
+            <param name="minRow">The minimum row index.</param>
+            <param name="maxColumn">The maximum column index.</param>
+            <param name="maxRow">The maximum row index.</param>
+        </member>
+        <member name="M:Apex.DataStructures.MatrixBounds.Combine(Apex.DataStructures.MatrixBounds,Apex.DataStructures.MatrixBounds)">
+            <summary>
+            Combines two bounds to create a new bounds that covers the area of both plus any area between them.
+            If one <see cref="P:Apex.DataStructures.MatrixBounds.isEmpty"/> it will return the other.
+            </summary>
+            <param name="first">The first bounds.</param>
+            <param name="second">The second bounds.</param>
+            <returns>A new bounds that covers the area of both plus any area between them.</returns>
+        </member>
+        <member name="M:Apex.DataStructures.MatrixBounds.AdjustColumnToBounds(System.Int32)">
+            <summary>
+            Adjusts the column to bounds.
+            </summary>
+            <param name="column">The column index.</param>
+            <returns>The index adjusted to bounds</returns>
+        </member>
+        <member name="M:Apex.DataStructures.MatrixBounds.AdjustRowToBounds(System.Int32)">
+            <summary>
+            Adjusts the row to bounds.
+            </summary>
+            <param name="row">The row index.</param>
+            <returns>The index adjusted to bounds</returns>
+        </member>
+        <member name="M:Apex.DataStructures.MatrixBounds.Contains(System.Int32,System.Int32)">
+            <summary>
+            Determines whether the specified matrix coordinates are contained in this bounds.
+            </summary>
+            <param name="column">The column.</param>
+            <param name="row">The row.</param>
+            <returns><c>true</c> if contained; otherwise <c>false</c></returns>
+        </member>
+        <member name="M:Apex.DataStructures.MatrixBounds.Contains(Apex.DataStructures.MatrixBounds)">
+            <summary>
+            Determines whether this bounds contains the other bounds.
+            </summary>
+            <param name="other">The other bounds.</param>
+            <returns><c>true</c> if contained; otherwise <c>false</c></returns>
+        </member>
+        <member name="M:Apex.DataStructures.MatrixBounds.IndexOf(System.Int32,System.Int32)">
+            <summary>
+            If looking at the matrix bounds as an array (see below) this will return the index in this array that a given pair of column,row values would represent.
+             _______________
+            |_1_|_3_|_5_|_7_|
+            |_0_|_2_|_4_|_6_|
+            How a matrix bounds is represented as an array
+            </summary>
+            <param name="column">The column.</param>
+            <param name="row">The row.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Apex.DataStructures.MatrixBounds.ToString">
+            <summary>
+            Returns a <see cref="T:System.String"/> that represents this instance.
+            </summary>
+            <returns>
+            A <see cref="T:System.String"/> that represents this instance.
+            </returns>
+        </member>
+        <member name="P:Apex.DataStructures.MatrixBounds.isEmpty">
+            <summary>
+            Gets a value indicating whether this bounds is empty, i.e. min &gt; max.
+            </summary>
+            <value>
+              <c>true</c> if this instance is empty; otherwise, <c>false</c>.
+            </value>
+        </member>
+        <member name="P:Apex.DataStructures.MatrixBounds.columns">
+            <summary>
+            Gets the number of columns.
+            </summary>
+            <value>
+            The columns.
+            </value>
+        </member>
+        <member name="P:Apex.DataStructures.MatrixBounds.rows">
+            <summary>
+            Gets the number of rows.
+            </summary>
+            <value>
+            The rows.
+            </value>
+        </member>
+        <member name="T:Apex.DataStructures.PolygonXZ">
+            <summary>
+            Represents a polygon in the XZ plane. This is not necessarily axis aligned.
+            </summary>
+        </member>
+        <member name="F:Apex.DataStructures.PolygonXZ.empty">
+            <summary>
+            Represents an empty polygon, i.e. zero edges.
+            </summary>
+        </member>
+        <member name="M:Apex.DataStructures.PolygonXZ.#ctor(UnityEngine.Vector3[])">
+            <summary>
+            Initializes a new instance of the <see cref="T:Apex.DataStructures.PolygonXZ"/> class.
+            </summary>
+            <param name="points">The points making up the polygon.</param>
+        </member>
+        <member name="M:Apex.DataStructures.PolygonXZ.#ctor(System.Int32)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Apex.DataStructures.PolygonXZ"/> class.
+            </summary>
+            <param name="capacity">The capacity.</param>
+        </member>
+        <member name="M:Apex.DataStructures.PolygonXZ.Contains(UnityEngine.Vector3)">
+            <summary>
+            Determines whether the specified point is contained within this polygon.
+            </summary>
+            <param name="test">The point to test.</param>
+            <returns><c>true</c> if the point is contained, otherwise <c>false</c></returns>
+        </member>
+        <member name="M:Apex.DataStructures.PolygonXZ.CalculateBounds">
+            <summary>
+            Calculates the bounds.
+            </summary>
+            <returns>The bounding rectangle</returns>
+        </member>
+        <member name="P:Apex.DataStructures.PolygonXZ.count">
+            <summary>
+            Gets the count.
+            </summary>
+            <value>
+            The count.
+            </value>
+        </member>
+        <member name="P:Apex.DataStructures.PolygonXZ.Item(System.Int32)">
+            <summary>
+            Gets the <see cref="T:UnityEngine.Vector3"/> with the specified index. There is no bounds checking.
+            </summary>
+            <value>
+            The <see cref="T:UnityEngine.Vector3"/>.
+            </value>
+            <param name="idx">The index.</param>
+            <returns>The point at the index</returns>
+        </member>
+        <member name="T:Apex.DataStructures.PriorityQueue`1">
+            <summary>
+            Basic priority queue, no entry order semantics
+            </summary>
+            <typeparam name="T">The item type</typeparam>
+        </member>
+        <member name="M:Apex.DataStructures.PriorityQueue`1.#ctor(System.Int32,Apex.DataStructures.QueueType)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Apex.DataStructures.PriorityQueue`1"/> class.
+            </summary>
+            <param name="capacity">The capacity.</param>
+            <param name="type">The type of queue.</param>
+        </member>
+        <member name="M:Apex.DataStructures.PriorityQueue`1.Enqueue(`0,System.Int32)">
+            <summary>
+            Enqueues the specified item.
+            </summary>
+            <param name="item">The item.</param>
+            <param name="priority">The priority.</param>
+        </member>
+        <member name="M:Apex.DataStructures.PriorityQueue`1.Dequeue">
+            <summary>
+            Dequeues the next item in the queue.
+            </summary>
+            <returns>The item</returns>
+        </member>
+        <member name="T:Apex.DataStructures.PriorityQueue`1.QueueItem">
+            <summary>
+            Wraps each item in the queue.
+            </summary>
+        </member>
+        <member name="M:Apex.DataStructures.PriorityQueue`1.QueueItem.#ctor(`0,System.Int32)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Apex.DataStructures.PriorityQueue`1.QueueItem"/> struct.
+            </summary>
+            <param name="item">The item.</param>
+            <param name="priority">The priority.</param>
+        </member>
+        <member name="P:Apex.DataStructures.PriorityQueue`1.QueueItem.item">
+            <summary>
+            Gets the item.
+            </summary>
+            <value>
+            The item.
+            </value>
+        </member>
+        <member name="P:Apex.DataStructures.PriorityQueue`1.QueueItem.priority">
+            <summary>
+            Gets the priority.
+            </summary>
+            <value>
+            The priority.
+            </value>
+        </member>
+        <member name="T:Apex.DataStructures.PriorityQueueFifo`1">
+            <summary>
+            Priority queue where same priority items will leave the queue in a FIFO manner
+            </summary>
+            <typeparam name="T">The item type</typeparam>
+        </member>
+        <member name="M:Apex.DataStructures.PriorityQueueFifo`1.#ctor(System.Int32,Apex.DataStructures.QueueType)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Apex.DataStructures.PriorityQueueFifo`1"/> class.
+            </summary>
+            <param name="capacity">The capacity.</param>
+            <param name="type">The type of queue.</param>
+        </member>
+        <member name="M:Apex.DataStructures.PriorityQueueFifo`1.Enqueue(`0,System.Int32)">
+            <summary>
+            Enqueues the specified item.
+            </summary>
+            <param name="item">The item.</param>
+            <param name="priority">The priority.</param>
+        </member>
+        <member name="M:Apex.DataStructures.PriorityQueueFifo`1.Dequeue">
+            <summary>
+            Dequeues the next item in the queue.
+            </summary>
+            <returns>The item</returns>
+        </member>
+        <member name="T:Apex.DataStructures.PriorityQueueFifo`1.QueueItemFifo">
+            <summary>
+            Wraps each item in the queue.
+            </summary>
+        </member>
+        <member name="M:Apex.DataStructures.PriorityQueueFifo`1.QueueItemFifo.#ctor(`0,System.Int32,System.Int32)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Apex.DataStructures.PriorityQueueFifo`1.QueueItemFifo"/> struct.
+            </summary>
+            <param name="item">The item.</param>
+            <param name="priority">The priority.</param>
+            <param name="entryOrder">The entry order.</param>
+        </member>
+        <member name="P:Apex.DataStructures.PriorityQueueFifo`1.QueueItemFifo.item">
+            <summary>
+            Gets the item.
+            </summary>
+            <value>
+            The item.
+            </value>
+        </member>
+        <member name="P:Apex.DataStructures.PriorityQueueFifo`1.QueueItemFifo.priority">
+            <summary>
+            Gets the priority.
+            </summary>
+            <value>
+            The priority.
+            </value>
+        </member>
+        <member name="P:Apex.DataStructures.PriorityQueueFifo`1.QueueItemFifo.entryOrder">
+            <summary>
+            Gets the entry order.
+            </summary>
+            <value>
+            The entry order.
+            </value>
+        </member>
+        <member name="T:Apex.DataStructures.PriorityQueueLifo`1">
+            <summary>
+            Priority queue where same priority items will leave the queue in a LIFO manner
+            </summary>
+            <typeparam name="T">The item type</typeparam>
+        </member>
+        <member name="M:Apex.DataStructures.PriorityQueueLifo`1.#ctor(System.Int32,Apex.DataStructures.QueueType)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Apex.DataStructures.PriorityQueueLifo`1"/> class.
+            </summary>
+            <param name="capacity">The capacity.</param>
+            <param name="type">The queue type.</param>
+        </member>
+        <member name="M:Apex.DataStructures.PriorityQueueLifo`1.Enqueue(`0,System.Int32)">
+            <summary>
+            Enqueues the specified item.
+            </summary>
+            <param name="item">The item.</param>
+            <param name="priority">The priority.</param>
+        </member>
+        <member name="M:Apex.DataStructures.PriorityQueueLifo`1.Dequeue">
+            <summary>
+            Dequeues the next item in the queue.
+            </summary>
+            <returns>The item</returns>
+        </member>
+        <member name="T:Apex.DataStructures.PriorityQueueLifo`1.QueueItemLifo">
+            <summary>
+            Wraps each item in the queue.
+            </summary>
+        </member>
+        <member name="M:Apex.DataStructures.PriorityQueueLifo`1.QueueItemLifo.#ctor(`0,System.Int32,System.Int32)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Apex.DataStructures.PriorityQueueLifo`1.QueueItemLifo"/> struct.
+            </summary>
+            <param name="item">The item.</param>
+            <param name="priority">The priority.</param>
+            <param name="entryOrder">The entry order.</param>
+        </member>
+        <member name="P:Apex.DataStructures.PriorityQueueLifo`1.QueueItemLifo.item">
+            <summary>
+            Gets the item.
+            </summary>
+            <value>
+            The item.
+            </value>
+        </member>
+        <member name="P:Apex.DataStructures.PriorityQueueLifo`1.QueueItemLifo.priority">
+            <summary>
+            Gets the priority.
+            </summary>
+            <value>
+            The priority.
+            </value>
+        </member>
+        <member name="P:Apex.DataStructures.PriorityQueueLifo`1.QueueItemLifo.entryOrder">
+            <summary>
+            Gets the entry order.
+            </summary>
+            <value>
+            The entry order.
+            </value>
+        </member>
+        <member name="T:Apex.DataStructures.QueueOnce`1">
+            <summary>
+            A queue that only lets a given item be queued once in the lifetime of the queue. Only use this as an intermediary structure to facilitate sampling.
+            </summary>
+            <typeparam name="T">The item type</typeparam>
+        </member>
+        <member name="M:Apex.DataStructures.QueueOnce`1.Enqueue(`0)">
+            <summary>
+            Enqueues the specified item.
+            </summary>
+            <param name="item">The item.</param>
+            <returns><c>true</c> if the item was added, i.e. has not already been added before, otherwise <c>false</c></returns>
+        </member>
+        <member name="M:Apex.DataStructures.QueueOnce`1.Enqueue(System.Collections.Generic.IEnumerable{`0})">
+            <summary>
+            Enqueues the specified items.
+            </summary>
+            <param name="items">The items.</param>
+        </member>
+        <member name="M:Apex.DataStructures.QueueOnce`1.Dequeue">
+            <summary>
+            Dequeues the next item in the queue.
+            </summary>
+            <returns>The item</returns>
+        </member>
+        <member name="M:Apex.DataStructures.QueueOnce`1.Clear">
+            <summary>
+            Clears this instance.
+            </summary>
+        </member>
+        <member name="M:Apex.DataStructures.QueueOnce`1.HasQueued(`0)">
+            <summary>
+            Determines whether the specified item has been queued before.
+            </summary>
+            <param name="item">The item.</param>
+            <returns><c>true</c> if the item has not already been added before, otherwise <c>false</c></returns>
+        </member>
+        <member name="P:Apex.DataStructures.QueueOnce`1.count">
+            <summary>
+            Gets the count.
+            </summary>
+            <value>
+            The count.
+            </value>
+        </member>
+        <member name="T:Apex.DataStructures.QueueType">
+            <summary>
+            Type of a priority queue
+            </summary>
+        </member>
+        <member name="F:Apex.DataStructures.QueueType.Min">
+            <summary>
+            The queue will put items with the lowest priority first in line
+            </summary>
+        </member>
+        <member name="F:Apex.DataStructures.QueueType.Max">
+            <summary>
+            The queue will put items with the highest priority first in line
+            </summary>
+        </member>
+        <member name="T:Apex.DataStructures.RectangleXZ">
+            <summary>
+            Represents an axis aligned Rectangle on the xz plane
+            </summary>
+        </member>
+        <member name="M:Apex.DataStructures.RectangleXZ.#ctor(UnityEngine.Vector3,System.Single,System.Single)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Apex.DataStructures.RectangleXZ"/> class.
+            </summary>
+            <param name="center">The center.</param>
+            <param name="width">The width.</param>
+            <param name="depth">The depth.</param>
+        </member>
+        <member name="M:Apex.DataStructures.RectangleXZ.#ctor(System.Single,System.Single,System.Single,System.Single)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Apex.DataStructures.RectangleXZ"/> class.
+            </summary>
+            <param name="minX">The minimum x.</param>
+            <param name="minZ">The minimum z.</param>
+            <param name="width">The width.</param>
+            <param name="depth">The depth.</param>
+        </member>
+        <member name="M:Apex.DataStructures.RectangleXZ.MinMaxRect(System.Single,System.Single,System.Single,System.Single)">
+            <summary>
+            Creates a rect from min/max values.
+            </summary>
+            <param name="minX">The minimum x.</param>
+            <param name="minZ">The minimum z.</param>
+            <param name="maxX">The maximum x.</param>
+            <param name="maxZ">The maximum z.</param>
+        </member>
+        <member name="M:Apex.DataStructures.RectangleXZ.Contains(UnityEngine.Vector3)">
+            <summary>
+            Determines whether <paramref name="point"/> is contained inside this rectangle.
+            </summary>
+            <param name="point">The point to check.</param>
+            <returns><c>true</c> if contained, otherwise false.</returns>
+        </member>
+        <member name="M:Apex.DataStructures.RectangleXZ.Contains(Apex.DataStructures.RectangleXZ)">
+            <summary>
+            Determines whether an<paramref name="other"/> rectangle is contained inside this rectangle.
+            </summary>
+            <param name="other">The rectangle to check.</param>
+            <returns><c>true</c> if contained or identical, otherwise false.</returns>
+        </member>
+        <member name="M:Apex.DataStructures.RectangleXZ.Overlaps(Apex.DataStructures.RectangleXZ)">
+            <summary>
+            Determines whether another rectangle overlaps this one (and vice versa).
+            </summary>
+            <param name="other">The other rectangle.</param>
+            <returns><c>true</c> if they overlap, otherwise false.</returns>
+        </member>
+        <member name="M:Apex.DataStructures.RectangleXZ.Overlaps(UnityEngine.Bounds)">
+            <summary>
+            Determines whether another bounds overlaps this one (and vice versa).
+            </summary>
+            <param name="b">The other bounds.</param>
+            <returns><c>true</c> if they overlap, otherwise false.</returns>
+        </member>
+        <member name="P:Apex.DataStructures.RectangleXZ.width">
+            <summary>
+            Gets the width.
+            </summary>
+            <value>
+            The width.
+            </value>
+        </member>
+        <member name="P:Apex.DataStructures.RectangleXZ.depth">
+            <summary>
+            Gets the depth.
+            </summary>
+            <value>
+            The depth.
+            </value>
+        </member>
+        <member name="P:Apex.DataStructures.RectangleXZ.center">
+            <summary>
+            Gets the center of the rectangle.
+            </summary>
+            <value>
+            The center.
+            </value>
+        </member>
+        <member name="P:Apex.DataStructures.RectangleXZ.size">
+            <summary>
+            Gets the size as a vector.
+            </summary>
+            <value>
+            The size.
+            </value>
+        </member>
+        <member name="T:Apex.DataStructures.SimpleQueue`1">
+            <summary>
+            A queue ADT that supports indexing.
+            </summary>
+            <typeparam name="T">The item type</typeparam>
+        </member>
+        <member name="M:Apex.DataStructures.SimpleQueue`1.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Apex.DataStructures.SimpleQueue`1"/> class.
+            </summary>
+        </member>
+        <member name="M:Apex.DataStructures.SimpleQueue`1.#ctor(System.Int32)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Apex.DataStructures.SimpleQueue`1"/> class.
+            </summary>
+            <param name="capacity">The capacity.</param>
+        </member>
+        <member name="M:Apex.DataStructures.SimpleQueue`1.Clear">
+            <summary>
+            Clears this instance.
+            </summary>
+        </member>
+        <member name="M:Apex.DataStructures.SimpleQueue`1.Peek">
+            <summary>
+            Returns the item at the front of the queue, but does not remove it.
+            </summary>
+            <returns>The item at the front of the queue.</returns>
+            <exception cref="T:System.InvalidOperationException">The queue is empty.</exception>
+        </member>
+        <member name="M:Apex.DataStructures.SimpleQueue`1.Last">
+            <summary>
+            Returns the item at the back of queue.
+            </summary>
+            <returns>The item at the back of queue.</returns>
+            <exception cref="T:System.InvalidOperationException">The queue is empty.</exception>
+        </member>
+        <member name="M:Apex.DataStructures.SimpleQueue`1.Dequeue">
+            <summary>
+            Removes and returns the item at the front of the queue.
+            </summary>
+            <returns>The item at the front of the queue</returns>
+            <exception cref="T:System.InvalidOperationException">The queue is empty.</exception>
+        </member>
+        <member name="M:Apex.DataStructures.SimpleQueue`1.Enqueue(`0)">
+            <summary>
+            Enters the specified item onto the back of the queue.
+            </summary>
+            <param name="item">The item.</param>
+        </member>
+        <member name="M:Apex.DataStructures.SimpleQueue`1.ToArray">
+            <summary>
+            Converts the queue to an array.
+            </summary>
+            <returns>An array of elements in the same order as they were in the queue.</returns>
+        </member>
+        <member name="P:Apex.DataStructures.SimpleQueue`1.count">
+            <summary>
+            Gets the count.
+            </summary>
+            <value>
+            The count.
+            </value>
+        </member>
+        <member name="P:Apex.DataStructures.SimpleQueue`1.Item(System.Int32)">
+            <summary>
+            Gets the item with the specified index.
+            </summary>
+            <value>
+            The item.
+            </value>
+            <param name="idx">The index.</param>
+            <returns>The item at the specified index</returns>
+        </member>
+        <member name="T:Apex.DataStructures.Vector3EqualityComparer">
+            <summary>
+            Equality comparer for Vector3s with equality threshold.
+            </summary>
+        </member>
+        <member name="M:Apex.DataStructures.Vector3EqualityComparer.#ctor(System.Single)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Apex.DataStructures.Vector3EqualityComparer"/> class.
+            </summary>
+            <param name="equalityThreshold">The equality threshold, i.e. if the square magnitude of the difference between two vectors falls below this, they are considered equal.</param>
+        </member>
+        <member name="M:Apex.DataStructures.Vector3EqualityComparer.Equals(UnityEngine.Vector3,UnityEngine.Vector3)">
+            <summary>
+            Determines whether the specified objects are equal.
+            </summary>
+            <param name="x">The first Vector to compare.</param>
+            <param name="y">The second Vector to compare.</param>
+            <returns>
+            true if the specified Vectors are equal; otherwise, false.
+            </returns>
+        </member>
+        <member name="M:Apex.DataStructures.Vector3EqualityComparer.GetHashCode(UnityEngine.Vector3)">
+            <summary>
+            Returns a hash code for this instance.
+            </summary>
+            <param name="obj">The Vector.</param>
+            <returns>
+            A hash code for this instance, suitable for use in hashing algorithms and data structures like a hash table. 
+            </returns>
+        </member>
+        <member name="T:Apex.DataStructures.VectorXZ">
+            <summary>
+            A vector in the XZ plane.
+            </summary>
+        </member>
+        <member name="F:Apex.DataStructures.VectorXZ.x">
+            <summary>
+            The x coordinate
+            </summary>
+        </member>
+        <member name="F:Apex.DataStructures.VectorXZ.z">
+            <summary>
+            The z coordinate
+            </summary>
+        </member>
+        <member name="M:Apex.DataStructures.VectorXZ.#ctor(System.Int32,System.Int32)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Apex.DataStructures.VectorXZ"/> struct.
+            </summary>
+            <param name="x">The x coordinate.</param>
+            <param name="z">The z coordinate.</param>
+        </member>
+        <member name="M:Apex.DataStructures.VectorXZ.op_Equality(Apex.DataStructures.VectorXZ,Apex.DataStructures.VectorXZ)">
+            <summary>
+            Implements the operator ==.
+            </summary>
+            <param name="lhs">The LHS.</param>
+            <param name="rhs">The RHS.</param>
+            <returns>
+            The result of the operator.
+            </returns>
+        </member>
+        <member name="M:Apex.DataStructures.VectorXZ.op_Inequality(Apex.DataStructures.VectorXZ,Apex.DataStructures.VectorXZ)">
+            <summary>
+            Implements the operator !=.
+            </summary>
+            <param name="lhs">The LHS.</param>
+            <param name="rhs">The RHS.</param>
+            <returns>
+            The result of the operator.
+            </returns>
+        </member>
+        <member name="M:Apex.DataStructures.VectorXZ.op_Addition(Apex.DataStructures.VectorXZ,Apex.DataStructures.VectorXZ)">
+            <summary>
+            Implements the operator +.
+            </summary>
+            <param name="a">The first vector</param>
+            <param name="b">The second vector.</param>
+            <returns>
+            The result of the operator.
+            </returns>
+        </member>
+        <member name="M:Apex.DataStructures.VectorXZ.op_Subtraction(Apex.DataStructures.VectorXZ,Apex.DataStructures.VectorXZ)">
+            <summary>
+            Implements the operator -.
+            </summary>
+            <param name="a">The first vector</param>
+            <param name="b">The second vector.</param>
+            <returns>
+            The result of the operator.
+            </returns>
+        </member>
+        <member name="M:Apex.DataStructures.VectorXZ.GetHashCode">
+            <summary>
+            Returns a hash code for this instance.
+            </summary>
+            <returns>
+            A hash code for this instance, suitable for use in hashing algorithms and data structures like a hash table.
+            </returns>
+        </member>
+        <member name="M:Apex.DataStructures.VectorXZ.Equals(System.Object)">
+            <summary>
+            Determines whether the specified <see cref="T:System.Object"/>, is equal to this instance.
+            </summary>
+            <param name="other">The <see cref="T:System.Object"/> to compare with this instance.</param>
+            <returns>
+              <c>true</c> if the specified <see cref="T:System.Object"/> is equal to this instance; otherwise, <c>false</c>.
+            </returns>
+        </member>
+        <member name="T:Apex.Debugging.LoadBalancerPerformanceVisualizer">
+            <summary>
+            A visualizer to show the load balancers in use are performing. Use this to ensure that load balancers have been configured appropriately to handle the number of items they handle.
+            </summary>
+        </member>
+        <member name="P:Apex.Debugging.LoadBalancerPerformanceVisualizer.data">
+            <summary>
+            Gets the data.
+            </summary>
+            <value>
+            The data.
+            </value>
+        </member>
+        <member name="T:Apex.Debugging.LoadBalancerPerformanceVisualizer.PerformanceData">
+            <summary>
+            Class encapsulating load balancer performance data
+            </summary>
+        </member>
+        <member name="M:Apex.Debugging.LoadBalancerPerformanceVisualizer.PerformanceData.#ctor(Apex.LoadBalancing.LoadBalancedQueue,System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Apex.Debugging.LoadBalancerPerformanceVisualizer.PerformanceData"/> class.
+            </summary>
+            <param name="source">The source.</param>
+            <param name="loadBalancerName">The name of the load balancer</param>
+        </member>
+        <member name="P:Apex.Debugging.LoadBalancerPerformanceVisualizer.PerformanceData.loadBalancerName">
+            <summary>
+            Gets the name of the load balancer.
+            </summary>
+            <value>
+            The name of the load balancer.
+            </value>
+        </member>
+        <member name="P:Apex.Debugging.LoadBalancerPerformanceVisualizer.PerformanceData.itemsCount">
+            <summary>
+            Gets the items count.
+            </summary>
+            <value>
+            The items count.
+            </value>
+        </member>
+        <member name="P:Apex.Debugging.LoadBalancerPerformanceVisualizer.PerformanceData.frameUpdatesOverdueAverage">
+            <summary>
+            Gets the frame updates overdue average.
+            </summary>
+            <value>
+            The frame updates overdue average.
+            </value>
+        </member>
+        <member name="P:Apex.Debugging.LoadBalancerPerformanceVisualizer.PerformanceData.frameUpdateMillisecondsUsed">
+            <summary>
+            Gets the frame update milliseconds used.
+            </summary>
+            <value>
+            The frame update milliseconds used.
+            </value>
+        </member>
+        <member name="P:Apex.Debugging.LoadBalancerPerformanceVisualizer.PerformanceData.frameUpdatedItemsCount">
+            <summary>
+            Gets the frame updated items count.
+            </summary>
+            <value>
+            The frame updated items count.
+            </value>
+        </member>
+        <member name="P:Apex.Debugging.LoadBalancerPerformanceVisualizer.PerformanceData.averageUpdatesOverdueAverage">
+            <summary>
+            Gets the average updates overdue average.
+            </summary>
+            <value>
+            The average updates overdue average.
+            </value>
+        </member>
+        <member name="P:Apex.Debugging.LoadBalancerPerformanceVisualizer.PerformanceData.averageUpdateMillisecondsUsed">
+            <summary>
+            Gets the average update milliseconds used.
+            </summary>
+            <value>
+            The average update milliseconds used.
+            </value>
+        </member>
+        <member name="P:Apex.Debugging.LoadBalancerPerformanceVisualizer.PerformanceData.averageUpdatedItemsCount">
+            <summary>
+            Gets the average updated items count.
+            </summary>
+            <value>
+            The average updated items count.
+            </value>
+        </member>
+        <member name="T:Apex.ExtendedMonoBehaviour">
+            <summary>
+            MonoBehaviour extension that couples Start and OnEnable to ensure that certain initialization logic is performed in both instances but only once.
+            </summary>
+        </member>
+        <member name="M:Apex.ExtendedMonoBehaviour.Start">
+            <summary>
+            Called on Start
+            </summary>
+        </member>
+        <member name="M:Apex.ExtendedMonoBehaviour.OnEnable">
+            <summary>
+            Called when enabled.
+            </summary>
+        </member>
+        <member name="M:Apex.ExtendedMonoBehaviour.OnStartAndEnable">
+            <summary>
+            Called on Start and OnEnable, but only one of the two, i.e. at startup it is only called once.
+            </summary>
+        </member>
+        <member name="T:Apex.IGameObjectComponent">
+            <summary>
+            Interface for objects that expose a GameObject.
+            </summary>
+        </member>
+        <member name="P:Apex.IGameObjectComponent.gameObject">
+            <summary>
+            Gets the game object.
+            </summary>
+            <value>
+            The game object.
+            </value>
+        </member>
+        <member name="T:Apex.ISupportRuntimeStateChange">
+            <summary>
+            Interface for enabling runtime state change on MonoBehaviours with custom editors.
+            </summary>
+        </member>
+        <member name="M:Apex.ISupportRuntimeStateChange.ReevaluateState">
+            <summary>
+            Reevaluates the state.
+            </summary>
+        </member>
+        <member name="T:Apex.LoadBalancing.ILoadBalanced">
+            <summary>
+            Interface for load balanced items
+            </summary>
+        </member>
+        <member name="M:Apex.LoadBalancing.ILoadBalanced.ExecuteUpdate(System.Single,System.Single)">
+            <summary>
+            Executes the update.
+            </summary>
+            <param name="deltaTime">The delta time, i.e. the time passed since the last update.</param>
+            <param name="nextInterval">The time that will pass until the next update.</param>
+            <returns>Can return the next interval by which the update should run. To use the default interval return null.</returns>
+        </member>
+        <member name="P:Apex.LoadBalancing.ILoadBalanced.repeat">
+            <summary>
+            Gets a value indicating whether to repeatedly update this entity each interval.
+            </summary>
+            <value>
+              <c>true</c> if the entity should be updated each interval; <c>false</c> if it should only be updated once and then removed from the load balancer.
+            </value>
+        </member>
+        <member name="T:Apex.LoadBalancing.ILoadBalancedHandle">
+            <summary>
+            Interface to represent items added to the load balancer, which allows a number of operations to be called.
+            </summary>
+        </member>
+        <member name="M:Apex.LoadBalancing.ILoadBalancedHandle.Stop">
+            <summary>
+            Stops the <see cref="P:Apex.LoadBalancing.ILoadBalancedHandle.item"/> from being executed in the load balancer.
+            </summary>
+        </member>
+        <member name="M:Apex.LoadBalancing.ILoadBalancedHandle.Pause">
+            <summary>
+            Pauses the execution of <see cref="P:Apex.LoadBalancing.ILoadBalancedHandle.item"/> in the load balancer.
+            </summary>
+        </member>
+        <member name="M:Apex.LoadBalancing.ILoadBalancedHandle.Resume">
+            <summary>
+            Resumes the execution of <see cref="P:Apex.LoadBalancing.ILoadBalancedHandle.item"/> in the load balancer.
+            </summary>
+        </member>
+        <member name="P:Apex.LoadBalancing.ILoadBalancedHandle.item">
+            <summary>
+            Gets the load balanced item to which this handle refers.
+            </summary>
+            <value>
+            The item.
+            </value>
+        </member>
+        <member name="P:Apex.LoadBalancing.ILoadBalancedHandle.isDisposed">
+            <summary>
+            Gets a value indicating whether this instance is disposed, meaning that the <see cref="P:Apex.LoadBalancing.ILoadBalancedHandle.item"/> has already completed and is no longer present in the load balancer.
+            </summary>
+            <value>
+            <c>true</c> if this instance is disposed; otherwise, <c>false</c>.
+            </value>
+        </member>
+        <member name="T:Apex.LoadBalancing.ILoadBalancer">
+            <summary>
+            Load balancer interface
+            </summary>
+        </member>
+        <member name="M:Apex.LoadBalancing.ILoadBalancer.Add(Apex.LoadBalancing.ILoadBalanced)">
+            <summary>
+            Adds the specified item.
+            </summary>
+            <param name="item">The item.</param>
+        </member>
+        <member name="M:Apex.LoadBalancing.ILoadBalancer.Add(Apex.LoadBalancing.ILoadBalanced,System.Boolean)">
+            <summary>
+            Adds the specified item.
+            </summary>
+            <param name="item">The item.</param>
+            <param name="delayFirstUpdate">if set to <c>true</c> the item will be scheduled for its first update <see cref="P:Apex.LoadBalancing.ILoadBalancer.defaultUpdateInterval"/> into the future, otherwise its first update will be as soon as possible.</param>
+        </member>
+        <member name="M:Apex.LoadBalancing.ILoadBalancer.Add(Apex.LoadBalancing.ILoadBalanced,System.Single)">
+            <summary>
+            Adds the specified item.
+            </summary>
+            <param name="item">The item.</param>
+            <param name="interval">The interval between updates. This overrides the <see cref="P:Apex.LoadBalancing.ILoadBalancer.defaultUpdateInterval"/>.</param>
+        </member>
+        <member name="M:Apex.LoadBalancing.ILoadBalancer.Add(Apex.LoadBalancing.ILoadBalanced,System.Single,System.Boolean)">
+            <summary>
+            Adds the specified item.
+            </summary>
+            <param name="item">The item.</param>
+            <param name="interval">The interval between updates. This overrides the <see cref="P:Apex.LoadBalancing.ILoadBalancer.defaultUpdateInterval"/>.</param>
+            <param name="delayFirstUpdate">if set to <c>true</c> the item will be scheduled for its first update <paramref name="interval"/> into the future, otherwise its first update will be as soon as possible.</param>
+        </member>
+        <member name="M:Apex.LoadBalancing.ILoadBalancer.Add(Apex.LoadBalancing.ILoadBalanced,System.Single,System.Single)">
+            <summary>
+            Adds the specified item.
+            </summary>
+            <param name="item">The item.</param>
+            <param name="interval">The interval between updates. This overrides the <see cref="P:Apex.LoadBalancing.ILoadBalancer.defaultUpdateInterval"/>.</param>
+            <param name="delayFirstUpdateBy">The delay by which the first update of the item will be scheduled.</param>
+        </member>
+        <member name="M:Apex.LoadBalancing.ILoadBalancer.Remove(Apex.LoadBalancing.ILoadBalanced)">
+            <summary>
+            Removes the specified item.
+            </summary>
+            <param name="item">The item.</param>
+        </member>
+        <member name="P:Apex.LoadBalancing.ILoadBalancer.defaultUpdateInterval">
+            <summary>
+            Gets the default update interval to use for items where a specific interval is not specified.
+            </summary>
+            <value>
+            The default update interval.
+            </value>
+        </member>
+        <member name="T:Apex.LoadBalancing.IMarshaller">
+            <summary>
+            Interface for marshalling actions from a thread onto the main thread.
+            </summary>
+        </member>
+        <member name="M:Apex.LoadBalancing.IMarshaller.ExecuteOnMainThread(System.Action)">
+            <summary>
+            Executes the action on the main thread.
+            </summary>
+            <param name="a">The action.</param>
+        </member>
+        <member name="T:Apex.LoadBalancing.LoadBalancedActionPool">
+            <summary>
+            Extension for executing tasks in the load balancer.
+            </summary>
+        </member>
+        <member name="M:Apex.LoadBalancing.LoadBalancedActionPool.ExecuteOnce(Apex.LoadBalancing.ILoadBalancer,System.Action,System.Single)">
+            <summary>
+            Executes the specified action once.
+            </summary>
+            <param name="lb">The load balancer.</param>
+            <param name="action">The action.</param>
+            <param name="delay">The delay until the action is executed.</param>
+        </member>
+        <member name="M:Apex.LoadBalancing.LoadBalancedActionPool.Execute(Apex.LoadBalancing.ILoadBalancer,System.Func{System.Single,System.Boolean},System.Boolean)">
+            <summary>
+            Executes the specified action as long as it returns <c>true</c>.
+            </summary>
+            <param name="lb">The load balancer.</param>
+            <param name="action">The action.</param>
+            <param name="delayFirstUpdate">if set to <c>true</c> the first execution of the action will be delayed by <paramref name="interval"/>, otherwise it will run on the next frame.</param>
+            <returns>A handle that can be used to Stop, pause and resume the action.</returns>
+        </member>
+        <member name="M:Apex.LoadBalancing.LoadBalancedActionPool.Execute(Apex.LoadBalancing.ILoadBalancer,System.Func{System.Single,System.Boolean},System.Single,System.Boolean)">
+            <summary>
+            Executes the specified action as long as it returns <c>true</c>.
+            </summary>
+            <param name="lb">The load balancer.</param>
+            <param name="action">The action.</param>
+            <param name="interval">The interval between the action being executed.</param>
+            <param name="delayFirstUpdate">if set to <c>true</c> the first execution of the action will be delayed by <paramref name="interval"/>, otherwise it will run on the next frame.</param>
+            <returns>A handle that can be used to Stop, pause and resume the action.</returns>
+        </member>
+        <member name="M:Apex.LoadBalancing.LoadBalancedActionPool.Execute(Apex.LoadBalancing.ILoadBalancer,System.Func{System.Single,System.Boolean},System.Single,System.Single)">
+            <summary>
+            Executes the specified action as long as it returns <c>true</c>.
+            </summary>
+            <param name="lb">The load balancer.</param>
+            <param name="action">The action.</param>
+            <param name="interval">The interval between the action being executed.</param>
+            <param name="delayFirstUpdateBy">The delay by which the first execution of the action will be scheduled.</param>
+            <returns>A handle that can be used to Stop, pause and resume the action.</returns>
+        </member>
+        <member name="M:Apex.LoadBalancing.LoadBalancedActionPool.Execute(Apex.LoadBalancing.ILoadBalancer,System.Collections.IEnumerator,System.Int32)">
+            <summary>
+            Executes the specified long running action.
+            </summary>
+            <param name="lb">The load balancer.</param>
+            <param name="longRunningAction">The long running action, i.e. an action that will execute in steps by means of an enumerator.</param>
+            <param name="maxMillisecondsUsedPerFrame">The maximum milliseconds to use per frame.</param>
+            <returns>>A handle that can be used to Stop, pause and resume the action.</returns>
+        </member>
+        <member name="T:Apex.LoadBalancing.LoadBalancedQueue">
+            <summary>
+            A special queue which updates a certain (max) number of items each time its <see cref="M:Apex.LoadBalancing.LoadBalancedQueue.Update"/> method is called.
+            </summary>
+        </member>
+        <member name="M:Apex.LoadBalancing.LoadBalancedQueue.#ctor(System.Int32)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Apex.LoadBalancing.LoadBalancedQueue"/> class.
+            </summary>
+            <param name="capacity">The capacity.</param>
+        </member>
+        <member name="M:Apex.LoadBalancing.LoadBalancedQueue.#ctor(System.Int32,System.Single,System.Boolean)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Apex.LoadBalancing.LoadBalancedQueue"/> class.
+            </summary>
+            <param name="capacity">The capacity.</param>
+            <param name="defaultUpdateInterval">The default update interval to use for items where a specific interval is not specified.</param>
+            <param name="autoAdjust">Controls whether to automatically adjust <see cref="P:Apex.LoadBalancing.LoadBalancedQueue.maxUpdatesPerInterval"/> and <see cref="P:Apex.LoadBalancing.LoadBalancedQueue.maxUpdateTimeInMillisecondsPerUpdate"/>,
+            such that all queued items will be evenly spread across the <see cref="P:Apex.LoadBalancing.LoadBalancedQueue.defaultUpdateInterval"/>.</param>
+        </member>
+        <member name="M:Apex.LoadBalancing.LoadBalancedQueue.#ctor(System.Int32,System.Single,System.Int32,System.Int32)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Apex.LoadBalancing.LoadBalancedQueue"/> class.
+            </summary>
+            <param name="capacity">The capacity.</param>
+            <param name="defaultUpdateInterval">The default update interval to use for items where a specific interval is not specified.</param>
+            <param name="maxUpdatesPerInterval">The maximum number of items to update on each call to <see cref="M:Apex.LoadBalancing.LoadBalancedQueue.Update"/>.</param>
+            <param name="maxUpdateTimeInMillisecondsPerUpdate">The maximum update time in milliseconds that each call to <see cref="M:Apex.LoadBalancing.LoadBalancedQueue.Update"/> is allowed to take.</param>
+        </member>
+        <member name="M:Apex.LoadBalancing.LoadBalancedQueue.Add(Apex.LoadBalancing.ILoadBalanced)">
+            <summary>
+            Adds the specified item.
+            </summary>
+            <param name="item">The item.</param>
+        </member>
+        <member name="M:Apex.LoadBalancing.LoadBalancedQueue.Add(Apex.LoadBalancing.ILoadBalanced,System.Boolean)">
+            <summary>
+            Adds the specified item.
+            </summary>
+            <param name="item">The item.</param>
+            <param name="delayFirstUpdate">if set to <c>true</c> the item will be scheduled for its first update <see cref="P:Apex.LoadBalancing.LoadBalancedQueue.defaultUpdateInterval"/> into the future, otherwise its first update will be as soon as possible.</param>
+        </member>
+        <member name="M:Apex.LoadBalancing.LoadBalancedQueue.Add(Apex.LoadBalancing.ILoadBalanced,System.Single)">
+            <summary>
+            Adds the specified item.
+            </summary>
+            <param name="item">The item.</param>
+            <param name="interval">The interval between updates. This overrides the <see cref="P:Apex.LoadBalancing.LoadBalancedQueue.defaultUpdateInterval"/>.</param>
+        </member>
+        <member name="M:Apex.LoadBalancing.LoadBalancedQueue.Add(Apex.LoadBalancing.ILoadBalanced,System.Single,System.Boolean)">
+            <summary>
+            Adds the specified item.
+            </summary>
+            <param name="item">The item.</param>
+            <param name="interval">The interval between updates. This overrides the <see cref="P:Apex.LoadBalancing.LoadBalancedQueue.defaultUpdateInterval"/>.</param>
+            <param name="delayFirstUpdate">if set to <c>true</c> the item will be scheduled for its first update <paramref name="interval"/> into the future, otherwise its first update will be as soon as possible.</param>
+        </member>
+        <member name="M:Apex.LoadBalancing.LoadBalancedQueue.Add(Apex.LoadBalancing.ILoadBalanced,System.Single,System.Single)">
+            <summary>
+            Adds the specified item.
+            </summary>
+            <param name="item">The item.</param>
+            <param name="interval">The interval between updates. This overrides the <see cref="P:Apex.LoadBalancing.LoadBalancedQueue.defaultUpdateInterval"/>.</param>
+            <param name="delayFirstUpdateBy">The delay by which the first update of the item will be scheduled.</param>
+        </member>
+        <member name="M:Apex.LoadBalancing.LoadBalancedQueue.Remove(Apex.LoadBalancing.ILoadBalanced)">
+            <summary>
+            Removes the specified item.
+            </summary>
+            <param name="item">The item.</param>
+        </member>
+        <member name="M:Apex.LoadBalancing.LoadBalancedQueue.Update">
+            <summary>
+            Updates as many items as possible within the constraints of <see cref="P:Apex.LoadBalancing.LoadBalancedQueue.maxUpdatesPerInterval"/> and <see cref="P:Apex.LoadBalancing.LoadBalancedQueue.maxUpdateTimeInMillisecondsPerUpdate"/>.
+            Items are updated only when their time is up, that is when they have not been updated for the interval with which they where added.
+            </summary>
+        </member>
+        <member name="P:Apex.LoadBalancing.LoadBalancedQueue.defaultUpdateInterval">
+            <summary>
+            Gets or sets the default update interval to use for items where a specific interval is not specified.
+            </summary>
+            <value>
+            The default update interval.
+            </value>
+        </member>
+        <member name="P:Apex.LoadBalancing.LoadBalancedQueue.maxUpdatesPerInterval">
+            <summary>
+            Gets or sets the maximum number of items to update on each call to <see cref="M:Apex.LoadBalancing.LoadBalancedQueue.Update"/>.
+            </summary>
+            <value>
+            The maximum updates per interval.
+            </value>
+        </member>
+        <member name="P:Apex.LoadBalancing.LoadBalancedQueue.maxUpdateTimeInMillisecondsPerUpdate">
+            <summary>
+            Gets or sets the maximum update time in milliseconds that each call to <see cref="M:Apex.LoadBalancing.LoadBalancedQueue.Update"/> is allowed to take.
+            </summary>
+            <value>
+            The maximum update time in milliseconds per update.
+            </value>
+        </member>
+        <member name="P:Apex.LoadBalancing.LoadBalancedQueue.autoAdjust">
+            <summary>
+            Gets or sets a value indicating whether to automatically adjust <see cref="P:Apex.LoadBalancing.LoadBalancedQueue.maxUpdatesPerInterval"/> and <see cref="P:Apex.LoadBalancing.LoadBalancedQueue.maxUpdateTimeInMillisecondsPerUpdate"/>,
+            such that all queued items will be evenly spread across the <see cref="P:Apex.LoadBalancing.LoadBalancedQueue.defaultUpdateInterval"/>.
+            </summary>
+            <value>
+              <c>true</c> to automatically adjust; otherwise, <c>false</c>.
+            </value>
+        </member>
+        <member name="P:Apex.LoadBalancing.LoadBalancedQueue.updatesOverdueByTotal">
+            <summary>
+            Gets the accumulated number of seconds the updates were overdue this frame, i.e. sum of all updates.
+            </summary>
+        </member>
+        <member name="P:Apex.LoadBalancing.LoadBalancedQueue.updateMillisecondsUsed">
+            <summary>
+            Gets the time used on the last update.
+            </summary>
+            <value>
+            The update milliseconds used.
+            </value>
+        </member>
+        <member name="P:Apex.LoadBalancing.LoadBalancedQueue.updatedItemsCount">
+            <summary>
+            Gets the updated items count, i.e. how many items were updated last frame
+            </summary>
+            <value>
+            The updated items count.
+            </value>
+        </member>
+        <member name="P:Apex.LoadBalancing.LoadBalancedQueue.itemCount">
+            <summary>
+            Gets the item count, i.e. the number of items currently in the load balancer.
+            </summary>
+            <value>
+            The item count.
+            </value>
+        </member>
+        <member name="T:Apex.LoadBalancing.LoadBalancer">
+            <summary>
+            Exposes a <see cref="T:Apex.LoadBalancing.LoadBalancedQueue"/> to balance the workload of the game.
+            Extend this class to add more load balancers.
+            </summary>
+        </member>
+        <member name="F:Apex.LoadBalancing.LoadBalancer.defaultBalancer">
+            <summary>
+            The default load balancer
+            </summary>
+        </member>
+        <member name="M:Apex.LoadBalancing.LoadBalancer.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Apex.LoadBalancing.LoadBalancer"/> class. This class however is not meant to be instantiated.
+            </summary>
+        </member>
+        <member name="P:Apex.LoadBalancing.LoadBalancer.marshaller">
+            <summary>
+            The marshaller that can be used to execute actions on the main thread from another thread
+            </summary>
+        </member>
+        <member name="T:Apex.LoadBalancing.LoadBalancerComponent">
+            <summary>
+            Component for configuring the various <see cref="T:Apex.LoadBalancing.LoadBalancedQueue"/>s exposed by the <see cref="T:Apex.LoadBalancing.LoadBalancer"/> and derivatives.
+            </summary>
+        </member>
+        <member name="T:Apex.SingleInstanceComponent`1">
+            <summary>
+            A component of which only one instance will be allowed to exist in the game world. Its a singleton but not referable as such.
+            </summary>
+            <typeparam name="T">The type of the derived behaviour</typeparam>
+        </member>
+        <member name="M:Apex.SingleInstanceComponent`1.OnDestroy">
+            <summary>
+            Called when destroyed.
+            </summary>
+        </member>
+        <member name="M:Apex.SingleInstanceComponent`1.OnAwake">
+            <summary>
+            Called on awake.
+            </summary>
+        </member>
+        <member name="M:Apex.LoadBalancing.LoadBalancerComponent.OnAwake">
+            <summary>
+            Called on awake.
+            </summary>
+        </member>
+        <member name="P:Apex.LoadBalancing.LoadBalancerComponent.configurations">
+            <summary>
+            Gets configurations for all resolved load balancers
+            </summary>
+        </member>
+        <member name="P:Apex.LoadBalancing.LoadBalancerComponent.loadBalancers">
+            <summary>
+            Gets all resolved load balancers.
+            </summary>
+        </member>
+        <member name="T:Apex.LoadBalancing.LoadBalancerConfig">
+            <summary>
+            Configuration of <see cref="T:Apex.LoadBalancing.LoadBalancedQueue"/>s.
+            </summary>
+        </member>
+        <member name="F:Apex.LoadBalancing.LoadBalancerConfig.updateInterval">
+            <summary>
+            The update interval
+            </summary>
+        </member>
+        <member name="F:Apex.LoadBalancing.LoadBalancerConfig.maxUpdatesPerFrame">
+            <summary>
+            The maximum updates per frame
+            </summary>
+        </member>
+        <member name="F:Apex.LoadBalancing.LoadBalancerConfig.maxUpdateTimeInMillisecondsPerUpdate">
+            <summary>
+            The maximum update time in milliseconds per update
+            </summary>
+        </member>
+        <member name="F:Apex.LoadBalancing.LoadBalancerConfig.autoAdjust">
+            <summary>
+            Controls whether to automatically adjust <see cref="F:Apex.LoadBalancing.LoadBalancerConfig.maxUpdatesPerFrame"/> and <see cref="F:Apex.LoadBalancing.LoadBalancerConfig.maxUpdateTimeInMillisecondsPerUpdate"/>,
+            such that all queued items will be evenly spread across the <see cref="F:Apex.LoadBalancing.LoadBalancerConfig.updateInterval"/>.
+            </summary>
+        </member>
+        <member name="F:Apex.LoadBalancing.LoadBalancerConfig.targetLoadBalancer">
+            <summary>
+            The target load balancer name
+            </summary>
+        </member>
+        <member name="P:Apex.LoadBalancing.LoadBalancerConfig.associatedLoadBalancer">
+            <summary>
+            Gets the associated load balancer.
+            </summary>
+            <value>
+            The associated load balancer.
+            </value>
+        </member>
+        <member name="T:Apex.LoadBalancing.LongRunningAction">
+            <summary>
+            Represents an action that can run over several frames. This type of action will run only once, but it will execute over as many frames as needed.
+            </summary>
+        </member>
+        <member name="M:Apex.LoadBalancing.LongRunningAction.#ctor(System.Func{System.Collections.IEnumerator},System.Int32)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Apex.LoadBalancing.LongRunningAction"/> class.
+            </summary>
+            <param name="action">The action to execute. This should yield at intervals to allow distributed execution.</param>
+            <param name="maxMillisecondUsedPerFrame">The maximum milliseconds used per frame.</param>
+        </member>
+        <member name="M:Apex.LoadBalancing.LongRunningAction.#ctor(System.Func{System.Collections.IEnumerator},System.Int32,System.Action)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Apex.LoadBalancing.LongRunningAction"/> class.
+            </summary>
+            <param name="action">The action to execute. This should yield at intervals to allow distributed execution.</param>
+            <param name="maxMillisecondUsedPerFrame">The maximum milliseconds used per frame.</param>
+            <param name="callback">A callback which will be invoked once the action is complete.</param>
+        </member>
+        <member name="M:Apex.LoadBalancing.LongRunningAction.#ctor(System.Collections.IEnumerator,System.Int32)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Apex.LoadBalancing.LongRunningAction"/> class.
+            </summary>
+            <param name="action">The action to execute represented by an enumerator, e.g. step-wise execution.</param>
+            <param name="maxMillisecondUsedPerFrame">The maximum milliseconds used per frame.</param>
+        </member>
+        <member name="M:Apex.LoadBalancing.LongRunningAction.#ctor(System.Collections.IEnumerator,System.Int32,System.Action)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Apex.LoadBalancing.LongRunningAction"/> class.
+            </summary>
+            <param name="action">The action to execute represented by an enumerator, e.g. step-wise execution.</param>
+            <param name="maxMillisecondUsedPerFrame">The maximum milliseconds used per frame.</param>
+            <param name="callback">A callback which will be invoked once the action is complete.</param>
+        </member>
+        <member name="M:Apex.LoadBalancing.LongRunningAction.ExecuteUpdate(System.Single,System.Single)">
+            <summary>
+            Executes the update.
+            </summary>
+            <param name="deltaTime">The delta time, i.e. the time passed since the last update.</param>
+            <param name="nextInterval">The time that will pass until the next update.</param>
+            <returns>
+            Can return the next interval by which the update should run. To use the default interval return null.
+            </returns>
+        </member>
+        <member name="P:Apex.LoadBalancing.LongRunningAction.repeat">
+            <summary>
+            Gets a value indicating whether to repeatedly update this entity each interval.
+            </summary>
+            <value>
+            <c>true</c> if the entity should be updated each interval; <c>false</c> if it should only be updated once and then removed from the load balancer.
+            </value>
+        </member>
+        <member name="T:Apex.LoadBalancing.Marshaller">
+            <summary>
+            Utility for marshalling an action from a thread onto the main thread.
+            </summary>
+        </member>
+        <member name="M:Apex.LoadBalancing.Marshaller.ExecuteOnMainThread(System.Action)">
+            <summary>
+            Executes the action on the main thread.
+            </summary>
+            <param name="a">The action.</param>
+        </member>
+        <member name="T:Apex.LoadBalancing.OneTimeAction">
+            <summary>
+            Represents a one-off action that will be executed by a load balancer.
+            </summary>
+        </member>
+        <member name="M:Apex.LoadBalancing.OneTimeAction.#ctor(System.Action{System.Single})">
+            <summary>
+            Initializes a new instance of the <see cref="T:Apex.LoadBalancing.OneTimeAction"/> class.
+            </summary>
+            <param name="action">The action to execute. The action will receive the time since it was queued as an argument.</param>
+        </member>
+        <member name="M:Apex.LoadBalancing.OneTimeAction.ExecuteUpdate(System.Single,System.Single)">
+            <summary>
+            Executes the update.
+            </summary>
+            <param name="deltaTime">The delta time, i.e. the time passed since the last update.</param>
+            <param name="nextInterval">The time that will pass until the next update.</param>
+            <returns>
+            Can return the next interval by which the update should run. To use the default interval return null.
+            </returns>
+        </member>
+        <member name="P:Apex.LoadBalancing.OneTimeAction.repeat">
+            <summary>
+            Gets a value indicating whether to repeatedly update this entity each interval. This will always be <c>false</c> for a <see cref="T:Apex.LoadBalancing.OneTimeAction"/>
+            </summary>
+            <value>
+            <c>true</c> if the entity should be updated each interval; <c>false</c> if it should only be updated once and then removed from the load balancer.
+            </value>
+        </member>
+        <member name="T:Apex.LoadBalancing.RepeatableAction">
+            <summary>
+            Represents an action that will be executed by a load balancer and may be repeated any number of times.
+            </summary>
+        </member>
+        <member name="M:Apex.LoadBalancing.RepeatableAction.#ctor(System.Func{System.Single,System.Boolean})">
+            <summary>
+            Initializes a new instance of the <see cref="T:Apex.LoadBalancing.RepeatableAction"/> class. The action will repeat as long as <paramref name="action"/> returns <c>true</c>.
+            </summary>
+            <param name="action">The action to execute. The action will receive the time since it was queued as an argument, and should return whether to continue to repeat or not.</param>
+        </member>
+        <member name="M:Apex.LoadBalancing.RepeatableAction.#ctor(System.Func{System.Single,System.Boolean},System.Int32)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Apex.LoadBalancing.RepeatableAction"/> class.
+            </summary>
+            <param name="action">The action to execute. The action will receive the time since it was queued as an argument, and should return whether to continue to repeat or not.</param>
+            <param name="repetitions">The number of times to repeat this action provided the action itself returns <c>true</c></param>
+        </member>
+        <member name="M:Apex.LoadBalancing.RepeatableAction.ExecuteUpdate(System.Single,System.Single)">
+            <summary>
+            Executes the update.
+            </summary>
+            <param name="deltaTime">The delta time, i.e. the time passed since the last update.</param>
+            <param name="nextInterval">The time that will pass until the next update.</param>
+            <returns>
+            Can return the next interval by which the update should run. To use the default interval return null.
+            </returns>
+        </member>
+        <member name="P:Apex.LoadBalancing.RepeatableAction.repeat">
+            <summary>
+            Gets a value indicating whether to repeatedly update this entity each interval.
+            </summary>
+            <value>
+            <c>true</c> if the entity should be updated each interval; <c>false</c> if it should only be updated once and then removed from the load balancer.
+            </value>
+        </member>
+        <member name="T:Apex.MaskMatch">
+            <summary>
+            How mask matching is done when evaluating A &amp; B
+            </summary>
+        </member>
+        <member name="F:Apex.MaskMatch.NoMatch">
+            <summary>
+            The masks A and B share no bits.
+            </summary>
+        </member>
+        <member name="F:Apex.MaskMatch.Partial">
+            <summary>
+            Partial matching means at least one bit in common between mask A and B.
+            </summary>
+        </member>
+        <member name="F:Apex.MaskMatch.Strict">
+            <summary>
+            Strict matching means that all bits in B must be in A.
+            </summary>
+        </member>
+        <member name="F:Apex.MaskMatch.Equals">
+            <summary>
+            Equals matching means that A and B must be equal, e.g. full match.
+            </summary>
+        </member>
+        <member name="T:Apex.SharedExtensions">
+            <summary>
+            Various extension of common nature.
+            </summary>
+        </member>
+        <member name="M:Apex.SharedExtensions.Apply``1(System.Collections.Generic.IEnumerable{``0},System.Action{``0})">
+            <summary>
+            Applies the specified action to all elements in a list.
+            </summary>
+            <typeparam name="T">The item type</typeparam>
+            <param name="list">The list.</param>
+            <param name="action">The action.</param>
+        </member>
+        <member name="M:Apex.SharedExtensions.Apply``1(System.Collections.Generic.IList{``0},System.Action{``0})">
+            <summary>
+            Applies the specified action to all elements in a list.
+            </summary>
+            <typeparam name="T">The item type</typeparam>
+            <param name="list">The list.</param>
+            <param name="action">The action.</param>
+        </member>
+        <member name="M:Apex.SharedExtensions.Apply``1(Apex.DataStructures.IIndexable{``0},System.Action{``0})">
+            <summary>
+            Applies the specified action to all elements in a list.
+            </summary>
+            <typeparam name="T">The item type</typeparam>
+            <param name="list">The list.</param>
+            <param name="action">The action.</param>
+        </member>
+        <member name="M:Apex.SharedExtensions.ToArray``1(Apex.DataStructures.IIndexable{``0})">
+            <summary>
+            Copies the contents of the list to a new array and returns it.
+            </summary>
+            <typeparam name="T">The type of the list items</typeparam>
+            <param name="list">The list.</param>
+            <returns>The new array containing the items of the list</returns>
+        </member>
+        <member name="M:Apex.SharedExtensions.AddRange``1(System.Collections.Generic.ICollection{``0},System.Collections.Generic.IEnumerable{``0})">
+            <summary>
+            Adds the range of elements.
+            </summary>
+            <typeparam name="T">The item type</typeparam>
+            <param name="list">The list.</param>
+            <param name="items">The items.</param>
+        </member>
+        <member name="M:Apex.SharedExtensions.AddUnique``1(System.Collections.Generic.IList{``0},``0)">
+            <summary>
+            Utility enhancement to ordinary lists to allow them to work as a set. Only use this on small lists otherwise a dedicated data structure should be employed.
+            </summary>
+            <typeparam name="T">The item type</typeparam>
+            <param name="list">The list.</param>
+            <param name="item">The item.</param>
+        </member>
+        <member name="M:Apex.SharedExtensions.AddRangeUnique``1(System.Collections.Generic.IList{``0},System.Collections.Generic.IEnumerable{``0})">
+            <summary>
+            Utility enhancement to ordinary lists to allow them to work as a set. Only use this on small lists otherwise a dedicated data structure should be employed.
+            </summary>
+            <typeparam name="T">The item type</typeparam>
+            <param name="list">The list.</param>
+            <param name="items">The items.</param>
+        </member>
+        <member name="M:Apex.SharedExtensions.Reorder(System.Collections.IList,System.Int32,System.Int32)">
+            <summary>
+            Repositions a list element at a new index.
+            </summary>
+            <param name="list">The list.</param>
+            <param name="fromIdx">From index.</param>
+            <param name="toIdx">To index.</param>
+        </member>
+        <member name="M:Apex.SharedExtensions.ReorderList``1(System.Collections.Generic.IList{``0},System.Int32,System.Int32)">
+            <summary>
+            Repositions a list element at a new index.
+            </summary>
+            <param name="list">The list.</param>
+            <param name="fromIdx">From index.</param>
+            <param name="toIdx">To index.</param>
+        </member>
+        <member name="M:Apex.SharedExtensions.EnsureCapacity``1(System.Collections.Generic.List{``0},System.Int32)">
+            <summary>
+            Ensures the capacity of a List.
+            </summary>
+            <typeparam name="T">The list item type</typeparam>
+            <param name="list">The list.</param>
+            <param name="capacity">The capacity to sensure.</param>
+        </member>
+        <member name="M:Apex.SharedExtensions.GetAttribute``1(System.Reflection.ICustomAttributeProvider,System.Boolean)">
+            <summary>
+            Gets an attribute if it exists.
+            </summary>
+            <typeparam name="T">The attribute type.</typeparam>
+            <param name="inf">The element on which to look for the attribute.</param>
+            <param name="inherit">Whether or not to include inherited attributes.</param>
+            <returns>The attribute instance if found; otherwise null.</returns>
+        </member>
+        <member name="M:Apex.SharedExtensions.GetAttributes``1(System.Reflection.ICustomAttributeProvider,System.Boolean)">
+            <summary>
+            Gets all attributes of a given type on an element, e.g. type, property etc.
+            </summary>
+            <typeparam name="T">The attribute type</typeparam>
+            <param name="inf">The element on which to look for the attribute.</param>
+            <param name="inherit">Whether or not to include inherited attributes.</param>
+            <returns>An enumerable of all attribute instances, or null if none were found.</returns>
+        </member>
+        <member name="M:Apex.SharedExtensions.IsDefined``1(System.Reflection.ICustomAttributeProvider,System.Boolean)">
+            <summary>
+            Determines whether the specified attribute is defined.
+            </summary>
+            <typeparam name="T">The attribute type</typeparam>
+            <param name="inf">The element on which to look for the attribute.</param>
+            <param name="inherit">Whether or not to include inherited attributes.</param>
+            <returns><c>true</c> if found; otherwise <c>false</c>.</returns>
+        </member>
+        <member name="M:Apex.SharedExtensions.Value``2(System.Collections.Generic.Dictionary{``0,``1},``0)">
+            <summary>
+            Gets a value from a dictionary or null if the key was not found.
+            </summary>
+            <typeparam name="TKey">The type of the key.</typeparam>
+            <typeparam name="T">The type of the value</typeparam>
+            <param name="dict">The dictionary.</param>
+            <param name="key">The key.</param>
+            <returns>The value if found; otherwise <c>null</c></returns>
+        </member>
+        <member name="M:Apex.SharedExtensions.ExpandFromPascal(System.String)">
+            <summary>
+            Inserts spaces between each token in a Pascal cased string
+            </summary>
+            <param name="pascalString">The string to parse</param>
+            <returns>The converted string</returns>
+        </member>
+        <member name="M:Apex.SharedExtensions.PrettyName(System.Type)">
+            <summary>
+            Prettyfies the name inserting spaces and removing any generics from the name.
+            </summary>
+            <param name="t">The type.</param>
+            <returns>The oh so pretty name.</returns>
+        </member>
+        <member name="M:Apex.SharedExtensions.Fuse``1(``0[],``0[])">
+            <summary>
+            Fuses the specified arrays.
+            </summary>
+            <typeparam name="T">The type of the arrays</typeparam>
+            <param name="arrOne">The first array.</param>
+            <param name="arrTwo">The second array.</param>
+            <returns>An array containing all elements of the two source arrays in their original order. If either array is null the other is returned.</returns>
+        </member>
+        <member name="M:Apex.SharedExtensions.IndexOf``1(``0[],``0)">
+            <summary>
+            Gets the index of a value in an array.
+            </summary>
+            <typeparam name="T">The type of items in the array</typeparam>
+            <param name="array">The array.</param>
+            <param name="value">The value to look for.</param>
+            <returns>The index of the value, or -1 if not found</returns>
+        </member>
+        <member name="T:Apex.SharedUnityExtensions">
+            <summary>
+            Various extension to Unity types.
+            </summary>
+        </member>
+        <member name="M:Apex.SharedUnityExtensions.GetColliderAtPosition(UnityEngine.Camera,UnityEngine.Vector3,UnityEngine.LayerMask,System.Single)">
+            <summary>
+            Gets the collider at position.
+            </summary>
+            <param name="cam">The camera.</param>
+            <param name="screenPos">The screen position.</param>
+            <param name="layerMask">The layer mask.</param>
+            <param name="maxDistance">The maximum distance.</param>
+            <returns>The first collider found in the game world at the specified screen position.</returns>
+        </member>
+        <member name="M:Apex.SharedUnityExtensions.ScreenToLayerHit(UnityEngine.Camera,UnityEngine.Vector3,UnityEngine.LayerMask,System.Single,UnityEngine.RaycastHit@)">
+            <summary>
+            Casts a ray from the camera to the specified position.
+            </summary>
+            <param name="cam">The camera.</param>
+            <param name="screenPos">The screen position.</param>
+            <param name="layerMask">The layer mask.</param>
+            <param name="maxDistance">The maximum distance.</param>
+            <param name="hit">The hit details.</param>
+            <returns><c>true</c> if the ray hit something, otherwise <c>false</c></returns>
+        </member>
+        <member name="M:Apex.SharedUnityExtensions.ScreenToGroundPoint(UnityEngine.Camera,UnityEngine.Vector3)">
+            <summary>
+            Casts a ray from the camera to the xz plane through the specified screen point and returns the point the ray intersects the xz plane in world coordinates.
+            </summary>
+            <param name="cam">The camera.</param>
+            <param name="screenPos">The screen position.</param>
+            <returns>The intersection point on the xz plane in world coordinates</returns>
+        </member>
+        <member name="M:Apex.SharedUnityExtensions.ScreenToGroundPoint(UnityEngine.Camera,UnityEngine.Vector3,System.Single)">
+            <summary>
+            Casts a ray from the camera to the xz plane through the specified screen point and returns the point the ray intersects the xz plane in world coordinates.
+            </summary>
+            <param name="cam">The camera.</param>
+            <param name="screenPos">The screen position.</param>
+            <param name="groundHeight">Height (y-coordinate) that the ground level is at.</param>
+            <returns>The intersection point on the xz plane in world coordinates</returns>
+        </member>
+        <member name="M:Apex.SharedUnityExtensions.Approximately(UnityEngine.Vector3,UnityEngine.Vector3,System.Single)">
+            <summary>
+            Checks if one vector is approximately equal to another
+            </summary>
+            <param name="me">Me.</param>
+            <param name="other">The other.</param>
+            <param name="allowedDifference">The allowed difference.</param>
+            <returns><c>true</c> if the are approximately equal, otherwise <c>false</c></returns>
+        </member>
+        <member name="M:Apex.SharedUnityExtensions.DirToXZ(UnityEngine.Vector3,UnityEngine.Vector3)">
+            <summary>
+            Get the direction between two point in the xz plane only
+            </summary>
+            <param name="from">The from position.</param>
+            <param name="to">The to position.</param>
+            <returns>The direction vector between the two points.</returns>
+        </member>
+        <member name="M:Apex.SharedUnityExtensions.OnlyXZ(UnityEngine.Vector3)">
+            <summary>
+            Discards the y-component of the vector
+            </summary>
+            <param name="v">The vector.</param>
+            <returns>The vector with y set to 0</returns>
+        </member>
+        <member name="M:Apex.SharedUnityExtensions.As``1(UnityEngine.Component,System.Boolean,System.Boolean)">
+            <summary>
+            Gets the first MonoBehavior on the component's game object that is of type T. This is different from GetComponent in that the type can be an interface or class that is not itself a component.
+            It is however a relatively slow operation, and should not be used in actions that happen frequently, e.g. Update.
+            </summary>
+            <typeparam name="T">The type of behavior to look for</typeparam>
+            <param name="c">The component whose siblings will be inspected if they are of type T</param>
+            <param name="searchParent">if set to <c>true</c> the parent transform will also be inspected if no match is found on the current component's transform.</param>
+            <param name="required">if set to <c>true</c> and the requested component is not found, an exception will be thrown.</param>
+            <returns>
+            The T behavior sibling of the component or null if not found.
+            </returns>
+        </member>
+        <member name="M:Apex.SharedUnityExtensions.As``1(Apex.IGameObjectComponent,System.Boolean,System.Boolean)">
+            <summary>
+            Gets the first MonoBehavior on the component's game object that is of type T. This is different from GetComponent in that the type can be an interface or class that is not itself a component.
+            It is however a relatively slow operation, and should not be used in actions that happen frequently, e.g. Update.
+            </summary>
+            <typeparam name="T">The type of behavior to look for</typeparam>
+            <param name="c">The component whose siblings will be inspected if they are of type T</param>
+            <param name="searchParent">if set to <c>true</c> the parent transform will also be inspected if no match is found on the current component's transform.</param>
+            <param name="required">if set to <c>true</c> and the requested component is not found, an exception will be thrown.</param>
+            <returns>
+            The T behavior sibling of the component or null if not found.
+            </returns>
+        </member>
+        <member name="M:Apex.SharedUnityExtensions.As``1(UnityEngine.GameObject,System.Boolean,System.Boolean)">
+            <summary>
+            Gets the first MonoBehavior on the game object that is of type T. This is different from GetComponent in that the type can be an interface or class that is not itself a component.
+            It is however a relatively slow operation, and should not be used in actions that happen frequently, e.g. Update.
+            </summary>
+            <typeparam name="T">The type of behavior to look for</typeparam>
+            <param name="go">The game object whose components will be inspected if they are of type T</param>
+            <param name="searchParent">if set to <c>true</c> the parent transform will also be inspected if no match is found on the current game object.</param>
+            <param name="required">if set to <c>true</c> and the requested component is not found, an exception will be thrown.</param>
+            <returns>
+            The T behavior or null if not found.
+            </returns>
+        </member>
+        <member name="M:Apex.SharedUnityExtensions.WarnIfMultipleInstances(UnityEngine.MonoBehaviour)">
+            <summary>
+            Warns if multiple instances of the component exists on its game object.
+            </summary>
+            <param name="component">The component.</param>
+        </member>
+        <member name="M:Apex.SharedUnityExtensions.WarnIfMultipleInstances``1(UnityEngine.MonoBehaviour)">
+            <summary>
+            Warns if multiple instances of the component exists on its game object.
+            </summary>
+            <param name="component">The component.</param>
+        </member>
+        <member name="M:Apex.SharedUnityExtensions.Overlaps(UnityEngine.Bounds,UnityEngine.Bounds)">
+            <summary>
+            Determines whether another bounds overlaps this one (and vice versa).
+            </summary>
+            <param name="a">This bounds.</param>
+            <param name="b">The other bounds.</param>
+            <returns><c>true</c> if they overlap, otherwise false.</returns>
+        </member>
+        <member name="M:Apex.SharedUnityExtensions.Translate(UnityEngine.Bounds,UnityEngine.Vector3)">
+            <summary>
+            Translates the specified bounds a certain amount.
+            </summary>
+            <param name="b">The bounds</param>
+            <param name="translation">The translation vector.</param>
+            <returns>The bounds after the translation.</returns>
+        </member>
+        <member name="M:Apex.SharedUnityExtensions.Translate(UnityEngine.Bounds,System.Single,System.Single,System.Single)">
+            <summary>
+            Translates the specified bounds a certain amount.
+            </summary>
+            <param name="b">The bounds</param>
+            <param name="x">The x component of the translation.</param>
+            <param name="y">The y component of the translation.</param>
+            <param name="z">The z component of the translation.</param>
+            <returns>The bounds after the translation.</returns>
+        </member>
+        <member name="M:Apex.SharedUnityExtensions.DeltaSize(UnityEngine.Bounds,UnityEngine.Vector3)">
+            <summary>
+            Resizes a bounds by a certain amount.
+            </summary>
+            <param name="b">The bounds.</param>
+            <param name="delta">The delta vector.</param>
+            <returns>The resized bounds.</returns>
+        </member>
+        <member name="M:Apex.SharedUnityExtensions.DeltaSize(UnityEngine.Bounds,System.Single,System.Single,System.Single)">
+            <summary>
+            Resizes a bounds by a certain amount.
+            </summary>
+            <param name="b">The bounds</param>
+            <param name="dx">The x component of the delta.</param>
+            <param name="dy">The y component of the delta.</param>
+            <param name="dz">The z component of the delta.</param>
+            <returns>The resized bounds.</returns>
+        </member>
+        <member name="M:Apex.SharedUnityExtensions.Merge(UnityEngine.Bounds,UnityEngine.Bounds)">
+            <summary>
+            Merges the two bounds
+            </summary>
+            <param name="b">The first bounds.</param>
+            <param name="other">The second bounds.</param>
+            <returns>A bounds representing the union of the two bounds.</returns>
+        </member>
+        <member name="M:Apex.SharedUnityExtensions.Intersection(UnityEngine.Bounds,UnityEngine.Bounds)">
+            <summary>
+            Get the bounds that represents the intersection of two bounds.
+            </summary>
+            <param name="a">The first bounds.</param>
+            <param name="b">The second bounds.</param>
+            <returns>The intersection bounds.</returns>
+        </member>
+        <member name="M:Apex.SharedUnityExtensions.Contains(UnityEngine.Rect,UnityEngine.Rect)">
+            <summary>
+            Determines whether one <see cref="T:UnityEngine.Rect"/>. contains another.
+            </summary>
+            <param name="rect">The rect to check.</param>
+            <param name="other">The other rect.</param>
+            <returns><c>true</c> if <paramref name="other"/> is contained in <paramref name="rect"/>; otherwise <c>false</c></returns>
+        </member>
+        <member name="M:Apex.SharedUnityExtensions.Round(UnityEngine.Rect)">
+            <summary>
+            Rounds all members of the specified Rect, producing a Rect with whole number members.
+            </summary>
+            <param name="rect">The rect to round.</param>
+            <returns>The Rect with all members rounded to the nearest whole number.</returns>
+        </member>
+        <member name="M:Apex.SharedUnityExtensions.Round(UnityEngine.Vector2)">
+            <summary>
+            Rounds x and y of the specified Vector2 to the nearest whole number.
+            </summary>
+            <param name="v">The vector to round.</param>
+            <returns>The Vector2 with x and y rounded to the nearest whole number.</returns>
+        </member>
+        <member name="M:Apex.SharedUnityExtensions.Round(UnityEngine.Vector3)">
+            <summary>
+            Rounds x, y and z of the specified Vector3 to the nearest whole number.
+            </summary>
+            <param name="v">The vector to round.</param>
+            <returns>The Vector3 with x, y and z rounded to the nearest whole number.</returns>
+        </member>
+        <member name="M:Apex.SharedUnityExtensions.AddIfMissing``1(UnityEngine.GameObject,System.Boolean,``0@)">
+            <summary>
+            Adds a component of the specified type if it does not already exist.
+            </summary>
+            <typeparam name="T">The type of component to add</typeparam>
+            <param name="target">The target to which the component will be added.</param>
+            <param name="entireScene">if set to <c>true</c> the check to see if the component already exists will be done in the entire scene, otherwise it will check the <paramref name="target"/>.</param>
+            <param name="component">The component regardless of whether it was just added or already existed.</param>
+            <returns><c>true</c> if the component was added; or <c>false</c> if the component already exists on the game object.</returns>
+        </member>
+        <member name="M:Apex.SharedUnityExtensions.AddIfMissing``1(UnityEngine.GameObject,System.Boolean)">
+            <summary>
+            Adds a component of the specified type if it does not already exist.
+            </summary>
+            <typeparam name="T">The type of component to add</typeparam>
+            <param name="target">The target to which the component will be added.</param>
+            <param name="entireScene">if set to <c>true</c> the check to see if the component already exists will be done in the entire scene, otherwise it will check the <paramref name="target"/>.</param>
+            <returns><c>true</c> if the component was added; or <c>false</c> if the component already exists on the game object.</returns>
+        </member>
+        <member name="M:Apex.SharedUnityExtensions.AddIfMissing``1(UnityEngine.GameObject,``0@)">
+            <summary>
+            Adds a component of the specified type if it does not already exist.
+            </summary>
+            <typeparam name="T">The type of component to add</typeparam>
+            <param name="target">The target to which the component will be added.</param>
+            <param name="component">The component regardless of whether it was just added or already existed.</param>
+            <returns><c>true</c> if the component was added; or <c>false</c> if the component already exists on the game object.</returns>
+        </member>
+        <member name="M:Apex.SharedUnityExtensions.AddIfMissing``1(UnityEngine.GameObject)">
+            <summary>
+            Adds a component of the specified type if it does not already exist.
+            </summary>
+            <typeparam name="T">The type of component to add</typeparam>
+            <param name="target">The target to which the component will be added.</param>
+            <returns><c>true</c> if the component was added; or <c>false</c> if the component already exists on the game object.</returns>
+        </member>
+        <member name="M:Apex.SharedUnityExtensions.AddComponentSafe``1(UnityEngine.GameObject,System.Action{``0})">
+            <summary>
+            Adds a component but delays its Awake call until it has been configured.
+            </summary>
+            <typeparam name="T">The type of component to add</typeparam>
+            <param name="target">The target to which the component will be added.</param>
+            <param name="configurator">The action to execute in order to configure the newly added item.</param>
+            <returns>The component that was added</returns>
+        </member>
+        <member name="M:Apex.SharedUnityExtensions.NukeSingle``1(UnityEngine.GameObject)">
+            <summary>
+            Removes a single component of type T on the specified game object.
+            </summary>
+            <typeparam name="T">The type parameter, i.e. what type of component should be removed.</typeparam>
+            <param name="go">The game object on which the expected component is.</param>
+            <returns><c>true</c> if it finds and destroys the desired component, <c>false</c> otherwise.</returns>
+        </member>
+        <member name="M:Apex.SharedUnityExtensions.SelfAndDescendants(UnityEngine.GameObject,System.Collections.Generic.List{UnityEngine.GameObject})">
+            <summary>
+            Collects a game object and all its descendant game objects in a list.
+            </summary>
+            <param name="root">The root game object.</param>
+            <param name="collector">The list populated by <paramref name="root"/> and all its descendants.</param>
+        </member>
+        <member name="T:Apex.Utilities.ApexReflection">
+            <summary>
+            Reflection helpers related to Apex relevant types
+            </summary>
+        </member>
+        <member name="M:Apex.Utilities.ApexReflection.GetRelevantTypes">
+            <summary>
+            Gets the Apex relevant types, meaning all types in either the Assembly-CSharp (or similar) or assemblies marked with the <see cref="T:Apex.ApexRelevantAssemblyAttribute"/>
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Apex.Utilities.ApexReflection.ProperName(System.Type,System.Boolean)">
+            <summary>
+            Gets the proper name of a type. This is specifically for generic types to show their generic arguments as part of the type name.
+            </summary>
+            <param name="t">The type.</param>
+            <returns>The name including any generic arguments.</returns>
+        </member>
+        <member name="T:Apex.Utilities.ComponentHelper">
+            <summary>
+            Utility class to help with certain Component related tasks
+            </summary>
+        </member>
+        <member name="M:Apex.Utilities.ComponentHelper.FindFirstComponentInScene``1">
+            <summary>
+            Finds the first component of the specified type in the scene.
+            </summary>
+            <typeparam name="T">The type of component to look for</typeparam>
+            <returns>The component or <c>null</c> if not found</returns>
+        </member>
+        <member name="M:Apex.Utilities.ComponentHelper.FindAllComponentsInScene``1">
+            <summary>
+            Finds all components of the specified type in the scene.
+            </summary>
+            <typeparam name="T">The type of component to look for</typeparam>
+            <returns>The component or <c>null</c> if not found</returns>
+        </member>
+        <member name="T:Apex.Utilities.Empty`1">
+            <summary>
+            Represents an empty structure of a given type.
+            </summary>
+            <typeparam name="T">The type</typeparam>
+        </member>
+        <member name="F:Apex.Utilities.Empty`1.array">
+            <summary>
+            An empty array
+            </summary>
+        </member>
+        <member name="T:Apex.Utilities.Ensure">
+            <summary>
+            <para>Common validation routines.</para>
+            </summary>
+        </member>
+        <member name="M:Apex.Utilities.Ensure.ArgumentNotNullOrEmpty(System.String,System.String)">
+            <summary>
+            <para>Check if the <paramref name="value"/> is <see langword="null"/> or an empty string.</para>
+            </summary>
+            <param name="value">
+            <para>The value to check.</para>
+            </param>
+            <param name="variableName">
+            <para>The name of the argument being checked.</para>
+            </param>
+            <exception cref="T:System.ArgumentException">
+            If <pararef name="value"/> is <see langword="null"/> or empty.
+            </exception>
+        </member>
+        <member name="M:Apex.Utilities.Ensure.ArgumentNotNull(System.Object,System.String)">
+            <summary>
+            <para>Check if the <paramref name="value"/> is <see langword="null"/> (Nothing in Visual Basic).</para>
+            </summary>
+            <param name="value">
+            <para>The value to check.</para>
+            </param>
+            <param name="variableName">
+            <para>The name of the argument being checked.</para>
+            </param>
+            <exception cref="T:System.ArgumentNullException">
+            If <pararef name="value"/> is <see langword="null"/> (Nothing in Visual Basic).
+            </exception>
+        </member>
+        <member name="M:Apex.Utilities.Ensure.ArgumentInRange(System.Func{System.Boolean},System.String,System.Object,System.String)">
+            <summary>
+            Ensure that an argument is in range.
+            </summary>
+            <param name="check">The range check.</param>
+            <param name="variableName">Name of the variable.</param>
+            <param name="value">The value of the variable.</param>
+            <param name="message">The message in case value is out of range.</param>
+            <exception cref="T:System.ArgumentException">If value is out of range.</exception>
+        </member>
+        <member name="T:Apex.Utilities.Ensure.ValidatedNotNullAttribute">
+            <summary>
+            Attribute to satisfy the CA1062 rule
+            </summary>
+        </member>
+        <member name="T:Apex.Utilities.LabelAttribute">
+            <summary>
+            Property attribute to assign a label to a field.
+            </summary>
+        </member>
+        <member name="M:Apex.Utilities.LabelAttribute.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Apex.Utilities.LabelAttribute"/> class.
+            </summary>
+            <param name="label">The label.</param>
+        </member>
+        <member name="M:Apex.Utilities.LabelAttribute.#ctor(System.String,System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Apex.Utilities.LabelAttribute"/> class.
+            </summary>
+            <param name="label">The label.</param>
+            <param name="tooltip">The tooltip</param>
+        </member>
+        <member name="P:Apex.Utilities.LabelAttribute.label">
+            <summary>
+            Gets the label.
+            </summary>
+            <value>
+            The label.
+            </value>
+        </member>
+        <member name="P:Apex.Utilities.LabelAttribute.tooltip">
+            <summary>
+            Gets the tooltip.
+            </summary>
+            <value>
+            The tooltip.
+            </value>
+        </member>
+        <member name="T:Apex.Utilities.ListBufferPool">
+            <summary>
+            Pooling of list buffers. This can be used to retrieve a temporary list buffer from a pre-allocated cache.
+            </summary>
+        </member>
+        <member name="M:Apex.Utilities.ListBufferPool.GetBuffer``1(System.Int32)">
+            <summary>
+            Gets a buffer from the pool. Buffers should always be returned via <see cref="M:Apex.Utilities.ListBufferPool.ReturnBuffer``1(System.Collections.Generic.List{``0})"/> when no longer in use.
+            If no buffer is available a new one will be created which is then added to the pool once <see cref="M:Apex.Utilities.ListBufferPool.ReturnBuffer``1(System.Collections.Generic.List{``0})"/> is called.
+            </summary>
+            <typeparam name="T">The type of list</typeparam>
+            <param name="capacityHint">A hint as to the expected capacity requirement.</param>
+            <returns>A list from the buffer pool with room for at least <paramref name="capacityHint"/> elements.</returns>
+        </member>
+        <member name="M:Apex.Utilities.ListBufferPool.ReturnBuffer``1(System.Collections.Generic.List{``0})">
+            <summary>
+            Returns a buffer to the pool.
+            </summary>
+            <typeparam name="T">The type of list</typeparam>
+            <param name="buffer">The buffer.</param>
+        </member>
+        <member name="M:Apex.Utilities.ListBufferPool.PreAllocate``1(System.Int32,System.Int32)">
+            <summary>
+            Preallocates a number of list buffers.
+            </summary>
+            <typeparam name="T">The buffer type</typeparam>
+            <param name="capacity">The capacity.</param>
+            <param name="number">The number of buffers to preallocate.</param>
+        </member>
+        <member name="T:Apex.Utilities.MaxCheckAttribute">
+            <summary>
+            Property attribute to ensure a max value.
+            </summary>
+        </member>
+        <member name="M:Apex.Utilities.MaxCheckAttribute.#ctor(System.Single)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Apex.Utilities.MaxCheckAttribute"/> class.
+            </summary>
+            <param name="max">The maximum.</param>
+        </member>
+        <member name="M:Apex.Utilities.MaxCheckAttribute.#ctor(System.Int32)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Apex.Utilities.MaxCheckAttribute"/> class.
+            </summary>
+            <param name="max">The maximum.</param>
+        </member>
+        <member name="P:Apex.Utilities.MaxCheckAttribute.max">
+            <summary>
+            Gets the maximum.
+            </summary>
+            <value>
+            The maximum.
+            </value>
+        </member>
+        <member name="P:Apex.Utilities.MaxCheckAttribute.label">
+            <summary>
+            Gets or sets the label.
+            </summary>
+        </member>
+        <member name="P:Apex.Utilities.MaxCheckAttribute.tooltip">
+            <summary>
+            Gets or sets the tooltip.
+            </summary>
+        </member>
+        <member name="T:Apex.Utilities.MinCheckAttribute">
+            <summary>
+            Property attribute to ensure a min value.
+            </summary>
+        </member>
+        <member name="M:Apex.Utilities.MinCheckAttribute.#ctor(System.Single)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Apex.Utilities.MinCheckAttribute"/> class.
+            </summary>
+            <param name="min">The minimum.</param>
+        </member>
+        <member name="M:Apex.Utilities.MinCheckAttribute.#ctor(System.Int32)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Apex.Utilities.MinCheckAttribute"/> class.
+            </summary>
+            <param name="min">The minimum.</param>
+        </member>
+        <member name="P:Apex.Utilities.MinCheckAttribute.min">
+            <summary>
+            Gets the minimum.
+            </summary>
+            <value>
+            The minimum.
+            </value>
+        </member>
+        <member name="P:Apex.Utilities.MinCheckAttribute.label">
+            <summary>
+            Gets or sets the label.
+            </summary>
+        </member>
+        <member name="P:Apex.Utilities.MinCheckAttribute.tooltip">
+            <summary>
+            Gets or sets the tooltip.
+            </summary>
+        </member>
+        <member name="T:Apex.Utilities.RangeXAttribute">
+            <summary>
+            Property attribute to control the value range of a property and also allow setting a label and tooltip.
+            </summary>
+        </member>
+        <member name="F:Apex.Utilities.RangeXAttribute.min">
+            <summary>
+            The minimum
+            </summary>
+        </member>
+        <member name="F:Apex.Utilities.RangeXAttribute.max">
+            <summary>
+            The maximum
+            </summary>
+        </member>
+        <member name="M:Apex.Utilities.RangeXAttribute.#ctor(System.Single,System.Single)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Apex.Utilities.RangeXAttribute"/> class.
+            </summary>
+            <param name="min">The minimum.</param>
+            <param name="max">The maximum.</param>
+        </member>
+        <member name="P:Apex.Utilities.RangeXAttribute.label">
+            <summary>
+            Gets or sets the label.
+            </summary>
+        </member>
+        <member name="P:Apex.Utilities.RangeXAttribute.tooltip">
+            <summary>
+            Gets or sets the tooltip.
+            </summary>
+        </member>
+    </members>
+</doc>
